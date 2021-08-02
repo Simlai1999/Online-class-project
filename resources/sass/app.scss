@@ -1,0 +1,24 @@
+@import "./base/variables";
+@import "./base/colors";
+// @import "./helpers";
+// @import "./overrides";
+// @import "./components";
+// @import "./pages";
+// @charset "utf-8";
+// @import "../node_modules/bulma/bulma.sass";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow:hidden
+}
+
+.menu-container {
+    position: fixed;
+    bottom: 0;
+    margin: auto;
+    min-width: 300px;
+    z-index: 10;
+    // background-color: map-get($colors, primary, high);
+}

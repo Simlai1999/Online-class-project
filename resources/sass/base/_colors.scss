@@ -1,0 +1,58 @@
+$colors: (
+  primary: (
+    high: hsl(243, 100%, 69%),
+    medium: hsl(243, 100%, 65%),
+    low: hsl(243, 100%, 75%),
+    lowest: hsl(243, 100%, 95%),
+    low-emphasis: hsla(243, 100%, 69%, 0.4),
+  ),
+  warning: (
+    high: hsl(26, 100%, 50%),
+    medium: hsl(26, 100%, 65%),
+    low: hsl(26, 100%, 75%),
+    lowest: hsl(26, 100%, 95%),
+  ),
+  success: (
+    high: hsl(151, 84%, 50%),
+    medium: hsl(151, 84%, 65%),
+    low: hsl(151, 84%, 75%),
+    lowest: hsl(151, 84%, 95%),
+  ),
+  danger: (
+    high: hsl(4, 100%, 50%),
+    medium: hsl(4, 100%, 65%),
+    low: hsl(4, 100%, 75%),
+    lowest: hsl(4, 100%, 95%),
+  ),
+  dark: (
+    high: hsla(206, 100%, 10%, 1),
+    medium: hsla(206, 100%, 10%, 0.75),
+    low: hsla(206, 100%, 10%, 0.5),
+    lowest: hsla(206, 100%, 10%, 0.25),
+  ),
+  light: (
+    high: hsla(206, 100%, 98%, 1),
+    medium: hsla(206, 100%, 98%, 0.75),
+    low: hsla(206, 100%, 98%, 0.5),
+    lowest: hsla(206, 100%, 98%, 0.25),
+  ),
+);
+
+@each $color, $shades in $colors {
+  @each $shade, $value in $shades {
+    .has-color-#{$color}-#{$shade} {
+      color: #{$value};
+    }
+    .has-background-color-#{$color}-#{$shade} {
+      background-color: #{$value};
+    }
+  }
+}
+
+:root {
+  @each $color, $shades in $colors {
+    @each $shade, $value in $shades {
+      --is-color-#{$color}-#{$shade}: #{$value};
+    }
+  }
+}
