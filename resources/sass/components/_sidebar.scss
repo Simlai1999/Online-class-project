@@ -1,22 +1,40 @@
 .menu-container {
     position: fixed;
-    height: 100%;
+    height: 102%;
     margin: auto;
-    min-width: 300px;
+    min-width: 225px;
     z-index: 10;
     background-color: var(--is-color-primary-high);
     a {
         color: var(--is-color-light-high);
-        em {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        span {
             padding: 1rem;
-        }
-        .is-active {
-            background-color: var(--is-color-primary-lowest);
+            font-size: 1.3rem;
         }
     }
     li {
         :hover {
             background-color: var(--is-color-primary-low);
+            color: var(--is-color-light-high);
+        }
+        a {
+            .is-active {
+                background-color: var(--is-color-primary-high);
+            }
         }
     }
+}
+
+.fa-times {
+    padding: 1.5rem;
+    font-size: 25px;
+    color: var(--is-color-light-high);
+    cursor: pointer;
+}
+
+.end {
+    padding-top: 29rem;
 }

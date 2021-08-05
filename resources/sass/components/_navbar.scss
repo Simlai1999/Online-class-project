@@ -1,0 +1,38 @@
+.fa-bell {
+    font-size: 1.3rem;
+    padding: 15px;
+    background-color: var(--is-color-dark-lowest);
+    border-radius: 30%;
+    :hover {
+        color: var(--is-color-light-high);
+    }
+}
+
+.navbar-dropdown {
+    background-color: var(--is-color-primary-low);
+    border-radius: 5%;
+    span {
+        color: var(--is-color-light-high);
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+    a {
+        color: var(--is-color-light-high);
+        .navbar-item {
+            :hover {
+                background-color: var(--is-color-primary-low);
+                color: var(--is-color-light-high);
+            }
+        }
+    }
+}
+
+.navbar-link {
+    background-color: var(--is-color-dark-lowest);
+    border-radius: 10%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding-left: 1rem;
+}
