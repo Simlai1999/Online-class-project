@@ -1,8 +1,22 @@
 .menu-container {
     position: fixed;
-    bottom: 0;
+    height: 100%;
     margin: auto;
     min-width: 300px;
     z-index: 10;
-    background-color: var(--has-background-color-primary-high);
+    background-color: var(--is-color-primary-high);
+    a {
+        color: var(--is-color-light-high);
+        em {
+            padding: 1rem;
+        }
+        .is-active {
+            background-color: var(--is-color-primary-lowest);
+        }
+    }
+    li {
+        :hover {
+            background-color: var(--is-color-primary-low);
+        }
+    }
 }

@@ -1,8 +1,5 @@
-.menu-container {
-    position: fixed;
-    bottom: 0;
-    margin: auto;
-    min-width: 300px;
-    z-index: 10;
-    background-color: var(--has-background-color-primary-high);
-}
+@import "./base/index";
+@import "./helpers/index";
+@import "./components/index";
+@import "./overrides/index";
+@import "./pages/index";
