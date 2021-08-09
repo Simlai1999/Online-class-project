@@ -23,6 +23,7 @@
         a {
             .is-active {
                 background-color: var(--is-color-primary-high);
+                border-left: 6px solid var(--is-color-light-high);
             }
         }
     }
