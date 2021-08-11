@@ -2,7 +2,7 @@
     position: fixed;
     height: 102%;
     margin: auto;
-    min-width: 225px;
+    width: 225px;
     z-index: 10;
     background-color: var(--is-color-primary-high);
     a {
@@ -20,13 +20,13 @@
             background-color: var(--is-color-primary-low);
             color: var(--is-color-light-high);
         }
-        a {
-            .is-active {
-                background-color: var(--is-color-primary-high);
-                border-left: 6px solid var(--is-color-light-high);
-            }
-        }
     }
+}
+
+.menu-list a.is-active {
+    background-color: transparent;
+    color: var(--is-color-light-high);
+    border-left: 0.25rem solid var(--is-color-light-high);
 }
 
 .fa-times {
