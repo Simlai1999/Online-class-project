@@ -2,6 +2,7 @@ import { el, mount } from "redom";
 
 export class Navbar {
     constructor() {
+        console.log("one");
         this.el = el("nav.navbar is-fixed-top", { style: "left: 15rem;" }, 
             el("div.navbar-brand", 
                 el("a.navbar-item", {href: "#"}, "LOGO")
@@ -22,8 +23,8 @@ export class Navbar {
             )
         );
     }
+    onmount() {
+        console.log("Two");
+    }
 }
-
-const navbar = new Navbar();
-
-mount(document.body, navbar);
+mount(document.body, new Navbar());
