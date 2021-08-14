@@ -1,4 +1,4 @@
-import { el, mount, } from "redom";
+import { el, mount } from "redom";
 
 export class Sidebar {
     constructor() {
@@ -24,8 +24,10 @@ export class Sidebar {
     }
 
     onmount() {
+
         this.closeButton.onclick = evt => {
-            console.log("hello");
+            this.closeButton.className = 'fas fa-bars';
+            this.el.style.width = '5rem';
         };
 
         let self = this;
