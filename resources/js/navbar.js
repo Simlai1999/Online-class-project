@@ -1,4 +1,4 @@
-import { el, mount } from "redom";
+import { el } from "redom";
 
 export class Navbar {
     constructor() {
@@ -12,7 +12,7 @@ export class Navbar {
         this.navBrand = el("div.navbar-brand",
             el("a.navbar-item", { href: "#" }, "LOGO")
         );
-        
+
         this.el = el("nav.navbar is-fixed-top", { style: "left: 15rem;" },
 
             el("div.navbar-menu",
@@ -27,4 +27,3 @@ export class Navbar {
         );
     }
 }
-mount(document.body, new Navbar());
