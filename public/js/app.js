@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "./";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -75,16 +75,16 @@
 /* unused harmony export ListPool */
 /* unused harmony export Place */
 /* unused harmony export Router */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return el; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return el; });
 /* unused harmony export h */
 /* unused harmony export html */
-/* unused harmony export list */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return list; });
 /* unused harmony export listPool */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return mount; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return mount; });
 /* unused harmony export place */
-/* unused harmony export router */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return router; });
 /* unused harmony export s */
-/* unused harmony export setAttr */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return setAttr; });
 /* unused harmony export setChildren */
 /* unused harmony export setData */
 /* unused harmony export setStyle */
@@ -841,13 +841,46 @@ function memoizeSVG (query) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_redom_dist_redom_min_js__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_redom_dist_redom_min_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__node_modules_redom_dist_redom_min_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__navbar_js__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sidebar_js__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redom__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__navbar_js__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sidebar_js__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_home_page_js__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_lectures_page_js__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__main__ = __webpack_require__(3);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 
 
+
+
+
+
+
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* mount */])(document.body, new __WEBPACK_IMPORTED_MODULE_2__sidebar_js__["a" /* Sidebar */]());
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* mount */])(document.body, new __WEBPACK_IMPORTED_MODULE_1__navbar_js__["a" /* Navbar */]());
+
+var AuthMiddleware = function () {
+    function AuthMiddleware() {
+        _classCallCheck(this, AuthMiddleware);
+    }
+
+    _createClass(AuthMiddleware, [{
+        key: 'exec',
+        value: function exec(currentView, nextView, params) {
+            console.log('From custom Middleware');
+        }
+    }]);
+
+    return AuthMiddleware;
+}();
+
+var app = new __WEBPACK_IMPORTED_MODULE_5__main__["a" /* App */]().routes({
+    home: __WEBPACK_IMPORTED_MODULE_3__pages_home_page_js__["a" /* HomePage */],
+    default: __WEBPACK_IMPORTED_MODULE_3__pages_home_page_js__["a" /* HomePage */],
+    lectures: __WEBPACK_IMPORTED_MODULE_4__pages_lectures_page_js__["a" /* LecturesPage */]
+}).middlewares([new AuthMiddleware()]).start();
 
 /***/ }),
 /* 2 */
@@ -860,7 +893,170 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export Navbar */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return App; });
+/* unused harmony export goto */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redom__ = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+var App = function () {
+    function App() {
+        _classCallCheck(this, App);
+
+        this.middlewareList = [];
+    }
+
+    /**
+     *
+     * @param {type} routes the dictionary of views and names to redirect by
+     * @param {type} defaultRoute the default route, if found. otherwise, the route 'default' is used
+     * @returns {App}
+     */
+
+
+    _createClass(App, [{
+        key: 'routes',
+        value: function routes(_routes, defaultRoute) {
+            this.app = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* router */])('div.app', _routes);
+            this.defaultRoute = defaultRoute ? defaultRoute : 'default';
+            this.currentView = this.defaultRoute;
+
+            return this;
+        }
+
+        /**
+         *
+         * @param {type} middlewares a list of functions to execute in order before routing.
+         *  If a middleware returns a name of a view differnt than the current target, then the following
+         *  middlewares will not be called and a redirect to the returned view is done.
+         * @returns {App}
+         */
+
+    }, {
+        key: 'middlewares',
+        value: function middlewares(_middlewares) {
+            if (_middlewares) {
+                this.middlewareList = _middlewares;
+            }
+
+            return this;
+        }
+
+        /**
+         * Starts the Application at this base element on the dom. If no base element is provided, then the
+         * <body> is the base element
+         * @param {type} appBase the base element to use
+         * @returns {App}
+         */
+
+    }, {
+        key: 'start',
+        value: function start(appBase) {
+            var _this = this;
+
+            if (appBase) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* mount */])(appBase, this.app);
+            } else {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* mount */])(document.body, this.app);
+            }
+
+            window.onhashchange = function (e) {
+                _this._doRoute();
+            };
+
+            window.onload = function (e) {
+                _this._doRoute();
+            };
+
+            return this;
+        }
+
+        /**
+         * Routes to the new view. If it is the same as the current view, middleware execution is
+         * skipped. Otherwise, middlewares are executed.
+         * @returns {undefined}
+         */
+
+    }, {
+        key: '_doRoute',
+        value: function _doRoute() {
+            var routeUrl = window.location.hash.substr(1).split('/');
+            var view = routeUrl[0];
+            var paramString = window.location.hash.substr(1 + view.length);
+            var params = routeUrl.splice(1, routeUrl.length).filter(function (param) {
+                return param.length > 0;
+            });
+
+            if (this.app.Views[view]) {
+                if (view !== this.currentView) {
+                    var result = this._execMiddleware(this.currentView, view, params);
+                    if (result && result) {
+                        goto(result, params);
+                    } else {
+                        this.currentView = view;
+                        this.app.update(view, params);
+                    }
+                } else {
+                    this.currentView = view;
+                    this.app.update(view, params);
+                }
+            } else {
+                window.location.hash = this.defaultRoute + paramString;
+            }
+        }
+
+        /**
+         * Executes middlewares. if a middleware returns the name of the view other
+         * than the current view, then the following middlewares will not be executed
+         * and a redirect to the returned view is done
+         * @param {type} currentView
+         * @param {type} newView
+         * @param {type} params
+         * @returns {Boolean}
+         */
+
+    }, {
+        key: '_execMiddleware',
+        value: function _execMiddleware(currentView, newView, params) {
+            if (this.middlewareList.length > 0) {
+                var i = 0;
+                for (i in this.middlewareList) {
+                    var result = this.middlewareList[i].exec(currentView, newView, params);
+                    if (result && result != newView) {
+                        return result;
+                    }
+                }
+            }
+        }
+    }]);
+
+    return App;
+}();
+
+
+
+
+var goto = function goto(view, params) {
+    var paramString = '';
+
+    if (params && params.length > 0) {
+        params.map(function (param) {
+            paramString = paramString.concat('/').concat(param);
+        });
+    }
+
+    window.location.hash = view + paramString;
+};
+
+/***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Navbar; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redom__ = __webpack_require__(0);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -869,20 +1065,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var Navbar = function Navbar() {
     _classCallCheck(this, Navbar);
 
-    this.dropdownList = [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("span.fas fa-user"), "Personal Details"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("span.fas fa-trophy"), "Achivements"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("span.fas fa-question-circle"), "Help"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("span.fas fa-sign-out-alt"), "Logout")];
+    this.dropdownList = [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("span.fas fa-user"), "Personal Details"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("span.fas fa-trophy"), "Achivements"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("span.fas fa-question-circle"), "Help"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("span.fas fa-sign-out-alt"), "Logout")];
 
-    this.navBrand = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("div.navbar-brand", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("a.navbar-item", { href: "#" }, "LOGO"));
+    this.navBrand = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-brand", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, "LOGO"));
 
-    this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("nav.navbar is-fixed-top", { style: "left: 15rem;" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("div.navbar-menu", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("div.navbar-end", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("span.fas fa-bell")), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("div.navbar-item has-dropdown is-hoverable", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("a.navbar-link", { href: "#" }, "Student"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("div.navbar-dropdown is-right", this.dropdownList)))));
+    this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("nav.navbar is-fixed-top", this.navBrand, { style: "left: 15rem;" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-menu", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-end", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("span.fas fa-bell")), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-item has-dropdown is-hoverable", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-link", { href: "#" }, "Student"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-dropdown is-right", this.dropdownList)))));
 };
-__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* mount */])(document.body, new Navbar());
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export Sidebar */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redom__ = __webpack_require__(0);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -890,57 +1085,243 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
 
+var HomePage = function () {
+    function HomePage() {
+        _classCallCheck(this, HomePage);
+
+        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div', [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1', 'Home Page')]);
+    }
+
+    _createClass(HomePage, [{
+        key: 'update',
+        value: function update(data) {
+            console.log('Update function from home page');
+        }
+    }]);
+
+    return HomePage;
+}();
+
+{/* <div class="columns">
+       <div class="column">
+           <div class="box">
+               <h1>Your Classes</h1>
+           </div>
+       </div>
+       <div class="column">
+           <div class="box">
+               <h1>Your Assignments</h1>
+           </div>
+       </div>
+    </div> */}
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LecturesPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redom__ = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+var LecturesPage = function () {
+    function LecturesPage() {
+        _classCallCheck(this, LecturesPage);
+
+        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1', 'Lectures Page');
+    }
+
+    _createClass(LecturesPage, [{
+        key: 'update',
+        value: function update(data) {
+            console.log('Update function from lectures page');
+        }
+    }]);
+
+    return LecturesPage;
+}();
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Sidebar; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redom__ = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+var SidebarListItem = function () {
+    function SidebarListItem() {
+        _classCallCheck(this, SidebarListItem);
+
+        this.itemPosition = -1;
+        this.icon = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('span');
+        this.labelText = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('span');
+        this.labelWrapper = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('a', this.icon, this.labelText);
+
+        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('li', this.labelWrapper);
+    }
+
+    _createClass(SidebarListItem, [{
+        key: 'onmount',
+        value: function onmount() {
+            var _this = this;
+
+            var itemClicked = new CustomEvent('sidebar:itemClicked', {
+                bubbles: true,
+                detail: {
+                    itemPosition: this.itemPosition
+                }
+            });
+
+            this.labelWrapper.onclick = function (evt) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["d" /* setAttr */])(_this.labelWrapper, {
+                    className: 'is-active'
+                });
+
+                _this.labelWrapper.dispatchEvent(itemClicked);
+            };
+        }
+    }, {
+        key: 'update',
+        value: function update(data, index, items, context) {
+            this.itemPosition = index;
+
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["d" /* setAttr */])(this.icon, {
+                className: data.icon
+            });
+
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["d" /* setAttr */])(this.labelText, {
+                textContent: data.name
+            });
+
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["d" /* setAttr */])(this.labelWrapper, {
+                href: data.link
+            });
+        }
+    }, {
+        key: 'clearClasses',
+        value: function clearClasses() {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["d" /* setAttr */])(this.labelWrapper, {
+                className: ''
+            });
+        }
+    }, {
+        key: 'clearNames',
+        value: function clearNames() {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["d" /* setAttr */])(this.labelText, {
+                style: 'display: none;'
+            });
+        }
+    }, {
+        key: 'showNames',
+        value: function showNames() {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["d" /* setAttr */])(this.labelText, {
+                style: 'display: block;'
+            });
+        }
+    }]);
+
+    return SidebarListItem;
+}();
+
 var Sidebar = function () {
     function Sidebar() {
         _classCallCheck(this, Sidebar);
 
-        this.listItems = [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("a", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("span.fas fa-clipboard-list"), "Home"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("a", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("span.fas fa-chalkboard-teacher"), "Lectures"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("a", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("span.fas fa-calendar"), "Schedules"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("a", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("span.fas fa-pen-square"), "Notes"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("a", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("span.fas fa-cog"), "Settings")];
+        var sidebarListData = [{
+            name: 'Home',
+            icon: 'fas fa-clipboard-list',
+            link: '#home'
+        }, {
+            name: 'Lectures',
+            icon: 'fas fa-chalkboard-teacher',
+            link: '#lectures'
+        }, {
+            name: 'Schedules',
+            icon: 'fas fa-calendar',
+            link: '#home'
+        }, {
+            name: 'Notes',
+            icon: 'fas fa-pen-square',
+            link: '#lectures'
+        }, {
+            name: 'Settings',
+            icon: 'fas fa-cog',
+            link: '#lectures'
+        }];
 
-        this.menuWrapper = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("div.menu-wrapper", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("aside.menu", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("ul.menu-list", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("li", this.listItems))));
+        this.listItems = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["e" /* list */])('ul.menu-list', SidebarListItem);
 
-        this.closeButton = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("span.fas fa-times");
+        this.listItems.update(sidebarListData);
 
-        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("div.menu-container", this.closeButton, this.menuWrapper);
+        this.menuWrapper = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.menu-wrapper", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("aside.menu", this.listItems));
+
+        this.sidebarToggleButon = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('span.fas fa-times', { 'data-toggle': false });
+
+        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.menu-container", this.sidebarToggleButon, this.menuWrapper);
     }
 
     _createClass(Sidebar, [{
-        key: "onmount",
+        key: 'onmount',
         value: function onmount() {
-            var _this = this;
+            var _this2 = this;
 
-            this.closeButton.onclick = function (evt) {
-                _this.closeButton.className = 'fas fa-bars';
-                _this.el.style.width = '5rem';
+            this.sidebarToggleButon.onclick = function (evt) {
+                var sidebarToggled = _this2.sidebarToggleButon.getAttribute('data-toggle');
+
+                if (sidebarToggled === 'false') {
+                    _this2.closeSidebar();
+                } else {
+                    _this2.openSidebar();
+                }
             };
 
-            var self = this;
-
-            this.listItems.forEach(function (element) {
-                element.onclick = function (evt) {
-
-                    self.listItems.forEach(function (ele) {
-                        ele.className = '';
-                    });
-
-                    element.className = 'is-active';
-                };
+            this.el.addEventListener('sidebar:itemClicked', function (event) {
+                _this2.listItems.views.filter(function (view) {
+                    return view.itemPosition != event.detail.itemPosition;
+                }).forEach(function (element) {
+                    return element.clearClasses();
+                });
+            }, false);
+        }
+    }, {
+        key: 'openSidebar',
+        value: function openSidebar() {
+            this.sidebarToggleButon.className = 'fas fa-times';
+            this.listItems.views.forEach(function (labelText) {
+                return labelText.showNames();
             });
+            this.el.style.width = '';
+            this.el.style.transition = '0.5s';
+            this.sidebarToggleButon.setAttribute('data-toggle', false);
+        }
+    }, {
+        key: 'closeSidebar',
+        value: function closeSidebar() {
+            this.sidebarToggleButon.className = 'fas fa-bars';
+            this.listItems.views.forEach(function (labelText) {
+                return labelText.clearNames();
+            });
+            this.el.style.width = '5rem';
+            this.el.style.transition = '0.5s';
+            this.sidebarToggleButon.setAttribute('data-toggle', true);
         }
     }]);
 
     return Sidebar;
 }();
 
-__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* mount */])(document.body, new Sidebar());
-
 /***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-!function(e,t){ true?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t((e=e||self).redom={})}(this,(function(e){"use strict";function t(e,t){var i=function(e){for(var t=e.split(/([#.])/),i="",n="",o=[],r=0;r<t.length;r++){var l=t[r];"#"===l?n=t[++r]:"."===l?o.push(t[++r]):l.length&&(i=l)}return{tag:i||"div",id:n,className:o.join(" ")}}(e),n=i.tag,o=i.id,r=i.className,l=t?document.createElementNS(t,n):document.createElement(n);return o&&(l.id=o),r&&(t?l.setAttribute("class",r):l.className=r),l}function i(e,t){var i=m(e),o=m(t);return t===o&&o.__redom_view&&(t=o.__redom_view),o.parentNode&&(n(t,o,i),i.removeChild(o)),t}function n(e,t,i){var n=t.__redom_lifecycle;if(o(n))t.__redom_lifecycle={};else{var r=i;for(t.__redom_mounted&&u(t,"onunmount");r;){var l=r.__redom_lifecycle||{};for(var s in n)l[s]&&(l[s]-=n[s]);o(l)&&(r.__redom_lifecycle=null),r=r.parentNode}}}function o(e){if(null==e)return!0;for(var t in e)if(e[t])return!1;return!0}var r=["onmount","onremount","onunmount"],l="undefined"!=typeof window&&"ShadowRoot"in window;function s(e,t,i,o){var s=m(e),a=m(t);t===a&&a.__redom_view&&(t=a.__redom_view),t!==a&&(a.__redom_view=t);var f=a.__redom_mounted,d=a.parentNode;return f&&d!==s&&n(0,a,d),null!=i?o?s.replaceChild(a,m(i)):s.insertBefore(a,m(i)):s.appendChild(a),function(e,t,i,n){for(var o=t.__redom_lifecycle||(t.__redom_lifecycle={}),s=i===n,a=!1,f=0,d=r;f<d.length;f+=1){var h=d[f];s||e!==t&&h in e&&(o[h]=(o[h]||0)+1),o[h]&&(a=!0)}if(!a)return void(t.__redom_lifecycle={});var v=i,c=!1;(s||v&&v.__redom_mounted)&&(u(t,s?"onremount":"onmount"),c=!0);for(;v;){var _=v.parentNode,p=v.__redom_lifecycle||(v.__redom_lifecycle={});for(var w in o)p[w]=(p[w]||0)+o[w];if(c)break;(v.nodeType===Node.DOCUMENT_NODE||l&&v instanceof ShadowRoot||_&&_.__redom_mounted)&&(u(v,s?"onremount":"onmount"),c=!0),v=_}}(t,a,s,d),t}function u(e,t){"onmount"===t||"onremount"===t?e.__redom_mounted=!0:"onunmount"===t&&(e.__redom_mounted=!1);var i=e.__redom_lifecycle;if(i){var n=e.__redom_view,o=0;for(var r in n&&n[t]&&n[t](),i)r&&o++;if(o)for(var l=e.firstChild;l;){var s=l.nextSibling;u(l,t),l=s}}}function a(e,t,i){var n=m(e);if("object"==typeof t)for(var o in t)f(n,o,t[o]);else f(n,t,i)}function f(e,t,i){e.style[t]=null==i?"":i}var d="http://www.w3.org/1999/xlink";function h(e,t,i,n){var o=m(e);if("object"==typeof t)for(var r in t)h(o,r,t[r],n);else{var l=o instanceof SVGElement,s="function"==typeof i;if("style"===t&&"object"==typeof i)a(o,i);else if(l&&s)o[t]=i;else if("dataset"===t)c(o,i);else if(l||!(t in o)&&!s||"list"===t){if(l&&"xlink"===t)return void v(o,i);n&&"class"===t&&(i=o.className+" "+i),null==i?o.removeAttribute(t):o.setAttribute(t,i)}else o[t]=i}}function v(e,t,i){if("object"==typeof t)for(var n in t)v(e,n,t[n]);else null!=i?e.setAttributeNS(d,t,i):e.removeAttributeNS(d,t,i)}function c(e,t,i){if("object"==typeof t)for(var n in t)c(e,n,t[n]);else null!=i?e.dataset[t]=i:delete e.dataset[t]}function _(e){return document.createTextNode(null!=e?e:"")}function p(e,t,i){for(var n=0,o=t;n<o.length;n+=1){var r=o[n];if(0===r||r){var l=typeof r;"function"===l?r(e):"string"===l||"number"===l?e.appendChild(_(r)):y(m(r))?s(e,r):r.length?p(e,r,i):"object"===l&&h(e,r,null,i)}}}function w(e){return"string"==typeof e?b(e):m(e)}function m(e){return e.nodeType&&e||!e.el&&e||m(e.el)}function y(e){return e&&e.nodeType}var g={};function b(e){for(var t,i=[],n=arguments.length-1;n-- >0;)i[n]=arguments[n+1];var o=typeof e;if("string"===o)t=k(e).cloneNode(!1);else if(y(e))t=e.cloneNode(!1);else{if("function"!==o)throw new Error("At least one argument required");var r=e;t=new(Function.prototype.bind.apply(r,[null].concat(i)))}return p(m(t),i,!0),t}var N=b,x=b;function k(e){return g[e]||(g[e]=t(e))}function S(e){for(var t=[],n=arguments.length-1;n-- >0;)t[n]=arguments[n+1];for(var o=m(e),r=A(e,t,o.firstChild);r;){var l=r.nextSibling;i(e,r),r=l}}function A(e,t,i){for(var n=i,o=new Array(t.length),r=0;r<t.length;r++)o[r]=t[r]&&m(t[r]);for(var l=0;l<t.length;l++){var u=t[l];if(u){var a=o[l];if(a!==n)if(y(a)){var f=n&&n.nextSibling,d=null!=u.__redom_index&&f===o[l+1];s(e,u,n,d),d&&(n=f)}else null!=u.length&&(n=A(e,u,n));else n=n.nextSibling}}return n}b.extend=function(e){for(var t=[],i=arguments.length-1;i-- >0;)t[i]=arguments[i+1];var n=k(e);return b.bind.apply(b,[this,n].concat(t))};var D=function(e,t,i){this.View=e,this.initData=i,this.oldLookup={},this.lookup={},this.oldViews=[],this.views=[],null!=t&&(this.key="function"==typeof t?t:function(e){return function(t){return t[e]}}(t))};function V(e,t,i,n){return new j(e,t,i,n)}D.prototype.update=function(e,t){for(var i=this.View,n=this.key,o=this.initData,r=null!=n,l=this.lookup,s={},u=new Array(e.length),a=this.views,f=0;f<e.length;f++){var d=e[f],h=void 0;if(r){var v=n(d);h=l[v]||new i(o,d,f,e),s[v]=h,h.__redom_id=v}else h=a[f]||new i(o,d,f,e);h.update&&h.update(d,f,e,t),m(h.el).__redom_view=h,u[f]=h}this.oldViews=a,this.views=u,this.oldLookup=l,this.lookup=s};var j=function(e,t,i,n){this.View=t,this.initData=n,this.views=[],this.pool=new D(t,i,n),this.el=w(e),this.keySet=null!=i};j.prototype.update=function(e,t){void 0===e&&(e=[]);var n=this.keySet,o=this.views;this.pool.update(e,t);var r=this.pool,l=r.views,s=r.lookup;if(n)for(var u=0;u<o.length;u++){var a=o[u];null==s[a.__redom_id]&&(a.__redom_index=null,i(this,a))}for(var f=0;f<l.length;f++){l[f].__redom_index=f}S(this,l),n&&(this.lookup=s),this.views=l},j.extend=function(e,t,i,n){return j.bind(j,e,t,i,n)},V.extend=j.extend;var C=function(e,t){this.el=_(""),this.visible=!1,this.view=null,this._placeholder=this.el,e instanceof Node?this._el=e:e.el instanceof Node?(this._el=e,this.view=e):this._View=e,this._initData=t};C.prototype.update=function(e,t){var n=this._placeholder,o=this.el.parentNode;if(e){if(!this.visible)if(this._el)s(o,this._el,n),i(o,n),this.el=m(this._el),this.visible=e;else{var r=new(0,this._View)(this._initData);this.el=m(r),this.view=r,s(o,r,n),i(o,n)}this.view&&this.view.update&&this.view.update(t)}else if(this.visible){if(this._el)return s(o,n,this._el),i(o,this._el),this.el=n,void(this.visible=e);s(o,n,this.view),i(o,this.view),this.el=n,this.view=null}this.visible=e};var E=function(e,t,i){this.el=w(e),this.Views=t,this.initData=i};E.prototype.update=function(e,t){if(e!==this.route){var i=this.Views[e];this.route=e,i&&(i instanceof Node||i.el instanceof Node)?this.view=i:this.view=i&&new i(this.initData,t),S(this.el,[this.view])}this.view&&this.view.update&&this.view.update(t,e)};var T="http://www.w3.org/2000/svg",L={};function P(e){for(var t,i=[],n=arguments.length-1;n-- >0;)i[n]=arguments[n+1];var o=typeof e;if("string"===o)t=R(e).cloneNode(!1);else if(y(e))t=e.cloneNode(!1);else{if("function"!==o)throw new Error("At least one argument required");var r=e;t=new(Function.prototype.bind.apply(r,[null].concat(i)))}return p(m(t),i,!0),t}var O=P;function R(e){return L[e]||(L[e]=t(e,T))}P.extend=function(e){var t=R(e);return P.bind(this,t)},P.ns=T,e.List=j,e.ListPool=D,e.Place=C,e.Router=E,e.el=N,e.h=x,e.html=b,e.list=V,e.listPool=function(e,t,i){return new D(e,t,i)},e.mount=s,e.place=function(e,t){return new C(e,t)},e.router=function(e,t,i){return new E(e,t,i)},e.s=O,e.setAttr=function(e,t,i){h(e,t,i)},e.setChildren=S,e.setData=c,e.setStyle=a,e.setXlink=v,e.svg=P,e.text=_,e.unmount=i,Object.defineProperty(e,"__esModule",{value:!0})}));
-
-/***/ }),
-/* 6 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);

@@ -48,6 +48,16 @@ class SidebarListItem {
             className: '',
         });
     }
+    clearNames() {
+        setAttr(this.labelText, {
+            style: 'display: none;'
+        });
+    }
+    showNames() {
+        setAttr(this.labelText, {
+            style: 'display: block;'
+        });
+    }
 }
 
 export class Sidebar {
@@ -111,13 +121,19 @@ export class Sidebar {
 
     openSidebar() {
         this.sidebarToggleButon.className = 'fas fa-times';
+        this.listItems.views
+            .forEach(labelText => labelText.showNames());
         this.el.style.width = '';
+        this.el.style.transition = '0.5s';
         this.sidebarToggleButon.setAttribute('data-toggle', false);
     }
 
     closeSidebar() {
         this.sidebarToggleButon.className = 'fas fa-bars';
+        this.listItems.views
+            .forEach(labelText => labelText.clearNames());
         this.el.style.width = '5rem';
+        this.el.style.transition = '0.5s';
         this.sidebarToggleButon.setAttribute('data-toggle', true);
     }
 }
