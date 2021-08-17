@@ -2,7 +2,15 @@ import { el } from "redom";
 
 export class HomePage {
     constructor() {
-        this.el = el('div', [
+        this.el = el('div.columns',
+            el('div.column',
+                el('div.box',
+                    el('h1', 'Your Classes')
+                ),
+                el('div.box.two', 
+                    el('h1', 'Your Assignments')
+                )
+            ), [
             el('h1', 'Home Page'),
         ]);
     }
@@ -11,16 +19,3 @@ export class HomePage {
         console.log(`Update function from home page`);
     }
 }
-
-{/* <div class="columns">
-    <div class="column">
-        <div class="box">
-            <h1>Your Classes</h1>
-        </div>
-    </div>
-    <div class="column">
-        <div class="box">
-            <h1>Your Assignments</h1>
-        </div>
-    </div>
-</div> */}

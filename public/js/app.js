@@ -1089,7 +1089,7 @@ var HomePage = function () {
     function HomePage() {
         _classCallCheck(this, HomePage);
 
-        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div', [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1', 'Home Page')]);
+        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.columns', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.column', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.box', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1', 'Your Classes')), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.box.two', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1', 'Your Assignments'))), [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1', 'Home Page')]);
     }
 
     _createClass(HomePage, [{
@@ -1101,19 +1101,6 @@ var HomePage = function () {
 
     return HomePage;
 }();
-
-{/* <div class="columns">
-       <div class="column">
-           <div class="box">
-               <h1>Your Classes</h1>
-           </div>
-       </div>
-       <div class="column">
-           <div class="box">
-               <h1>Your Assignments</h1>
-           </div>
-       </div>
-    </div> */}
 
 /***/ }),
 /* 6 */

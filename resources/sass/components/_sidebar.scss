@@ -8,6 +8,8 @@
     margin: auto;
     width: 225px;
     z-index: 10;
+    border: none;
+    border-radius: 0px 30px 30px 0px;
     background-color: var(--is-color-primary-high);
     a {
         color: var(--is-color-light-high);
@@ -47,8 +49,4 @@
     font-size: 25px;
     color: var(--is-color-light-high);
     cursor: pointer;
-}
-
-.end {
-    padding-top: 29rem;
 }
