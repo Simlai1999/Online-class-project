@@ -50,3 +50,10 @@
     color: var(--is-color-light-high);
     cursor: pointer;
 }
+
+@media (min-width: 1024px) {
+    .menu-container {
+        width: 14%;
+        min-width: auto;
+    }
+}

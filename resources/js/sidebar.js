@@ -27,7 +27,7 @@ class SidebarListItem {
         };
     }
 
-    update(data, index, items, context) {
+    update(data, index) {
         this.itemPosition = index;
 
         setAttr(this.icon, {
@@ -48,14 +48,16 @@ class SidebarListItem {
             className: '',
         });
     }
+
     clearNames() {
         setAttr(this.labelText, {
-            style: 'display: none;'
+            className: 'is-hidden',
         });
     }
+    
     showNames() {
         setAttr(this.labelText, {
-            style: 'display: block;'
+            className: 'is-block'
         });
     }
 }

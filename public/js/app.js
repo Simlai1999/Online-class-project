@@ -1069,7 +1069,7 @@ var Navbar = function Navbar() {
 
     this.navBrand = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-brand", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, "LOGO"));
 
-    this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("nav.navbar is-fixed-top", this.navBrand, { style: "left: 15rem;" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-menu", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-end", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("span.fas fa-bell")), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-item has-dropdown is-hoverable", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-link", { href: "#" }, "Student"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-dropdown is-right", this.dropdownList)))));
+    this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("nav.navbar is-fixed-top", this.navBrand, { style: "left: 20rem;" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-menu", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-end", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("span.fas fa-bell")), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-item has-dropdown is-hoverable", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-link", { href: "#" }, "Student"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-dropdown is-right", this.dropdownList)))));
 };
 
 /***/ }),
@@ -1089,7 +1089,7 @@ var HomePage = function () {
     function HomePage() {
         _classCallCheck(this, HomePage);
 
-        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.columns', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.column', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.box', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1', 'Your Classes')), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.box.two', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1', 'Your Assignments'))), [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1', 'Home Page')]);
+        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.columns is-variable is-3', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.column is-7 is-offset-2-desktop', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.box.classes-container', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1', 'Your Classes'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('input#searchbar', { type: 'text', name: 'search', placeholder: 'Search..' }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.box.class', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h6.day', 'Today'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h6.time', '10:30 AM'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1.class-name', 'English'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('button.primary', 'Join')))), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.column is-desktop', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.box.assignment-container', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1', 'Your Assignments'))));
     }
 
     _createClass(HomePage, [{
@@ -1179,7 +1179,7 @@ var SidebarListItem = function () {
         }
     }, {
         key: 'update',
-        value: function update(data, index, items, context) {
+        value: function update(data, index) {
             this.itemPosition = index;
 
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["d" /* setAttr */])(this.icon, {
@@ -1205,14 +1205,14 @@ var SidebarListItem = function () {
         key: 'clearNames',
         value: function clearNames() {
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["d" /* setAttr */])(this.labelText, {
-                style: 'display: none;'
+                className: 'is-hidden'
             });
         }
     }, {
         key: 'showNames',
         value: function showNames() {
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["d" /* setAttr */])(this.labelText, {
-                style: 'display: block;'
+                className: 'is-block'
             });
         }
     }]);

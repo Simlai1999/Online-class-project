@@ -1,13 +1,30 @@
-.box {
-    position: absolute;
-    top: 8rem;
-    left: 15rem;
-    width: 75rem;
-    height: 40rem;
+html {
+    background-color: var(--is-color-light-lowest);
 }
 
-.two {
-    left: 92rem;
-    top: 8rem;
-    width: 25rem;
+.classes-container {
+    margin-top: 8rem;
+
+    #searchbar {
+        background-color: var(--is-color-light-lowest);
+        border: 2px solid var(--is-color-primary-low);
+        border-radius: 8px;
+        height: 2rem;
+    }
+
+    .class {
+        .primary {
+            cursor: pointer;
+            background-color: var(--is-color-primary-high);
+            color: var(--is-color-light-high);
+            border: none;
+            border-radius: 5px;
+            width: 4rem;
+            height: 2rem;
+        }
+    }
+}
+
+.assignment-container {
+    margin-top: 8rem;
 }
