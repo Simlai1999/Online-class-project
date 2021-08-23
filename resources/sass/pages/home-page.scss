@@ -1,9 +1,20 @@
+*{
+    font-family: "Poppins", sans-serif;
+}
+
 html {
     background-color: var(--is-color-light-lowest);
 }
 
+.is-primary {
+    background-color: var(--is-color-primary-high);
+}
+
 .classes-container {
     margin-top: 8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 
     #searchbar {
         background-color: var(--is-color-light-lowest);
@@ -13,18 +24,27 @@ html {
     }
 
     .class {
-        .primary {
-            cursor: pointer;
+        display: grid;
+        grid-auto-flow: column;
+        width: 25rem;
+        height: 5rem;
+        .is-primary {
             background-color: var(--is-color-primary-high);
-            color: var(--is-color-light-high);
-            border: none;
-            border-radius: 5px;
-            width: 4rem;
-            height: 2rem;
         }
     }
 }
 
 .assignment-container {
     margin-top: 8rem;
+}
+
+.modal-content {
+    border: none;
+    border-radius: 5px;
+    .is-primary {
+        background-color: var(--is-color-primary-high);
+        position: relative;
+        margin-left: 10rem;
+        width: 16rem;
+    }
 }

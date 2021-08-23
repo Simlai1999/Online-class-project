@@ -19,7 +19,7 @@ export class Navbar {
                 el("div.navbar-end",
                     el("a.navbar-item", { href: "#" }, el("span.fas fa-bell")),
                     el("div.navbar-item has-dropdown is-hoverable",
-                        el("a.navbar-link", { href: "#" }, "Student"),
+                        el("a.navbar-link", { href: "#" }, "Teacher"),
                         el("div.navbar-dropdown is-right", this.dropdownList)
                     )
                 )
