@@ -1069,7 +1069,7 @@ var Navbar = function Navbar() {
 
     this.navBrand = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-brand", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, "LOGO"));
 
-    this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("nav.navbar is-fixed-top", this.navBrand, { style: "left: 20rem;" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-menu", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-end", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("span.fas fa-bell")), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-item has-dropdown is-hoverable", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-link", { href: "#" }, "Teacher"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-dropdown is-right", this.dropdownList)))));
+    this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("nav.navbar is-fixed-top", this.navBrand, { style: "left: 17rem;" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-menu", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-end", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("span.fas fa-bell")), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-item has-dropdown is-hoverable", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-link", { href: "#" }, "Teacher"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-dropdown is-right", this.dropdownList)))));
 };
 
 /***/ }),
@@ -1087,15 +1087,39 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var HomePage = function () {
     function HomePage() {
+        var _this = this;
+
         _classCallCheck(this, HomePage);
 
         this.addClassButton = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('button.button is-primary', 'Add class');
 
         this.closeModalButton = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('button.modal-close is-large');
 
-        this.createClassButton = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.control', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('button.button is-primary', 'Add'));
+        this.createClassButton = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.control', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('button.button is-primary', 'Add', { type: 'submit' }));
 
-        this.form = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1.heading', 'Create Class'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.field', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('label.label', 'Subject Name'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.control', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('input.input', { type: 'text', placeholder: 'subject' }))), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.field', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('label.label', 'Set Time'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.control', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('input.input', { type: 'text', placeholder: '00:00' }))), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.control', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('lable.radio', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('input', { type: 'radio', name: 'answer' }), 'AM'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('lable.radio', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('input', { type: 'radio', name: 'answer' }), 'PM')), this.createClassButton);
+        this.subjectName = '';
+        this.setTime = '';
+        this.timeData = function () {
+            var am = document.getElementById('am');
+            var pm = document.getElementById('pm');
+            if (am.checked == true) {
+                localStorage.setItem('TIME_DATA', am);
+            } else if (pm.checked == true) {
+                localStorage.setItem('TIME_DATA', pm);
+            } else {
+                console.log('no time data selected');
+            }
+        };
+
+        this.form = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('form', { id: 'addClass' }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1.heading', 'Create Class'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.field', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('label.label', 'Subject Name'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.control', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('input.input', { type: 'text', placeholder: 'subject', id: 'subname', oninput: function oninput(e) {
+                return _this.subjectName = e.target.value;
+            } }))), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.field', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('label.label', 'Set Time'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.control', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('input.input', { type: 'text', placeholder: '00:00', id: 'time', oninput: function oninput(e) {
+                return _this.setTime = e.target.value;
+            } }))), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.control', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('lable.radio', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('input', { type: 'radio', name: 'answer', id: 'am', value: 'AM', oninput: function oninput(e) {
+                return _this.timeData = e.target.value;
+            } }), 'AM'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('lable.radio', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('input', { type: 'radio', name: 'answer', id: 'pm', value: 'PM', oninput: function oninput(e) {
+                return _this.timeData = e.target.value;
+            } }), 'PM')), this.createClassButton);
 
         this.modal = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.modal', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.modal-background'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.modal-content has-background-white py-5 px-5', this.form), this.closeModalButton);
 
@@ -1109,23 +1133,28 @@ var HomePage = function () {
     _createClass(HomePage, [{
         key: 'onmount',
         value: function onmount() {
-            var _this = this;
+            var _this2 = this;
 
             this.addClassButton.onclick = function (evt) {
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(_this.modal, {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(_this2.modal, {
                     className: 'modal is-active'
                 });
             };
 
             this.closeModalButton.onclick = function (evt) {
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(_this.modal, {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(_this2.modal, {
                     className: 'modal'
                 });
             };
 
-            // this.createClassButton.onclick = evt => {
-
-            // }
+            this.createClassButton.onclick = function (evt) {
+                var classData = {
+                    subjectName: _this2.subjectName,
+                    setTime: _this2.setTime,
+                    timeData: _this2.timeData
+                };
+                localStorage.setItem('ADDED_CLASS', JSON.stringify(classData));
+            };
         }
     }, {
         key: 'update',
@@ -1174,9 +1203,11 @@ var LecturesPage = function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Sidebar; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redom__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__navbar__ = __webpack_require__(4);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 
 
 
@@ -1193,7 +1224,7 @@ var SidebarListItem = function () {
     }
 
     _createClass(SidebarListItem, [{
-        key: 'onmount',
+        key: "onmount",
         value: function onmount() {
             var _this = this;
 
@@ -1213,7 +1244,7 @@ var SidebarListItem = function () {
             };
         }
     }, {
-        key: 'update',
+        key: "update",
         value: function update(data, index) {
             this.itemPosition = index;
 
@@ -1230,21 +1261,21 @@ var SidebarListItem = function () {
             });
         }
     }, {
-        key: 'clearClasses',
+        key: "clearClasses",
         value: function clearClasses() {
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.labelWrapper, {
                 className: ''
             });
         }
     }, {
-        key: 'clearNames',
+        key: "clearNames",
         value: function clearNames() {
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.labelText, {
                 className: 'is-hidden'
             });
         }
     }, {
-        key: 'showNames',
+        key: "showNames",
         value: function showNames() {
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.labelText, {
                 className: 'is-block'
@@ -1293,7 +1324,7 @@ var Sidebar = function () {
     }
 
     _createClass(Sidebar, [{
-        key: 'onmount',
+        key: "onmount",
         value: function onmount() {
             var _this2 = this;
 
@@ -1316,7 +1347,7 @@ var Sidebar = function () {
             }, false);
         }
     }, {
-        key: 'openSidebar',
+        key: "openSidebar",
         value: function openSidebar() {
             this.sidebarToggleButon.className = 'fas fa-times';
             this.listItems.views.forEach(function (labelText) {
@@ -1327,7 +1358,7 @@ var Sidebar = function () {
             this.sidebarToggleButon.setAttribute('data-toggle', false);
         }
     }, {
-        key: 'closeSidebar',
+        key: "closeSidebar",
         value: function closeSidebar() {
             this.sidebarToggleButon.className = 'fas fa-bars';
             this.listItems.views.forEach(function (labelText) {

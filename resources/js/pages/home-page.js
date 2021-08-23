@@ -8,30 +8,46 @@ export class HomePage {
         this.closeModalButton = el('button.modal-close is-large');
 
         this.createClassButton = el('div.control',
-            el('button.button is-primary', 'Add')
+            el('button.button is-primary', 'Add', { type: 'submit' })
         );
 
-        this.form = el('div',
+        this.subjectName = '';
+        this.setTime = '';
+        this.timeData = function () {
+            var am = document.getElementById('am');
+            var pm = document.getElementById('pm');
+            if(am.checked==true) {
+                localStorage.setItem('TIME_DATA', am);
+            }
+            else if(pm.checked==true) {
+                localStorage.setItem('TIME_DATA', pm);
+            }
+            else {
+                console.log('no time data selected');
+            }
+        };
+
+        this.form = el('form', { id: 'addClass' },
             el('h1.heading', 'Create Class'),
             el('div.field',
                 el('label.label', 'Subject Name'),
                 el('div.control',
-                    el('input.input', { type: 'text', placeholder: 'subject' })
+                    el('input.input', { type: 'text', placeholder: 'subject', id: 'subname', oninput: (e) => this.subjectName = e.target.value })
                 )
             ),
             el('div.field',
                 el('label.label', 'Set Time'),
                 el('div.control',
-                    el('input.input', { type: 'text', placeholder: '00:00' })
+                    el('input.input', { type: 'text', placeholder: '00:00', id: 'time', oninput: (e) => this.setTime = e.target.value })
                 )
             ),
             el('div.control',
                 el('lable.radio',
-                    el('input', { type: 'radio', name: 'answer' }),
+                    el('input', { type: 'radio', name: 'answer', id: 'am', value: 'AM', oninput: (e) => this.timeData = e.target.value }),
                     'AM'
                 ),
                 el('lable.radio',
-                    el('input', { type: 'radio', name: 'answer' }),
+                    el('input', { type: 'radio', name: 'answer', id: 'pm', value: 'PM', oninput: (e) => this.timeData = e.target.value}),
                     'PM'
                 )
             ),
@@ -62,6 +78,8 @@ export class HomePage {
             el('div.column is-9 is-offset-2-desktop is-8-tablet is-offset-3-tablet is-12-mobile', this.classContainer),
             this.modal
         );
+
+
     }
 
     onmount() {
@@ -77,9 +95,14 @@ export class HomePage {
             });
         }
 
-        // this.createClassButton.onclick = evt => {
-            
-        // }
+        this.createClassButton.onclick = evt => {
+            const classData = {
+                subjectName: this.subjectName,
+                setTime: this.setTime,
+                timeData: this.timeData,
+            }
+            localStorage.setItem('ADDED_CLASS', JSON.stringify(classData));
+        }
     }
 
     update(data) {

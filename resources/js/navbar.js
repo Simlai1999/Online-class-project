@@ -13,7 +13,7 @@ export class Navbar {
             el("a.navbar-item", { href: "#" }, "LOGO")
         );
 
-        this.el = el("nav.navbar is-fixed-top", this.navBrand, { style: "left: 20rem;" },
+        this.el = el("nav.navbar is-fixed-top", this.navBrand, { style: "left: 17rem;" },
 
             el("div.navbar-menu",
                 el("div.navbar-end",
