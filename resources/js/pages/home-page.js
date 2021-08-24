@@ -59,12 +59,20 @@ export class HomePage {
             this.closeModalButton
         );
 
-        this.class = el('div.box.class',
-            el('h6.day', 'Today'),
-            el('h6.time', '10:30 AM'),
-            el('h1.class-name', 'English'),
-            el('button.button is-primary', 'Join')
-        );
+        const allClassData = JSON.parse(localStorage.getItem('ADDED_CLASS'));
+        if (allClassData == null) {
+            this.class = el('h1', 'No Classes!');
+        }
+        else {
+            for (const singleClassData of allClassData) {
+                this.class = el('div.box.class',
+                    el('h6.day', 'Today'),
+                    el('h6.time', singleClassData.setTime),
+                    el('h1.class-name', singleClassData.subjectName),
+                    el('button.button is-primary', 'Join')
+                );
+            }
+        }
 
         this.classesContainer = el('div.box.classes-container',
             el('h1', 'Your Classes'),
@@ -78,6 +86,7 @@ export class HomePage {
     }
 
     onmount() {
+
         this.addClassButton.onclick = evt => {
             setAttr(this.modal, {
                 className: 'modal is-active',
