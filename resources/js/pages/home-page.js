@@ -16,14 +16,11 @@ export class HomePage {
         this.timeData = function () {
             var am = document.getElementById('am');
             var pm = document.getElementById('pm');
-            if(am.checked==true) {
+            if (am.checked == true) {
                 localStorage.setItem('TIME_DATA', am);
             }
-            else if(pm.checked==true) {
+            if (pm.checked == true) {
                 localStorage.setItem('TIME_DATA', pm);
-            }
-            else {
-                console.log('no time data selected');
             }
         };
 
@@ -47,7 +44,7 @@ export class HomePage {
                     'AM'
                 ),
                 el('lable.radio',
-                    el('input', { type: 'radio', name: 'answer', id: 'pm', value: 'PM', oninput: (e) => this.timeData = e.target.value}),
+                    el('input', { type: 'radio', name: 'answer', id: 'pm', value: 'PM', oninput: (e) => this.timeData = e.target.value }),
                     'PM'
                 )
             ),
@@ -69,17 +66,15 @@ export class HomePage {
             el('button.button is-primary', 'Join')
         );
 
-        this.classContainer = el('div.box.classes-container',
+        this.classesContainer = el('div.box.classes-container',
             el('h1', 'Your Classes'),
             el('input#searchbar', { type: 'text', name: 'search', placeholder: 'Search..' }), this.class, this.addClassButton
         );
 
-        this.el = el('div.columns is-variable is-3',
-            el('div.column is-9 is-offset-2-desktop is-8-tablet is-offset-3-tablet is-12-mobile', this.classContainer),
+        this.el = el('div.columns',
+            el('div.column is-9-desktop is-offset-2-desktop is-8-tablet is-offset-3-tablet is-12-mobile', this.classesContainer),
             this.modal
         );
-
-
     }
 
     onmount() {
@@ -96,12 +91,19 @@ export class HomePage {
         }
 
         this.createClassButton.onclick = evt => {
+
             const classData = {
                 subjectName: this.subjectName,
                 setTime: this.setTime,
                 timeData: this.timeData,
             }
-            localStorage.setItem('ADDED_CLASS', JSON.stringify(classData));
+            if (localStorage.getItem('ADDED_CLASS') == null) {
+                localStorage.setItem('ADDED_CLASS', '[]');
+            }
+            const oldClassData = JSON.parse(localStorage.getItem('ADDED_CLASS'));
+            console.log(oldClassData);
+            oldClassData.push(classData);
+            localStorage.setItem('ADDED_CLASS', JSON.stringify(oldClassData));
         }
     }
 

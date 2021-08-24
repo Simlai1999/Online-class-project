@@ -1,11 +1,15 @@
-*{
-    font-family: 'Poppins', sans-serif;
+* {
+    font-family: "Poppins", sans-serif;
     z-index: 10;
+}
+.navbar.is-fixed-top {
+    left: 17rem;
+    padding-right: 2rem;
 }
 
 .fa-bell {
     font-size: 1.3rem;
-    padding: 15px;
+    padding: 1rem;
     background-color: var(--is-color-dark-lowest);
     border-radius: 30%;
     :hover {
@@ -15,13 +19,13 @@
 
 .navbar-dropdown {
     background-color: var(--is-color-primary-low);
-    border-radius: 5%;
+    border-radius: 0.5rem;
     span {
         color: var(--is-color-light-high);
         display: flex;
         align-items: center;
         font-size: 1.2rem;
-        padding: 10px;
+        padding: 0.6rem;
     }
     a {
         color: var(--is-color-light-high);
@@ -36,8 +40,8 @@
 
 .navbar-link {
     background-color: var(--is-color-dark-lowest);
-    border-radius: 10%;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     padding-left: 1rem;
 }
