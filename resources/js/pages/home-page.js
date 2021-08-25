@@ -1,58 +1,56 @@
 import { el, setAttr, list } from "redom";
-// import * as Lockr from 'Lockr';
 
-class listClass {
+class ClassListItem {
     constructor() {
         this.day = el('h6');
         this.time = el('h6');
         this.subject = el('h1');
-        this.container = el('div', this.day, this.time, this.subject);
+        this.el = el('div.box.class', this.time, this.day, this.subject);
     }
 
     update(data) {
+        console.log(`Data: `, data);
+        if (!data || !data.length) {
+            setAttr(this.time, {
+                textContent: 'No classes found.'
+            });
+
+            return;
+        }
+
         setAttr(this.day, {
-            className: data.day
+            textContent: data.timeData
         });
 
         setAttr(this.time, {
-            textContent: data.time
+            textContent: data.setTime
         });
 
         setAttr(this.subject, {
-            textContent: data.subject
-        });
-
-        setAttr(this.container, {
-            className: data.container
+            textContent: data.subjectName
         });
     }
 }
 
 export class HomePage {
     constructor() {
-
-        const listData = JSON.parse(localStorage.getItem('ADDED_CLASS'));
-        
-        this.classItems = list('ul.menu-list', listClass);
-        this.classItems.update(listData);
-
         this.addClassButton = el('button.button is-primary', 'Add class');
-
         this.closeModalButton = el('button.modal-close is-large');
-
         this.createClassButton = el('div.control',
             el('button.button is-primary', 'Add', { type: 'submit' })
         );
 
         this.subjectName = '';
         this.setTime = '';
-        this.timeData = function () {
-            var am = document.getElementById('am');
-            var pm = document.getElementById('pm');
-            if (am.checked == true) {
+        this.timeData = () => {
+            const am = document.getElementById('am');
+            const pm = document.getElementById('pm');
+
+            if (am.checked) {
                 localStorage.setItem('TIME_DATA', am);
             }
-            if (pm.checked == true) {
+
+            if (pm.checked) {
                 localStorage.setItem('TIME_DATA', pm);
             }
         };
@@ -92,13 +90,13 @@ export class HomePage {
             this.closeModalButton
         );
 
-
+        this.classItems = list('ul.menu-list', ClassListItem);
 
         this.renderClasses();
 
         this.classesContainer = el('div.box.classes-container',
             el('h1', 'Your Classes'),
-            el('input#searchbar', { type: 'text', name: 'search', placeholder: 'Search..' }), this.class, this.addClassButton
+            el('input#searchbar', { type: 'text', name: 'search', placeholder: 'Search..' }), this.classItems, this.addClassButton
         );
 
         this.el = el('div.columns',
@@ -108,23 +106,12 @@ export class HomePage {
     }
 
     renderClasses() {
-        const allClassData = JSON.parse(localStorage.getItem('ADDED_CLASS'));
-        if (allClassData == null) {
-            this.class = el('h1', 'No Classes!');
-        } else {
-            for (const singleClassData of allClassData) {
-                this.class = el('div.box.class',
-                    el('h6.day', 'Today'),
-                    el('h6.time', singleClassData.setTime, singleClassData.timeData),
-                    el('h1.class-name', singleClassData.subjectName),
-                    el('button.button is-primary', 'Join')
-                );
-            }
-        }
+        const allClassData = JSON.parse(localStorage.getItem('ADDED_CLASS')) || [];
+
+        this.classItems.update(allClassData);
     }
 
     onmount() {
-
         this.addClassButton.onclick = evt => {
             setAttr(this.modal, {
                 className: 'modal is-active',
@@ -155,15 +142,11 @@ export class HomePage {
             existingClasses.push(newClassData);
             localStorage.setItem('ADDED_CLASS', JSON.stringify(existingClasses));
 
-            const classAdded = new CustomEvent('classCreated', {
-                bubbles: true,
-            });
-
-            this.el.dispatchEvent(classAdded);
-
             setAttr(this.modal, {
                 className: 'modal',
             });
+
+            this.renderClasses();
         }
 
         this.el.addEventListener('classCreated', event => {

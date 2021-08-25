@@ -1,5 +1,4 @@
 import { el, list, setAttr } from "redom";
-import {navbar} from "./navbar";
 
 class SidebarListItem {
     constructor() {
