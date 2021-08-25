@@ -78,11 +78,11 @@
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return el; });
 /* unused harmony export h */
 /* unused harmony export html */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return list; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return list; });
 /* unused harmony export listPool */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return mount; });
 /* unused harmony export place */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return router; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return router; });
 /* unused harmony export s */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return setAttr; });
 /* unused harmony export setChildren */
@@ -847,13 +847,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
 var Navbar = function Navbar() {
+    var _this = this;
+
     _classCallCheck(this, Navbar);
 
     this.dropdownList = [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("span.fas fa-user"), "Personal Details"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("span.fas fa-trophy"), "Achivements"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("span.fas fa-question-circle"), "Help"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("span.fas fa-sign-out-alt"), "Logout")];
 
     this.navBrand = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-brand", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, "LOGO"));
 
-    this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("nav.navbar is-fixed-top", this.navBrand, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-menu", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-end", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("span.fas fa-bell")), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-item has-dropdown is-hoverable", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-link", { href: "#" }, "Teacher"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-dropdown is-right", this.dropdownList)))));
+    this.navbarDropdown = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-item has-dropdown", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-link", { href: "#" }, "Teacher"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-dropdown is-right", this.dropdownList));
+
+    this.navbarDropdown.onclick = function (evt) {
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(_this.navbarDropdown, {
+            className: 'navbar-item has-dropdown is-active'
+        });
+    };
+
+    this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("nav.navbar is-fixed-top", this.navBrand, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-menu", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-end", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("span.fas fa-bell")), this.navbarDropdown)));
 };
 
 /***/ }),
@@ -941,7 +951,7 @@ var App = function () {
     _createClass(App, [{
         key: 'routes',
         value: function routes(_routes, defaultRoute) {
-            this.app = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["d" /* router */])('div.app', _routes);
+            this.app = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["e" /* router */])('div.app', _routes);
             this.defaultRoute = defaultRoute ? defaultRoute : 'default';
             this.currentView = this.defaultRoute;
 
@@ -1084,12 +1094,52 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 
+// import * as Lockr from 'Lockr';
+
+var listClass = function () {
+    function listClass() {
+        _classCallCheck(this, listClass);
+
+        this.day = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h6');
+        this.time = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h6');
+        this.subject = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1');
+        this.container = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div', this.day, this.time, this.subject);
+    }
+
+    _createClass(listClass, [{
+        key: 'update',
+        value: function update(data) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.day, {
+                className: data.day
+            });
+
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.time, {
+                textContent: data.time
+            });
+
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.subject, {
+                textContent: data.subject
+            });
+
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.container, {
+                className: data.container
+            });
+        }
+    }]);
+
+    return listClass;
+}();
 
 var HomePage = function () {
     function HomePage() {
         var _this = this;
 
         _classCallCheck(this, HomePage);
+
+        var listData = JSON.parse(localStorage.getItem('ADDED_CLASS'));
+
+        this.classItems = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["d" /* list */])('ul.menu-list', listClass);
+        this.classItems.update(listData);
 
         this.addClassButton = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('button.button is-primary', 'Add class');
 
@@ -1122,35 +1172,7 @@ var HomePage = function () {
 
         this.modal = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.modal', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.modal-background'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.modal-content has-background-white py-5 px-5', this.form), this.closeModalButton);
 
-        var allClassData = JSON.parse(localStorage.getItem('ADDED_CLASS'));
-        if (allClassData == null) {
-            this.class = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1', 'No Classes!');
-        } else {
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
-
-            try {
-                for (var _iterator = allClassData[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var singleClassData = _step.value;
-
-                    this.class = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.box.class', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h6.day', 'Today'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h6.time', singleClassData.setTime), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1.class-name', singleClassData.subjectName), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('button.button is-primary', 'Join'));
-                }
-            } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
-                    }
-                } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
-                    }
-                }
-            }
-        }
+        this.renderClasses();
 
         this.classesContainer = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.box.classes-container', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1', 'Your Classes'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('input#searchbar', { type: 'text', name: 'search', placeholder: 'Search..' }), this.class, this.addClassButton);
 
@@ -1158,6 +1180,39 @@ var HomePage = function () {
     }
 
     _createClass(HomePage, [{
+        key: 'renderClasses',
+        value: function renderClasses() {
+            var allClassData = JSON.parse(localStorage.getItem('ADDED_CLASS'));
+            if (allClassData == null) {
+                this.class = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1', 'No Classes!');
+            } else {
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
+
+                try {
+                    for (var _iterator = allClassData[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var singleClassData = _step.value;
+
+                        this.class = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.box.class', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h6.day', 'Today'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h6.time', singleClassData.setTime, singleClassData.timeData), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1.class-name', singleClassData.subjectName), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('button.button is-primary', 'Join'));
+                    }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
+                }
+            }
+        }
+    }, {
         key: 'onmount',
         value: function onmount() {
             var _this2 = this;
@@ -1175,20 +1230,37 @@ var HomePage = function () {
             };
 
             this.createClassButton.onclick = function (evt) {
+                evt.preventDefault();
 
-                var classData = {
+                var newClassData = {
                     subjectName: _this2.subjectName,
                     setTime: _this2.setTime,
                     timeData: _this2.timeData
                 };
-                if (localStorage.getItem('ADDED_CLASS') == null) {
-                    localStorage.setItem('ADDED_CLASS', '[]');
+
+                var existingClasses = JSON.parse(localStorage.getItem('ADDED_CLASS'));
+
+                if (!existingClasses) {
+                    existingClasses = [];
                 }
-                var oldClassData = JSON.parse(localStorage.getItem('ADDED_CLASS'));
-                console.log(oldClassData);
-                oldClassData.push(classData);
-                localStorage.setItem('ADDED_CLASS', JSON.stringify(oldClassData));
+
+                existingClasses.push(newClassData);
+                localStorage.setItem('ADDED_CLASS', JSON.stringify(existingClasses));
+
+                var classAdded = new CustomEvent('classCreated', {
+                    bubbles: true
+                });
+
+                _this2.el.dispatchEvent(classAdded);
+
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(_this2.modal, {
+                    className: 'modal'
+                });
             };
+
+            this.el.addEventListener('classCreated', function (event) {
+                _this2.renderClasses();
+            });
         }
     }, {
         key: 'update',
@@ -1346,7 +1418,7 @@ var Sidebar = function () {
             link: '#lectures'
         }];
 
-        this.listItems = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["e" /* list */])('ul.menu-list', SidebarListItem);
+        this.listItems = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["d" /* list */])('ul.menu-list', SidebarListItem);
 
         this.listItems.update(sidebarListData);
 

@@ -1,7 +1,40 @@
-import { el, setAttr } from "redom";
+import { el, setAttr, list } from "redom";
+// import * as Lockr from 'Lockr';
+
+class listClass {
+    constructor() {
+        this.day = el('h6');
+        this.time = el('h6');
+        this.subject = el('h1');
+        this.container = el('div', this.day, this.time, this.subject);
+    }
+
+    update(data) {
+        setAttr(this.day, {
+            className: data.day
+        });
+
+        setAttr(this.time, {
+            textContent: data.time
+        });
+
+        setAttr(this.subject, {
+            textContent: data.subject
+        });
+
+        setAttr(this.container, {
+            className: data.container
+        });
+    }
+}
 
 export class HomePage {
     constructor() {
+
+        const listData = JSON.parse(localStorage.getItem('ADDED_CLASS'));
+        
+        this.classItems = list('ul.menu-list', listClass);
+        this.classItems.update(listData);
 
         this.addClassButton = el('button.button is-primary', 'Add class');
 
@@ -59,20 +92,9 @@ export class HomePage {
             this.closeModalButton
         );
 
-        const allClassData = JSON.parse(localStorage.getItem('ADDED_CLASS'));
-        if (allClassData == null) {
-            this.class = el('h1', 'No Classes!');
-        }
-        else {
-            for (const singleClassData of allClassData) {
-                this.class = el('div.box.class',
-                    el('h6.day', 'Today'),
-                    el('h6.time', singleClassData.setTime),
-                    el('h1.class-name', singleClassData.subjectName),
-                    el('button.button is-primary', 'Join')
-                );
-            }
-        }
+
+
+        this.renderClasses();
 
         this.classesContainer = el('div.box.classes-container',
             el('h1', 'Your Classes'),
@@ -83,6 +105,22 @@ export class HomePage {
             el('div.column is-9-desktop is-offset-2-desktop is-8-tablet is-offset-3-tablet is-12-mobile', this.classesContainer),
             this.modal
         );
+    }
+
+    renderClasses() {
+        const allClassData = JSON.parse(localStorage.getItem('ADDED_CLASS'));
+        if (allClassData == null) {
+            this.class = el('h1', 'No Classes!');
+        } else {
+            for (const singleClassData of allClassData) {
+                this.class = el('div.box.class',
+                    el('h6.day', 'Today'),
+                    el('h6.time', singleClassData.setTime, singleClassData.timeData),
+                    el('h1.class-name', singleClassData.subjectName),
+                    el('button.button is-primary', 'Join')
+                );
+            }
+        }
     }
 
     onmount() {
@@ -100,20 +138,38 @@ export class HomePage {
         }
 
         this.createClassButton.onclick = evt => {
+            evt.preventDefault();
 
-            const classData = {
+            const newClassData = {
                 subjectName: this.subjectName,
                 setTime: this.setTime,
                 timeData: this.timeData,
+            };
+
+            let existingClasses = JSON.parse(localStorage.getItem('ADDED_CLASS'));
+
+            if (!existingClasses) {
+                existingClasses = [];
             }
-            if (localStorage.getItem('ADDED_CLASS') == null) {
-                localStorage.setItem('ADDED_CLASS', '[]');
-            }
-            const oldClassData = JSON.parse(localStorage.getItem('ADDED_CLASS'));
-            console.log(oldClassData);
-            oldClassData.push(classData);
-            localStorage.setItem('ADDED_CLASS', JSON.stringify(oldClassData));
+
+            existingClasses.push(newClassData);
+            localStorage.setItem('ADDED_CLASS', JSON.stringify(existingClasses));
+
+            const classAdded = new CustomEvent('classCreated', {
+                bubbles: true,
+            });
+
+            this.el.dispatchEvent(classAdded);
+
+            setAttr(this.modal, {
+                className: 'modal',
+            });
         }
+
+        this.el.addEventListener('classCreated', event => {
+            this.renderClasses();
+        });
+
     }
 
     update(data) {

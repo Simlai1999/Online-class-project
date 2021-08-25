@@ -1,4 +1,4 @@
-import { el } from "redom";
+import { el, setAttr } from "redom";
 
 export class Navbar {
     constructor() {
@@ -13,14 +13,22 @@ export class Navbar {
             el("a.navbar-item", { href: "#" }, "LOGO")
         );
 
+        this.navbarDropdown = el("div.navbar-item has-dropdown",
+            el("a.navbar-link", { href: "#" }, "Teacher"),
+            el("div.navbar-dropdown is-right", this.dropdownList)
+        );
+
+        this.navbarDropdown.onclick = evt => {
+            setAttr(this.navbarDropdown, {
+                className: 'navbar-item has-dropdown is-active'
+            });
+        }
+
         this.el = el("nav.navbar is-fixed-top", this.navBrand,
             el("div.navbar-menu",
                 el("div.navbar-end",
                     el("a.navbar-item", { href: "#" }, el("span.fas fa-bell")),
-                    el("div.navbar-item has-dropdown is-hoverable",
-                        el("a.navbar-link", { href: "#" }, "Teacher"),
-                        el("div.navbar-dropdown is-right", this.dropdownList)
-                    )
+                    this.navbarDropdown
                 )
             )
         );
