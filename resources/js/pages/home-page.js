@@ -5,18 +5,12 @@ class ClassListItem {
         this.day = el('h6');
         this.time = el('h6');
         this.subject = el('h1');
-        this.el = el('div.box.class', this.time, this.day, this.subject);
+        this.joinBtn = el('button.button is-primary', 'Join');
+        this.el = el('div.box.class', this.time, this.day, this.subject, this.joinBtn);
     }
 
     update(data) {
         console.log(`Data: `, data);
-        if (!data || !data.length) {
-            setAttr(this.time, {
-                textContent: 'No classes found.'
-            });
-
-            return;
-        }
 
         setAttr(this.day, {
             textContent: data.timeData

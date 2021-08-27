@@ -14,15 +14,11 @@ export class Navbar {
         );
 
         this.navbarDropdown = el("div.navbar-item has-dropdown",
-            el("a.navbar-link", { href: "#" }, "Teacher"),
-            el("div.navbar-dropdown is-right", this.dropdownList)
+            el('div.dropdown-trigger',
+                el("a.navbar-link", { href: "#" }, "Teacher"),
+                el("div.navbar-dropdown is-right", this.dropdownList)
+            )
         );
-
-        this.navbarDropdown.onclick = evt => {
-            setAttr(this.navbarDropdown, {
-                className: 'navbar-item has-dropdown is-active'
-            });
-        }
 
         this.el = el("nav.navbar is-fixed-top", this.navBrand,
             el("div.navbar-menu",
@@ -32,5 +28,15 @@ export class Navbar {
                 )
             )
         );
+    }
+
+    onmount() {
+        this.navbarDropdown.onclick = evt => {
+            evt.preventDefault();
+
+            setAttr(this.navbarDropdown, {
+                className: 'navbar-item has-dropdown is-active'
+            });
+        }
     }
 }
