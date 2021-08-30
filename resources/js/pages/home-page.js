@@ -2,6 +2,7 @@ import { el, setAttr, list } from "redom";
 
 class ClassListItem {
     constructor() {
+        console.log(`Class Item`);
         this.day = el('h6');
         this.time = el('h6');
         this.subject = el('h1');
@@ -54,18 +55,34 @@ export class HomePage {
             el('div.field',
                 el('label.label', 'Subject Name'),
                 el('div.control',
-                    el('input.input', { type: 'text', placeholder: 'subject', id: 'subname', oninput: (e) => this.subjectName = e.target.value })
+                    el('input.input', {
+                        type: 'text',
+                        placeholder: 'subject',
+                        id: 'subname',
+                        oninput: (e) => this.subjectName = e.target.value
+                    })
                 )
             ),
             el('div.field',
                 el('label.label', 'Set Time'),
                 el('div.control',
-                    el('input.input', { type: 'text', placeholder: '00:00', id: 'time', oninput: (e) => this.setTime = e.target.value })
+                    el('input.input', {
+                        type: 'text',
+                        placeholder: '00:00',
+                        id: 'time',
+                        oninput: (e) => this.setTime = e.target.value
+                    })
                 )
             ),
             el('div.control',
                 el('lable.radio',
-                    el('input', { type: 'radio', name: 'answer', id: 'am', value: 'AM', oninput: (e) => this.timeData = e.target.value }),
+                    el('input', {
+                        type: 'radio',
+                        name: 'answer',
+                        id: 'am',
+                        value: 'AM',
+                        oninput: (e) => this.timeData = e.target.value
+                    }),
                     'AM'
                 ),
                 el('lable.radio',
@@ -85,12 +102,17 @@ export class HomePage {
         );
 
         this.classItems = list('ul.menu-list', ClassListItem);
+        this.noClasses = el('h1', 'No Classes');
 
         this.renderClasses();
 
         this.classesContainer = el('div.box.classes-container',
             el('h1', 'Your Classes'),
-            el('input#searchbar', { type: 'text', name: 'search', placeholder: 'Search..' }), this.classItems, this.addClassButton
+            el('input#searchbar', {
+                type: 'text',
+                name: 'search',
+                placeholder: 'Search..'
+            }), this.classItems, this.noClasses, this.addClassButton
         );
 
         this.el = el('div.columns',
@@ -101,6 +123,12 @@ export class HomePage {
 
     renderClasses() {
         const allClassData = JSON.parse(localStorage.getItem('ADDED_CLASS')) || [];
+
+        if (allClassData && allClassData.length) {
+            setAttr(this.noClasses, {
+                className: 'is-hidden',
+            });
+        }
 
         this.classItems.update(allClassData);
     }

@@ -1,4 +1,5 @@
 import { el, list, setAttr } from "redom";
+import { Navbar } from "./navbar"
 
 class SidebarListItem {
     constructor() {
@@ -128,6 +129,7 @@ export class Sidebar {
         this.el.style.width = '';
         this.el.style.transition = '0.5s';
         this.sidebarToggleButon.setAttribute('data-toggle', false);
+        // Navbar = new Navbar()
     }
 
     closeSidebar() {

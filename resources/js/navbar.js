@@ -1,4 +1,4 @@
-import { el, setAttr } from "redom";
+import { el } from "redom";
 
 export class Navbar {
     constructor() {
@@ -6,6 +6,7 @@ export class Navbar {
             el("a.navbar-item", { href: "#" }, el("span.fas fa-user"), "Personal Details"),
             el("a.navbar-item", { href: "#" }, el("span.fas fa-trophy"), "Achivements"),
             el("a.navbar-item", { href: "#" }, el("span.fas fa-question-circle"), "Help"),
+            el('hr.dropdown-divider'),
             el("a.navbar-item", { href: "#" }, el("span.fas fa-sign-out-alt"), "Logout"),
         ];
 
@@ -13,7 +14,7 @@ export class Navbar {
             el("a.navbar-item", { href: "#" }, "LOGO")
         );
 
-        this.navbarDropdown = el("div.navbar-item has-dropdown",
+        this.navbarDropdown = el("div.navbar-item has-dropdown", { 'data-toggle': true },
             el('div.dropdown-trigger',
                 el("a.navbar-link", { href: "#" }, "Teacher"),
                 el("div.navbar-dropdown is-right", this.dropdownList)
@@ -33,10 +34,18 @@ export class Navbar {
     onmount() {
         this.navbarDropdown.onclick = evt => {
             evt.preventDefault();
+            const dropdownToggled = this.navbarDropdown.getAttribute('data-toggle');
+            dropdownToggled === 'false' ? this.closeDropdown() : this.openDropdown();
+        };
+    }
 
-            setAttr(this.navbarDropdown, {
-                className: 'navbar-item has-dropdown is-active'
-            });
-        }
+    openDropdown() {
+        this.navbarDropdown.className = 'navbar-item has-dropdown is-active';
+        this.navbarDropdown.setAttribute('data-toggle', false);
+    }
+
+    closeDropdown() {
+        this.navbarDropdown.className = 'navbar-item has-dropdown';
+        this.navbarDropdown.setAttribute('data-toggle', true);
     }
 }
