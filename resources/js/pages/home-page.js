@@ -1,5 +1,9 @@
 import { el, setAttr, list } from "redom";
 
+import Calendar from 'color-calendar';
+import 'color-calendar/dist/css/theme-basic.css';
+import 'color-calendar/dist/css/theme-glass.css';
+
 class ClassListItem {
     constructor() {
         console.log(`Class Item`);
@@ -66,7 +70,7 @@ export class HomePage {
             el('div.field',
                 el('label.label', 'Set Time'),
                 el('div.control',
-                    el('input.input', {
+                    el('input.input time', {
                         type: 'text',
                         placeholder: '00:00',
                         id: 'time',
@@ -86,7 +90,13 @@ export class HomePage {
                     'AM'
                 ),
                 el('lable.radio',
-                    el('input', { type: 'radio', name: 'answer', id: 'pm', value: 'PM', oninput: (e) => this.timeData = e.target.value }),
+                    el('input', {
+                        type: 'radio',
+                        name: 'answer',
+                        id: 'pm',
+                        value: 'PM',
+                        oninput: (e) => this.timeData = e.target.value
+                    }),
                     'PM'
                 )
             ),
@@ -101,6 +111,8 @@ export class HomePage {
             this.closeModalButton
         );
 
+        this.calendar = el('div#color-calendar')
+
         this.classItems = list('ul.menu-list', ClassListItem);
         this.noClasses = el('h1', 'No Classes');
 
@@ -112,11 +124,16 @@ export class HomePage {
                 type: 'text',
                 name: 'search',
                 placeholder: 'Search..'
-            }), this.classItems, this.noClasses, this.addClassButton
+            }),
+            el('div#color-calendar'),
+            this.calendar,
+            this.classItems, this.noClasses, this.addClassButton
         );
 
         this.el = el('div.columns',
-            el('div.column is-9-desktop is-offset-2-desktop is-8-tablet is-offset-3-tablet is-12-mobile', this.classesContainer),
+            el('div.column is-9-desktop is-offset-2-desktop is-8-tablet is-offset-3-tablet is-12-mobile',
+                this.classesContainer
+            ),
             this.modal
         );
     }
@@ -175,6 +192,10 @@ export class HomePage {
             this.renderClasses();
         });
 
+        this.calendar = new Calendar({
+            id: '#color-calendar',
+            primaryColor: 'var(--is-color-primary-high)',
+        });
     }
 
     update(data) {

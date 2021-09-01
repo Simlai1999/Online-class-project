@@ -19,7 +19,7 @@ html {
 
     #searchbar {
         background-color: var(--is-color-light-lowest);
-        border: 2px solid var(--is-color-primary-low);
+        border: 0.125rem solid var(--is-color-primary-low);
         border-radius: 0.5rem;
         height: 2rem;
     }
@@ -41,11 +41,15 @@ html {
 
 .modal-content {
     border: none;
-    border-radius: 5px;
+    border-radius: 0.3125rem;
     .is-primary {
         background-color: var(--is-color-primary-high);
         position: relative;
         margin-left: 10rem;
         width: 16rem;
     }
+}
+
+.time {
+    width: 8rem;
 }

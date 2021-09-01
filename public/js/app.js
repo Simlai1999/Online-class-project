@@ -1112,9 +1112,19 @@ var goto = function goto(view, params) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redom__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_color_calendar__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_color_calendar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_color_calendar__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_color_calendar_dist_css_theme_basic_css__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_color_calendar_dist_css_theme_basic_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_color_calendar_dist_css_theme_basic_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_color_calendar_dist_css_theme_glass_css__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_color_calendar_dist_css_theme_glass_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_color_calendar_dist_css_theme_glass_css__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+
 
 
 
@@ -1184,7 +1194,7 @@ var HomePage = function () {
             oninput: function oninput(e) {
                 return _this.subjectName = e.target.value;
             }
-        }))), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.field', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('label.label', 'Set Time'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.control', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('input.input', {
+        }))), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.field', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('label.label', 'Set Time'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.control', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('input.input time', {
             type: 'text',
             placeholder: '00:00',
             id: 'time',
@@ -1199,11 +1209,19 @@ var HomePage = function () {
             oninput: function oninput(e) {
                 return _this.timeData = e.target.value;
             }
-        }), 'AM'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('lable.radio', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('input', { type: 'radio', name: 'answer', id: 'pm', value: 'PM', oninput: function oninput(e) {
+        }), 'AM'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('lable.radio', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('input', {
+            type: 'radio',
+            name: 'answer',
+            id: 'pm',
+            value: 'PM',
+            oninput: function oninput(e) {
                 return _this.timeData = e.target.value;
-            } }), 'PM')), this.createClassButton);
+            }
+        }), 'PM')), this.createClassButton);
 
         this.modal = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.modal', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.modal-background'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.modal-content has-background-white py-5 px-5', this.form), this.closeModalButton);
+
+        this.calendar = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div#color-calendar');
 
         this.classItems = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["d" /* list */])('ul.menu-list', ClassListItem);
         this.noClasses = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1', 'No Classes');
@@ -1214,7 +1232,7 @@ var HomePage = function () {
             type: 'text',
             name: 'search',
             placeholder: 'Search..'
-        }), this.classItems, this.noClasses, this.addClassButton);
+        }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div#color-calendar'), this.calendar, this.classItems, this.noClasses, this.addClassButton);
 
         this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.columns', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.column is-9-desktop is-offset-2-desktop is-8-tablet is-offset-3-tablet is-12-mobile', this.classesContainer), this.modal);
     }
@@ -1276,6 +1294,11 @@ var HomePage = function () {
 
             this.el.addEventListener('classCreated', function (event) {
                 _this2.renderClasses();
+            });
+
+            this.calendar = new __WEBPACK_IMPORTED_MODULE_1_color_calendar___default.a({
+                id: '#color-calendar',
+                primaryColor: 'var(--is-color-primary-high)'
             });
         }
     }, {
@@ -1503,6 +1526,394 @@ var Sidebar = function () {
 __webpack_require__(2);
 module.exports = __webpack_require__(3);
 
+
+/***/ }),
+/* 9 */,
+/* 10 */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function() {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		var result = [];
+		for(var i = 0; i < this.length; i++) {
+			var item = this[i];
+			if(item[2]) {
+				result.push("@media " + item[2] + "{" + item[1] + "}");
+			} else {
+				result.push(item[1]);
+			}
+		}
+		return result.join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+var stylesInDom = {},
+	memoize = function(fn) {
+		var memo;
+		return function () {
+			if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+			return memo;
+		};
+	},
+	isOldIE = memoize(function() {
+		return /msie [6-9]\b/.test(self.navigator.userAgent.toLowerCase());
+	}),
+	getHeadElement = memoize(function () {
+		return document.head || document.getElementsByTagName("head")[0];
+	}),
+	singletonElement = null,
+	singletonCounter = 0,
+	styleElementsInsertedAtTop = [];
+
+module.exports = function(list, options) {
+	if(typeof DEBUG !== "undefined" && DEBUG) {
+		if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+	}
+
+	options = options || {};
+	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+	// tags it will allow on a page
+	if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+
+	// By default, add <style> tags to the bottom of <head>.
+	if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+
+	var styles = listToStyles(list);
+	addStylesToDom(styles, options);
+
+	return function update(newList) {
+		var mayRemove = [];
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			domStyle.refs--;
+			mayRemove.push(domStyle);
+		}
+		if(newList) {
+			var newStyles = listToStyles(newList);
+			addStylesToDom(newStyles, options);
+		}
+		for(var i = 0; i < mayRemove.length; i++) {
+			var domStyle = mayRemove[i];
+			if(domStyle.refs === 0) {
+				for(var j = 0; j < domStyle.parts.length; j++)
+					domStyle.parts[j]();
+				delete stylesInDom[domStyle.id];
+			}
+		}
+	};
+}
+
+function addStylesToDom(styles, options) {
+	for(var i = 0; i < styles.length; i++) {
+		var item = styles[i];
+		var domStyle = stylesInDom[item.id];
+		if(domStyle) {
+			domStyle.refs++;
+			for(var j = 0; j < domStyle.parts.length; j++) {
+				domStyle.parts[j](item.parts[j]);
+			}
+			for(; j < item.parts.length; j++) {
+				domStyle.parts.push(addStyle(item.parts[j], options));
+			}
+		} else {
+			var parts = [];
+			for(var j = 0; j < item.parts.length; j++) {
+				parts.push(addStyle(item.parts[j], options));
+			}
+			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+		}
+	}
+}
+
+function listToStyles(list) {
+	var styles = [];
+	var newStyles = {};
+	for(var i = 0; i < list.length; i++) {
+		var item = list[i];
+		var id = item[0];
+		var css = item[1];
+		var media = item[2];
+		var sourceMap = item[3];
+		var part = {css: css, media: media, sourceMap: sourceMap};
+		if(!newStyles[id])
+			styles.push(newStyles[id] = {id: id, parts: [part]});
+		else
+			newStyles[id].parts.push(part);
+	}
+	return styles;
+}
+
+function insertStyleElement(options, styleElement) {
+	var head = getHeadElement();
+	var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+	if (options.insertAt === "top") {
+		if(!lastStyleElementInsertedAtTop) {
+			head.insertBefore(styleElement, head.firstChild);
+		} else if(lastStyleElementInsertedAtTop.nextSibling) {
+			head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+		} else {
+			head.appendChild(styleElement);
+		}
+		styleElementsInsertedAtTop.push(styleElement);
+	} else if (options.insertAt === "bottom") {
+		head.appendChild(styleElement);
+	} else {
+		throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+	}
+}
+
+function removeStyleElement(styleElement) {
+	styleElement.parentNode.removeChild(styleElement);
+	var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+	if(idx >= 0) {
+		styleElementsInsertedAtTop.splice(idx, 1);
+	}
+}
+
+function createStyleElement(options) {
+	var styleElement = document.createElement("style");
+	styleElement.type = "text/css";
+	insertStyleElement(options, styleElement);
+	return styleElement;
+}
+
+function createLinkElement(options) {
+	var linkElement = document.createElement("link");
+	linkElement.rel = "stylesheet";
+	insertStyleElement(options, linkElement);
+	return linkElement;
+}
+
+function addStyle(obj, options) {
+	var styleElement, update, remove;
+
+	if (options.singleton) {
+		var styleIndex = singletonCounter++;
+		styleElement = singletonElement || (singletonElement = createStyleElement(options));
+		update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+		remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+	} else if(obj.sourceMap &&
+		typeof URL === "function" &&
+		typeof URL.createObjectURL === "function" &&
+		typeof URL.revokeObjectURL === "function" &&
+		typeof Blob === "function" &&
+		typeof btoa === "function") {
+		styleElement = createLinkElement(options);
+		update = updateLink.bind(null, styleElement);
+		remove = function() {
+			removeStyleElement(styleElement);
+			if(styleElement.href)
+				URL.revokeObjectURL(styleElement.href);
+		};
+	} else {
+		styleElement = createStyleElement(options);
+		update = applyToTag.bind(null, styleElement);
+		remove = function() {
+			removeStyleElement(styleElement);
+		};
+	}
+
+	update(obj);
+
+	return function updateStyle(newObj) {
+		if(newObj) {
+			if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+				return;
+			update(obj = newObj);
+		} else {
+			remove();
+		}
+	};
+}
+
+var replaceText = (function () {
+	var textStore = [];
+
+	return function (index, replacement) {
+		textStore[index] = replacement;
+		return textStore.filter(Boolean).join('\n');
+	};
+})();
+
+function applyToSingletonTag(styleElement, index, remove, obj) {
+	var css = remove ? "" : obj.css;
+
+	if (styleElement.styleSheet) {
+		styleElement.styleSheet.cssText = replaceText(index, css);
+	} else {
+		var cssNode = document.createTextNode(css);
+		var childNodes = styleElement.childNodes;
+		if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+		if (childNodes.length) {
+			styleElement.insertBefore(cssNode, childNodes[index]);
+		} else {
+			styleElement.appendChild(cssNode);
+		}
+	}
+}
+
+function applyToTag(styleElement, obj) {
+	var css = obj.css;
+	var media = obj.media;
+
+	if(media) {
+		styleElement.setAttribute("media", media)
+	}
+
+	if(styleElement.styleSheet) {
+		styleElement.styleSheet.cssText = css;
+	} else {
+		while(styleElement.firstChild) {
+			styleElement.removeChild(styleElement.firstChild);
+		}
+		styleElement.appendChild(document.createTextNode(css));
+	}
+}
+
+function updateLink(linkElement, obj) {
+	var css = obj.css;
+	var sourceMap = obj.sourceMap;
+
+	if(sourceMap) {
+		// http://stackoverflow.com/a/26603875
+		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+	}
+
+	var blob = new Blob([css], { type: "text/css" });
+
+	var oldSrc = linkElement.href;
+
+	linkElement.href = URL.createObjectURL(blob);
+
+	if(oldSrc)
+		URL.revokeObjectURL(oldSrc);
+}
+
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * color-calendar
+ * v1.0.6
+ * by Pawan Kolhe <contact@pawankolhe.com> (https://pawankolhe.com/)
+ */
+
+!function(e,t){ true?module.exports=t():"function"==typeof define&&define.amd?define(t):(e="undefined"!=typeof globalThis?globalThis:e||self).Calendar=t()}(this,(function(){"use strict";class e{constructor(e={}){var t,a,i,r,n,s,o,l,d,c,h,y,p;if(this.CAL_NAME="color-calendar",this.DAYS_TO_DISPLAY=42,this.weekdayDisplayTypeOptions={short:["S","M","T","W","T","F","S"],"long-lower":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"long-upper":["SUN","MON","TUE","WED","THU","FRI","SAT"]},this.id=null!==(t=e.id)&&void 0!==t?t:"#color-calendar",this.calendarSize=null!==(a=e.calendarSize)&&void 0!==a?a:"large",this.layoutModifiers=null!==(i=e.layoutModifiers)&&void 0!==i?i:[],this.eventsData=null!==(r=e.eventsData)&&void 0!==r?r:[],this.theme=null!==(n=e.theme)&&void 0!==n?n:"basic",this.primaryColor=e.primaryColor,this.headerColor=e.headerColor,this.headerBackgroundColor=e.headerBackgroundColor,this.weekdaysColor=e.weekdaysColor,this.weekdayDisplayType=null!==(s=e.weekdayDisplayType)&&void 0!==s?s:"long-lower",this.monthDisplayType=null!==(o=e.monthDisplayType)&&void 0!==o?o:"long",this.startWeekday=null!==(l=e.startWeekday)&&void 0!==l?l:0,this.fontFamilyHeader=e.fontFamilyHeader,this.fontFamilyWeekdays=e.fontFamilyWeekdays,this.fontFamilyBody=e.fontFamilyBody,this.dropShadow=e.dropShadow,this.border=e.border,this.borderRadius=e.borderRadius,this.disableMonthYearPickers=null!==(d=e.disableMonthYearPickers)&&void 0!==d&&d,this.disableDayClick=null!==(c=e.disableDayClick)&&void 0!==c&&c,this.disableMonthArrowClick=null!==(h=e.disableMonthArrowClick)&&void 0!==h&&h,this.customMonthValues=e.customMonthValues,this.customWeekdayValues=e.customWeekdayValues,this.monthChanged=e.monthChanged,this.dateChanged=e.dateChanged,this.selectedDateClicked=e.selectedDateClicked,this.customWeekdayValues&&7===this.customWeekdayValues.length?this.weekdays=this.customWeekdayValues:this.weekdays=null!==(y=this.weekdayDisplayTypeOptions[this.weekdayDisplayType])&&void 0!==y?y:this.weekdayDisplayTypeOptions.short,this.today=new Date,this.currentDate=new Date,this.pickerType="month",this.eventDayMap={},this.oldSelectedNode=null,this.filteredEventsThisMonth=[],this.daysIn_PrevMonth=[],this.daysIn_CurrentMonth=[],this.daysIn_NextMonth=[],this.firstDay_PrevMonth=0,this.firstDay_CurrentMonth=0,this.firstDay_NextMonth=0,this.numOfDays_PrevMonth=0,this.numOfDays_CurrentMonth=0,this.numOfDays_NextMonth=0,this.yearPickerOffset=0,this.yearPickerOffsetTemporary=0,this.calendar=document.querySelector(this.id),!this.calendar)throw new Error(`[COLOR-CALENDAR] Element with selector '${this.id}' not found`);this.calendar.innerHTML=`\n      <div class="${this.CAL_NAME} ${this.theme} color-calendar--${this.calendarSize}">\n        <div class="calendar__header">\n          <div class="calendar__arrow calendar__arrow-prev"><div class="calendar__arrow-inner"></div></div>\n          <div class="calendar__monthyear">\n            <span class="calendar__month"></span>&nbsp;\n            <span class="calendar__year"></span>\n          </div>\n          <div class="calendar__arrow calendar__arrow-next"><div class="calendar__arrow-inner"></div></div>\n        </div>\n        <div class="calendar__body">\n          <div class="calendar__weekdays"></div>\n          <div class="calendar__days"></div>\n          <div class="calendar__picker">\n            <div class="calendar__picker-month">\n              ${(null!==(p=this.customMonthValues)&&void 0!==p?p:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]).map((e,t)=>`<div class="calendar__picker-month-option" data-value="${t}">${e}</div>`).join("")}\n            </div>\n            <div class="calendar__picker-year">\n              <div class="calendar__picker-year-option" data-value="0"></div>\n              <div class="calendar__picker-year-option" data-value="1"></div>\n              <div class="calendar__picker-year-option" data-value="2"></div>\n              <div class="calendar__picker-year-option" data-value="3"></div>\n              <div class="calendar__picker-year-option" data-value="4"></div>\n              <div class="calendar__picker-year-option" data-value="5"></div>\n              <div class="calendar__picker-year-option" data-value="6"></div>\n              <div class="calendar__picker-year-option" data-value="7"></div>\n              <div class="calendar__picker-year-option" data-value="8"></div>\n              <div class="calendar__picker-year-option" data-value="9"></div>\n              <div class="calendar__picker-year-option" data-value="10"></div>\n              <div class="calendar__picker-year-option" data-value="11"></div>\n              <div class="calendar__picker-year-arrow calendar__picker-year-arrow-left">\n                <div class="chevron-thin chevron-thin-left"></div>\n              </div>\n              <div class="calendar__picker-year-arrow calendar__picker-year-arrow-right">\n                <div class="chevron-thin chevron-thin-right"></div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    `,this.calendarRoot=document.querySelector(`${this.id} .${this.CAL_NAME}`),this.calendarHeader=document.querySelector(this.id+" .calendar__header"),this.calendarWeekdays=document.querySelector(this.id+" .calendar__weekdays"),this.calendarDays=document.querySelector(this.id+" .calendar__days"),this.pickerContainer=document.querySelector(this.id+" .calendar__picker"),this.pickerMonthContainer=document.querySelector(this.id+" .calendar__picker-month"),this.pickerYearContainer=document.querySelector(this.id+" .calendar__picker-year"),this.yearPickerChevronLeft=document.querySelector(this.id+" .calendar__picker-year-arrow-left"),this.yearPickerChevronRight=document.querySelector(this.id+" .calendar__picker-year-arrow-right"),this.pickerMonthContainer.children[this.today.getMonth()].classList.add("calendar__picker-month-today"),this.layoutModifiers.forEach(e=>{this.calendarRoot.classList.add(e)}),this.layoutModifiers.includes("month-left-align")&&(this.calendarHeader.innerHTML='\n        <div class="calendar__monthyear">\n          <span class="calendar__month"></span>&nbsp;\n          <span class="calendar__year"></span>\n        </div>\n        <div class="calendar__arrow calendar__arrow-prev"><div class="calendar__arrow-inner"></div></div>\n        <div class="calendar__arrow calendar__arrow-next"><div class="calendar__arrow-inner"></div></div>\n      '),this.monthyearDisplay=document.querySelector(this.id+" .calendar__monthyear"),this.monthDisplay=document.querySelector(this.id+" .calendar__month"),this.yearDisplay=document.querySelector(this.id+" .calendar__year"),this.prevButton=document.querySelector(this.id+" .calendar__arrow-prev .calendar__arrow-inner"),this.nextButton=document.querySelector(this.id+" .calendar__arrow-next .calendar__arrow-inner"),this.togglePicker(!1),this.configureStylePreferences(),this.addEventListeners(),this.reset(new Date)}reset(e){this.currentDate=e||new Date,this.clearCalendarDays(),this.updateMonthYear(),this.updateMonthPickerSelection(this.currentDate.getMonth()),this.generatePickerYears(),this.updateYearPickerSelection(this.currentDate.getFullYear(),4),this.updateYearPickerTodaySelection(),this.generateWeekdays(),this.generateDays(),this.selectDayInitial(!!e),this.renderDays(),this.setOldSelectedNode(),this.dateChanged&&this.dateChanged(this.currentDate,this.getDateEvents(this.currentDate)),this.monthChanged&&this.monthChanged(this.currentDate,this.getMonthEvents())}}return e.prototype.addEventListeners=function(){this.prevButton.addEventListener("click",this.handlePrevMonthButtonClick.bind(this)),this.nextButton.addEventListener("click",this.handleNextMonthButtonClick.bind(this)),this.monthyearDisplay.addEventListener("click",this.handleMonthYearDisplayClick.bind(this)),this.calendarDays.addEventListener("click",this.handleCalendarDayClick.bind(this)),this.pickerMonthContainer.addEventListener("click",this.handleMonthPickerClick.bind(this)),this.pickerYearContainer.addEventListener("click",this.handleYearPickerClick.bind(this)),this.yearPickerChevronLeft.addEventListener("click",this.handleYearChevronLeftClick.bind(this)),this.yearPickerChevronRight.addEventListener("click",this.handleYearChevronRightClick.bind(this))},e.prototype.configureStylePreferences=function(){let e=this.calendarRoot;this.primaryColor&&e.style.setProperty("--cal-color-primary",this.primaryColor),this.fontFamilyHeader&&e.style.setProperty("--cal-font-family-header",this.fontFamilyHeader),this.fontFamilyWeekdays&&e.style.setProperty("--cal-font-family-weekdays",this.fontFamilyWeekdays),this.fontFamilyBody&&e.style.setProperty("--cal-font-family-body",this.fontFamilyBody),this.dropShadow&&e.style.setProperty("--cal-drop-shadow",this.dropShadow),this.border&&e.style.setProperty("--cal-border",this.border),this.borderRadius&&e.style.setProperty("--cal-border-radius",this.borderRadius),this.headerColor&&e.style.setProperty("--cal-header-color",this.headerColor),this.headerBackgroundColor&&e.style.setProperty("--cal-header-background-color",this.headerBackgroundColor),this.weekdaysColor&&e.style.setProperty("--cal-weekdays-color",this.weekdaysColor)},e.prototype.togglePicker=function(e){!0===e?(this.pickerContainer.style.visibility="visible",this.pickerContainer.style.opacity="1","year"===this.pickerType&&this.generatePickerYears(),this.removeYearPickerSelection(),this.updateYearPickerSelection(this.currentDate.getFullYear())):!1===e?(this.pickerContainer.style.visibility="hidden",this.pickerContainer.style.opacity="0",this.monthDisplay&&this.yearDisplay&&(this.monthDisplay.style.opacity="1",this.yearDisplay.style.opacity="1"),this.yearPickerOffsetTemporary=0):"hidden"===this.pickerContainer.style.visibility?(this.pickerContainer.style.visibility="visible",this.pickerContainer.style.opacity="1","year"===this.pickerType&&this.generatePickerYears(),this.removeYearPickerSelection(),this.updateYearPickerSelection(this.currentDate.getFullYear())):(this.pickerContainer.style.visibility="hidden",this.pickerContainer.style.opacity="0",this.monthDisplay&&this.yearDisplay&&(this.monthDisplay.style.opacity="1",this.yearDisplay.style.opacity="1"),this.yearPickerOffsetTemporary=0)},e.prototype.handleMonthPickerClick=function(e){if(!e.target.classList.contains("calendar__picker-month-option"))return;const t=parseInt(e.target.dataset.value,10);this.updateMonthPickerSelection(t),this.updateCurrentDate(0,void 0,t),this.togglePicker(!1)},e.prototype.updateMonthPickerSelection=function(e){e<0?e=11:e%=12,this.removeMonthPickerSelection(),this.pickerMonthContainer.children[e].classList.add("calendar__picker-month-selected")},e.prototype.removeMonthPickerSelection=function(){for(let e=0;e<12;e++)this.pickerMonthContainer.children[e].classList.contains("calendar__picker-month-selected")&&this.pickerMonthContainer.children[e].classList.remove("calendar__picker-month-selected")},e.prototype.handleYearPickerClick=function(e){if(!e.target.classList.contains("calendar__picker-year-option"))return;this.yearPickerOffset+=this.yearPickerOffsetTemporary;const t=parseInt(e.target.innerText),a=parseInt(e.target.dataset.value);this.updateYearPickerSelection(t,a),this.updateCurrentDate(0,void 0,void 0,t),this.togglePicker(!1)},e.prototype.updateYearPickerSelection=function(e,t){if(void 0===t){for(let a=0;a<12;a++){let i=this.pickerYearContainer.children[a];if(parseInt(i.innerHTML)===e&&i.dataset.value){t=parseInt(i.dataset.value);break}}if(void 0===t)return}this.removeYearPickerSelection(),this.pickerYearContainer.children[t].classList.add("calendar__picker-year-selected")},e.prototype.updateYearPickerTodaySelection=function(){parseInt(this.pickerYearContainer.children[4].innerHTML)===this.today.getFullYear()?this.pickerYearContainer.children[4].classList.add("calendar__picker-year-today"):this.pickerYearContainer.children[4].classList.remove("calendar__picker-year-today")},e.prototype.removeYearPickerSelection=function(){for(let e=0;e<12;e++)this.pickerYearContainer.children[e].classList.contains("calendar__picker-year-selected")&&this.pickerYearContainer.children[e].classList.remove("calendar__picker-year-selected")},e.prototype.generatePickerYears=function(){const e=this.today.getFullYear()+this.yearPickerOffset+this.yearPickerOffsetTemporary;let t=0;for(let a=e-4;a<=e+7;a++){this.pickerYearContainer.children[t].innerText=a.toString(),t++}this.updateYearPickerTodaySelection()},e.prototype.handleYearChevronLeftClick=function(){this.yearPickerOffsetTemporary-=12,this.generatePickerYears(),this.removeYearPickerSelection(),this.updateYearPickerSelection(this.currentDate.getFullYear()),this.updateYearPickerTodaySelection()},e.prototype.handleYearChevronRightClick=function(){this.yearPickerOffsetTemporary+=12,this.generatePickerYears(),this.removeYearPickerSelection(),this.updateYearPickerSelection(this.currentDate.getFullYear()),this.updateYearPickerTodaySelection()},e.prototype.setMonthDisplayType=function(e){this.monthDisplayType=e,this.updateMonthYear()},e.prototype.handleMonthYearDisplayClick=function(e){if(!e.target.classList.contains("calendar__month")&&!e.target.classList.contains("calendar__year"))return;if(this.disableMonthYearPickers)return;const t=this.pickerType,a=e.target.classList;a.contains("calendar__month")?(this.pickerType="month",this.monthDisplay.style.opacity="1",this.yearDisplay.style.opacity="0.7",this.pickerMonthContainer.style.display="grid",this.pickerYearContainer.style.display="none"):a.contains("calendar__year")&&(this.pickerType="year",this.monthDisplay.style.opacity="0.7",this.yearDisplay.style.opacity="1",this.pickerMonthContainer.style.display="none",this.pickerYearContainer.style.display="grid"),t===this.pickerType?this.togglePicker():this.togglePicker(!0)},e.prototype.handlePrevMonthButtonClick=function(){if(this.disableMonthArrowClick)return;const e=this.currentDate.getMonth()-1;this.currentDate.getFullYear()<=this.today.getFullYear()+this.yearPickerOffset-4&&e<0&&(this.yearPickerOffset-=12,this.generatePickerYears()),e<0&&this.updateYearPickerSelection(this.currentDate.getFullYear()-1),this.updateMonthPickerSelection(e),this.updateCurrentDate(-1),this.togglePicker(!1)},e.prototype.handleNextMonthButtonClick=function(){if(this.disableMonthArrowClick)return;const e=this.currentDate.getMonth()+1;this.currentDate.getFullYear()>=this.today.getFullYear()+this.yearPickerOffset+7&&e>11&&(this.yearPickerOffset+=12,this.generatePickerYears()),e>11&&this.updateYearPickerSelection(this.currentDate.getFullYear()+1),this.updateMonthPickerSelection(e),this.updateCurrentDate(1),this.togglePicker(!1)},e.prototype.updateMonthYear=function(){this.oldSelectedNode=null,this.customMonthValues?this.monthDisplay.innerHTML=this.customMonthValues[this.currentDate.getMonth()]:this.monthDisplay.innerHTML=new Intl.DateTimeFormat("default",{month:this.monthDisplayType}).format(this.currentDate),this.yearDisplay.innerHTML=this.currentDate.getFullYear().toString()},e.prototype.setWeekdayDisplayType=function(e){var t;this.weekdayDisplayType=e,this.weekdays=null!==(t=this.weekdayDisplayTypeOptions[this.weekdayDisplayType])&&void 0!==t?t:this.weekdayDisplayTypeOptions.short,this.generateWeekdays()},e.prototype.generateWeekdays=function(){let e="";for(let t=0;t<7;t++)e+=`\n      <div class="calendar__weekday">${this.weekdays[(t+this.startWeekday)%7]}</div>\n    `;this.calendarWeekdays.innerHTML=e},e.prototype.setDate=function(e){e&&(e instanceof Date?this.reset(e):this.reset(new Date(e)))},e.prototype.getSelectedDate=function(){return this.currentDate},e.prototype.clearCalendarDays=function(){this.daysIn_PrevMonth=[],this.daysIn_CurrentMonth=[],this.daysIn_NextMonth=[]},e.prototype.updateCalendar=function(e){e&&(this.updateMonthYear(),this.clearCalendarDays(),this.generateDays(),this.selectDayInitial()),this.renderDays(),e&&this.setOldSelectedNode()},e.prototype.setOldSelectedNode=function(){if(!this.oldSelectedNode){let e=void 0;for(let t=1;t<this.calendarDays.childNodes.length;t+=2){let a=this.calendarDays.childNodes[t];if(a.classList&&a.classList.contains("calendar__day-active")&&a.innerText===this.currentDate.getDate().toString()){e=a;break}}e&&(this.oldSelectedNode=[e,parseInt(e.innerText)])}},e.prototype.selectDayInitial=function(e){if(e)this.daysIn_CurrentMonth[this.currentDate.getDate()-1].selected=!0;else{let e=this.today.getMonth()===this.currentDate.getMonth(),t=this.today.getDate()===this.currentDate.getDate();e&&t?this.daysIn_CurrentMonth[this.today.getDate()-1].selected=!0:this.daysIn_CurrentMonth[0].selected=!0}},e.prototype.handleCalendarDayClick=function(e){if(!(e.target.classList.contains("calendar__day-box")||e.target.classList.contains("calendar__day-text")||e.target.classList.contains("calendar__day-box-today")||e.target.classList.contains("calendar__day-bullet")))return;if(this.disableDayClick)return;if(this.oldSelectedNode&&!this.oldSelectedNode[0])return;if(e.target.parentElement.classList.contains("calendar__day-selected"))return void(this.selectedDateClicked&&this.selectedDateClicked(this.currentDate,this.getDateEvents(this.currentDate)));let t,a;t=e.target.parentElement.innerText,a=parseInt(t,10),this.removeOldDaySelection(),t&&(this.updateCurrentDate(0,a),Object.assign(this.daysIn_CurrentMonth[a-1],{selected:!0}),this.rerenderSelectedDay(e.target.parentElement,a,!0))},e.prototype.removeOldDaySelection=function(){this.oldSelectedNode&&(Object.assign(this.daysIn_CurrentMonth[this.oldSelectedNode[1]-1],{selected:!1}),this.rerenderSelectedDay(this.oldSelectedNode[0],this.oldSelectedNode[1]))},e.prototype.updateCurrentDate=function(e,t,a,i){this.currentDate=new Date(i||this.currentDate.getFullYear(),null!=a?a:this.currentDate.getMonth()+e,0===e&&t?t:1),(0!==e||null!=a||i)&&(this.updateCalendar(!0),this.monthChanged&&this.monthChanged(this.currentDate,this.getMonthEvents())),this.dateChanged&&this.dateChanged(this.currentDate,this.getDateEvents(this.currentDate))},e.prototype.generateDays=function(){this.numOfDays_PrevMonth=new Date(this.currentDate.getFullYear(),this.currentDate.getMonth(),0).getDate(),this.firstDay_CurrentMonth=new Date(this.currentDate.getFullYear(),this.currentDate.getMonth(),1).getDay(),this.numOfDays_CurrentMonth=new Date(this.currentDate.getFullYear(),this.currentDate.getMonth()+1,0).getDate();for(let e=0;e<this.numOfDays_CurrentMonth;e++)this.daysIn_CurrentMonth.push({day:e+1,selected:!1})},e.prototype.renderDays=function(){let e=0;const t=this.currentDate.getFullYear(),a=this.currentDate.getMonth();let i;this.filteredEventsThisMonth=this.eventsData.filter(e=>{const i=new Date(e.start);return i.getFullYear()===t&&i.getMonth()===a}),this.eventDayMap={},this.filteredEventsThisMonth.forEach(e=>{const t=new Date(e.start).getDate(),a=new Date(e.end).getDate();for(let e=t;e<=a;e++)this.eventDayMap[e]=!0}),i=this.firstDay_CurrentMonth<this.startWeekday?7+this.firstDay_CurrentMonth-this.startWeekday:this.firstDay_CurrentMonth-this.startWeekday;let r="";for(let t=0;t<i;t++)r+=`\n      <div class="calendar__day calendar__day-other">${this.numOfDays_PrevMonth+1-i+t}</div>\n    `,e++;let n=this.today.getFullYear()===this.currentDate.getFullYear(),s=this.today.getMonth()===this.currentDate.getMonth()&&n;this.daysIn_CurrentMonth.forEach(t=>{let a=s&&t.day===this.today.getDate();r+=`\n      <div class="calendar__day calendar__day-active${a?" calendar__day-today":""}${this.eventDayMap[t.day]?" calendar__day-event":" calendar__day-no-event"}${t.selected?" calendar__day-selected":""}">\n        <span class="calendar__day-text">${t.day}</span>\n        <div class="calendar__day-bullet"></div>\n        <div class="calendar__day-box"></div>\n      </div>\n    `,e++});for(let t=0;t<this.DAYS_TO_DISPLAY-e;t++)r+=`\n      <div class="calendar__day calendar__day-other">${t+1}</div>\n    `;this.calendarDays.innerHTML=r},e.prototype.rerenderSelectedDay=function(e,t,a){let i=e.previousElementSibling,r=this.today.getFullYear()===this.currentDate.getFullYear(),n=this.today.getMonth()===this.currentDate.getMonth()&&r&&t===this.today.getDate(),s=document.createElement("div");s.className+=`calendar__day calendar__day-active${n?" calendar__day-today":""}${this.eventDayMap[t]?" calendar__day-event":" calendar__day-no-event"}${this.daysIn_CurrentMonth[t-1].selected?" calendar__day-selected":""}`,s.innerHTML=`\n    <span class="calendar__day-text">${t}</span>\n    <div class="calendar__day-bullet"></div>\n    <div class="calendar__day-box"></div>\n  `,i?i.parentElement?i.parentElement.insertBefore(s,i.nextSibling):console.log("Previous element does not have parent"):this.calendarDays.insertBefore(s,e),a&&(this.oldSelectedNode=[s,t]),e.remove()},e.prototype.getEventsData=function(){return JSON.parse(JSON.stringify(this.eventsData))},e.prototype.setEventsData=function(e){return this.eventsData=JSON.parse(JSON.stringify(e)),this.setDate(this.currentDate),this.eventsData.length},e.prototype.addEventsData=function(e=[]){const t=this.eventsData.push(...e);return this.setDate(this.currentDate),t},e.prototype.getDateEvents=function(e){return this.filteredEventsThisMonth.filter(t=>{const a=new Date(t.start).getDate(),i=new Date(t.end).getDate();return e.getDate()>=a&&e.getDate()<=i})},e.prototype.getMonthEvents=function(){return this.filteredEventsThisMonth},e}));
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(10)();
+exports.push([module.i, ".color-calendar {\n  position: relative;\n  display: inline-flex;\n  flex-direction: column;\n  width: auto;\n  height: auto;\n  box-sizing: border-box;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  overflow: hidden;\n  font-family: var(--cal-font-family-body);\n  font-size: 1rem;\n}\n\n.color-calendar .calendar__header {\n  position: relative;\n  display: grid;\n  grid-template-columns: repeat(7, minmax(20px, 55px));\n  font-family: var(--cal-font-family-header);\n}\n\n.color-calendar .calendar__monthyear {\n  font-size: 1.5rem;\n  margin: 0 auto;\n  text-align: center;\n  grid-column: 2/span 5;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__monthyear .calendar__month {\n  cursor: pointer;\n}\n.color-calendar .calendar__monthyear .calendar__year {\n  cursor: pointer;\n}\n\n.color-calendar .calendar__arrow {\n  height: 35px;\n  width: 100%;\n  position: relative;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  -webkit-tap-highlight-color: transparent;\n  z-index: 101;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__arrow-inner {\n  width: 35px;\n  height: 35px;\n  position: relative;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__arrow-prev {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__arrow-prev .calendar__arrow-inner::before {\n  margin-left: 0.3em;\n  transform: rotate(-135deg);\n}\n.color-calendar .calendar__arrow-next {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__arrow-next .calendar__arrow-inner::before {\n  margin-right: 0.3em;\n  transform: rotate(45deg);\n}\n\n.color-calendar .calendar__body {\n  height: auto;\n  overflow: hidden;\n}\n\n.color-calendar .calendar__weekdays {\n  display: grid;\n  grid-template-columns: repeat(7, minmax(20px, 55px));\n  margin-bottom: 5px;\n  font-family: var(--cal-font-family-weekdays);\n}\n.color-calendar .calendar__weekdays .calendar__weekday {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 40px;\n}\n\n.color-calendar .calendar__days {\n  display: grid;\n  grid-template-columns: repeat(7, minmax(20px, 55px));\n  grid-template-rows: repeat(6, minmax(30px, 40px));\n  font-family: var(--cal-font-family-body);\n}\n.color-calendar .calendar__days .calendar__day {\n  position: relative;\n  z-index: 101;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__days .calendar__day-text {\n  cursor: pointer;\n}\n.color-calendar .calendar__days .calendar__day-box {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: calc(55% + 8px);\n  height: 90%;\n  opacity: 0;\n  z-index: -1;\n  cursor: pointer;\n  transition: opacity 0.3s ease-out;\n  will-change: opacity;\n}\n.color-calendar .calendar__days .calendar__day-event {\n  /* Event Bullet */\n}\n.color-calendar .calendar__days .calendar__day-event .calendar__day-bullet {\n  position: absolute;\n  top: 80%;\n  border-radius: 50%;\n  width: 4px;\n  height: 4px;\n  left: 50%;\n  transform: translateX(-50%);\n  overflow: hidden;\n  cursor: pointer;\n}\n.color-calendar .calendar__days .calendar__day-selected:not(.calendar__day-today) .calendar__day-box {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: calc(55% + 8px);\n  height: 90%;\n  z-index: -1;\n  cursor: pointer;\n}\n\n.color-calendar .calendar__picker {\n  position: absolute;\n  z-index: 201;\n  width: 100%;\n  top: 75px;\n  left: 0;\n  bottom: 0;\n  background-color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  visibility: hidden;\n  opacity: 0;\n  transition: all 0.3s ease;\n  font-family: var(--cal-font-family-body);\n}\n.color-calendar .calendar__picker .calendar__picker-month {\n  width: 100%;\n  display: grid;\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n  grid-template-rows: repeat(4, minmax(0, 1fr));\n  grid-gap: 1rem 6%;\n  gap: 1rem 6%;\n  margin: 8%;\n  transition: none;\n}\n.color-calendar .calendar__picker .calendar__picker-month-option {\n  position: relative;\n  text-align: center;\n  padding: 15px 0;\n  font-weight: 700;\n  color: #323232;\n  border-radius: var(--cal-border-radius);\n  align-self: center;\n  cursor: pointer;\n}\n.color-calendar .calendar__picker .calendar__picker-month-option::after {\n  content: \"\";\n  width: 100%;\n  height: 50px;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background-color: var(--cal-color-primary);\n  border-radius: var(--cal-border-radius);\n  opacity: 0.1;\n  z-index: -1;\n}\n.color-calendar .calendar__picker .calendar__picker-month-option:hover:after {\n  opacity: 0.08;\n}\n.color-calendar .calendar__picker .calendar__picker-month-selected {\n  color: white;\n}\n.color-calendar .calendar__picker .calendar__picker-month-selected::after {\n  opacity: 1;\n}\n.color-calendar .calendar__picker .calendar__picker-month-selected:hover:after {\n  opacity: 0.9;\n}\n.color-calendar .calendar__picker .calendar__picker-year {\n  width: 100%;\n  display: grid;\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n  grid-template-rows: repeat(4, minmax(0, 1fr));\n  grid-gap: 1rem 6%;\n  gap: 1rem 6%;\n  margin: 8%;\n  transition: none;\n}\n.color-calendar .calendar__picker .calendar__picker-year-option {\n  position: relative;\n  text-align: center;\n  padding: 15px 0;\n  font-weight: 700;\n  color: #323232;\n  border-radius: var(--cal-border-radius);\n  align-self: center;\n  cursor: pointer;\n}\n.color-calendar .calendar__picker .calendar__picker-year-option::after {\n  content: \"\";\n  width: 100%;\n  height: 50px;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background-color: var(--cal-color-primary);\n  border-radius: var(--cal-border-radius);\n  opacity: 0.1;\n  z-index: -1;\n}\n.color-calendar .calendar__picker .calendar__picker-year-option:hover:after {\n  opacity: 0.08;\n}\n.color-calendar .calendar__picker .calendar__picker-year-selected {\n  color: white;\n}\n.color-calendar .calendar__picker .calendar__picker-year-selected::after {\n  opacity: 1;\n}\n.color-calendar .calendar__picker .calendar__picker-year-selected:hover:after {\n  opacity: 0.9;\n}\n.color-calendar .calendar__picker .calendar__picker-year-arrow {\n  position: absolute;\n  opacity: 0.4;\n  border-radius: var(--cal-border-radius);\n  cursor: pointer;\n  transition: all 0.3s ease;\n}\n.color-calendar .calendar__picker .calendar__picker-year-arrow-left {\n  top: 0;\n  bottom: 0;\n  left: 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding-left: 10px;\n  padding-right: 4px;\n}\n.color-calendar .calendar__picker .calendar__picker-year-arrow-right {\n  top: 0;\n  bottom: 0;\n  right: 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding-left: 4px;\n  padding-right: 10px;\n}\n.color-calendar .calendar__picker .calendar__picker-year-arrow:hover {\n  opacity: 1;\n  background-color: #f8f8f8;\n}\n\n.chevron-thin-left {\n  display: inline-block;\n  border-right: 2px solid var(--cal-color-primary);\n  border-bottom: 2px solid var(--cal-color-primary);\n  width: 10px;\n  height: 10px;\n  transform: rotate(-225deg);\n}\n.chevron-thin-right {\n  display: inline-block;\n  border-right: 2px solid var(--cal-color-primary);\n  border-bottom: 2px solid var(--cal-color-primary);\n  width: 10px;\n  height: 10px;\n  transform: rotate(-45deg);\n}\n\n.color-calendar.month-left-align .calendar__header .calendar__monthyear {\n  grid-column: 1/span 5;\n  margin: 0;\n  justify-content: flex-start;\n  padding-left: 5%;\n}\n\n.color-calendar.basic {\n  --cal-color-primary: #000000;\n  --cal-font-family-header: \"Work Sans\", sans-serif;\n  --cal-font-family-weekdays: \"Work Sans\", sans-serif;\n  --cal-font-family-body: \"Work Sans\", sans-serif;\n  --cal-drop-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);\n  --cal-border: none;\n  --cal-border-radius: 0.5rem;\n  --cal-header-color: black;\n  --cal-weekdays-color: black;\n  border-radius: var(--cal-border-radius);\n  box-shadow: var(--cal-drop-shadow);\n  color: var(--cal-color-primary);\n  background-color: white;\n  border: var(--cal-border);\n}\n\n.color-calendar.basic .calendar__header {\n  padding: 20px 14px 0px 14px;\n  color: var(--cal-header-color);\n}\n\n.color-calendar.basic .calendar__monthyear {\n  font-weight: 600;\n  color: var(--cal-header-color);\n}\n\n.color-calendar.basic .calendar__arrow-inner {\n  border-radius: 50%;\n}\n.color-calendar.basic .calendar__arrow-inner::before {\n  content: \"\";\n  width: 0.6em;\n  height: 0.6em;\n  position: absolute;\n  border-style: solid;\n  border-width: 0.15em 0.15em 0 0;\n  display: inline-block;\n  transform-origin: center center;\n  transform: rotate(-45deg);\n  border-radius: 1px;\n  color: var(--cal-header-color);\n}\n.color-calendar.basic .calendar__arrow-inner::after {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 35px;\n  height: 35px;\n  border-radius: 50%;\n  background-color: var(--cal-header-color);\n  opacity: 0;\n  z-index: -1;\n  transition: opacity 0.3s ease;\n  will-change: opacity;\n}\n.color-calendar.basic .calendar__arrow-inner:hover::after {\n  transition: opacity 0.3s ease;\n  opacity: 0.05;\n}\n.color-calendar.basic .calendar__arrow-prev {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar.basic .calendar__arrow-prev .calendar__arrow-inner::before {\n  margin-left: 0.3em;\n  transform: rotate(-135deg);\n}\n.color-calendar.basic .calendar__arrow-next {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar.basic .calendar__arrow-next .calendar__arrow-inner::before {\n  margin-right: 0.3em;\n  transform: rotate(45deg);\n}\n\n.color-calendar.basic .calendar__body {\n  padding: 14px;\n}\n\n.color-calendar.basic .calendar__weekdays {\n  display: grid;\n  grid-template-columns: repeat(7, minmax(20px, 55px));\n  margin-bottom: 5px;\n}\n.color-calendar.basic .calendar__weekdays .calendar__weekday {\n  font-weight: 500;\n  opacity: 0.6;\n  color: var(--cal-weekdays-color);\n}\n\n.color-calendar.basic .calendar__days .calendar__day-other {\n  color: var(--cal-color-primary);\n  opacity: 0.2;\n}\n.color-calendar.basic .calendar__days .calendar__day {\n  font-weight: 600;\n}\n.color-calendar.basic .calendar__days .calendar__day-today {\n  font-weight: 700;\n  color: var(--cal-color-primary);\n}\n.color-calendar.basic .calendar__days .calendar__day-today .calendar__day-box {\n  border-radius: 0.5rem;\n  background-color: var(--cal-color-primary);\n  opacity: 0.1;\n}\n.color-calendar.basic .calendar__days .calendar__day-text:hover ~ .calendar__day-box {\n  opacity: 0.1;\n}\n.color-calendar.basic .calendar__days .calendar__day-bullet {\n  background-color: var(--cal-color-primary);\n}\n.color-calendar.basic .calendar__days .calendar__day-bullet:hover ~ .calendar__day-box {\n  opacity: 0.1;\n}\n.color-calendar.basic .calendar__days .calendar__day-box {\n  border-radius: 0.5rem;\n  background-color: var(--cal-color-primary);\n  box-shadow: 0 3px 15px -5px var(--cal-color-primary);\n}\n.color-calendar.basic .calendar__days .calendar__day-box:hover {\n  opacity: 0.1;\n}\n.color-calendar.basic .calendar__days .calendar__day-event {\n  font-weight: 700;\n}\n.color-calendar.basic .calendar__days .calendar__day-selected {\n  color: white;\n  font-weight: 700;\n}\n.color-calendar.basic .calendar__days .calendar__day-selected .calendar__day-box {\n  border-radius: 0.5rem;\n  background-color: var(--cal-color-primary);\n  opacity: 1;\n  box-shadow: 0 3px 15px -5px var(--cal-color-primary);\n}\n.color-calendar.basic .calendar__days .calendar__day-selected .calendar__day-text:hover ~ .calendar__day-box {\n  opacity: 1;\n}\n.color-calendar.basic .calendar__days .calendar__day-selected .calendar__day-bullet {\n  background-color: white;\n}\n.color-calendar.basic .calendar__days .calendar__day-selected .calendar__day-bullet:hover ~ .calendar__day-box {\n  opacity: 1;\n}\n\n.color-calendar.basic .calendar__picker {\n  background-color: white;\n  border-radius: var(--cal-border-radius);\n}\n.color-calendar.basic .calendar__picker-month-today {\n  box-shadow: inset 0px 0px 0px 1px var(--cal-color-primary);\n}\n.color-calendar.basic .calendar__picker-year-today {\n  box-shadow: inset 0px 0px 0px 1px var(--cal-color-primary);\n}\n\n.color-calendar.basic.color-calendar--small {\n  font-size: 0.8rem;\n}\n.color-calendar.basic.color-calendar--small .calendar__header {\n  padding: 10px 10px 0 10px;\n  grid-template-columns: repeat(7, minmax(25px, 41px));\n}\n.color-calendar.basic.color-calendar--small .calendar__header .calendar__monthyear {\n  font-size: 1.2rem;\n}\n.color-calendar.basic.color-calendar--small .calendar__header .calendar__arrow-inner, .color-calendar.basic.color-calendar--small .calendar__header .calendar__arrow-inner::after {\n  width: 30px;\n  height: 30px;\n}\n.color-calendar.basic.color-calendar--small .calendar__body {\n  padding: 0 10px 10px 10px;\n}\n.color-calendar.basic.color-calendar--small .calendar__body .calendar__weekdays {\n  grid-template-columns: repeat(7, minmax(25px, 41px));\n  margin-bottom: 0;\n}\n.color-calendar.basic.color-calendar--small .calendar__body .calendar__days {\n  grid-template-columns: repeat(7, minmax(25px, 41px));\n  grid-template-rows: repeat(6, minmax(30px, 35px));\n}\n.color-calendar.basic.color-calendar--small .calendar__body .calendar__picker {\n  top: 55px;\n}\n.color-calendar.basic.color-calendar--small .calendar__body .calendar__picker .calendar__picker-month-option {\n  padding: 10px 0;\n}\n.color-calendar.basic.color-calendar--small .calendar__body .calendar__picker .calendar__picker-month-option::after {\n  height: 40px;\n}\n.color-calendar.basic.color-calendar--small .calendar__body .calendar__picker .calendar__picker-year-option {\n  padding: 10px 0;\n}\n.color-calendar.basic.color-calendar--small .calendar__body .calendar__picker .calendar__picker-year-option::after {\n  height: 40px;\n}", ""]);
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(10)();
+exports.push([module.i, ".color-calendar {\n  position: relative;\n  display: inline-flex;\n  flex-direction: column;\n  width: auto;\n  height: auto;\n  box-sizing: border-box;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  overflow: hidden;\n  font-family: var(--cal-font-family-body);\n  font-size: 1rem;\n}\n\n.color-calendar .calendar__header {\n  position: relative;\n  display: grid;\n  grid-template-columns: repeat(7, minmax(20px, 55px));\n  font-family: var(--cal-font-family-header);\n}\n\n.color-calendar .calendar__monthyear {\n  font-size: 1.5rem;\n  margin: 0 auto;\n  text-align: center;\n  grid-column: 2/span 5;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__monthyear .calendar__month {\n  cursor: pointer;\n}\n.color-calendar .calendar__monthyear .calendar__year {\n  cursor: pointer;\n}\n\n.color-calendar .calendar__arrow {\n  height: 35px;\n  width: 100%;\n  position: relative;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  -webkit-tap-highlight-color: transparent;\n  z-index: 101;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__arrow-inner {\n  width: 35px;\n  height: 35px;\n  position: relative;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__arrow-prev {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__arrow-prev .calendar__arrow-inner::before {\n  margin-left: 0.3em;\n  transform: rotate(-135deg);\n}\n.color-calendar .calendar__arrow-next {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__arrow-next .calendar__arrow-inner::before {\n  margin-right: 0.3em;\n  transform: rotate(45deg);\n}\n\n.color-calendar .calendar__body {\n  height: auto;\n  overflow: hidden;\n}\n\n.color-calendar .calendar__weekdays {\n  display: grid;\n  grid-template-columns: repeat(7, minmax(20px, 55px));\n  margin-bottom: 5px;\n  font-family: var(--cal-font-family-weekdays);\n}\n.color-calendar .calendar__weekdays .calendar__weekday {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 40px;\n}\n\n.color-calendar .calendar__days {\n  display: grid;\n  grid-template-columns: repeat(7, minmax(20px, 55px));\n  grid-template-rows: repeat(6, minmax(30px, 40px));\n  font-family: var(--cal-font-family-body);\n}\n.color-calendar .calendar__days .calendar__day {\n  position: relative;\n  z-index: 101;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__days .calendar__day-text {\n  cursor: pointer;\n}\n.color-calendar .calendar__days .calendar__day-box {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: calc(55% + 8px);\n  height: 90%;\n  opacity: 0;\n  z-index: -1;\n  cursor: pointer;\n  transition: opacity 0.3s ease-out;\n  will-change: opacity;\n}\n.color-calendar .calendar__days .calendar__day-event {\n  /* Event Bullet */\n}\n.color-calendar .calendar__days .calendar__day-event .calendar__day-bullet {\n  position: absolute;\n  top: 80%;\n  border-radius: 50%;\n  width: 4px;\n  height: 4px;\n  left: 50%;\n  transform: translateX(-50%);\n  overflow: hidden;\n  cursor: pointer;\n}\n.color-calendar .calendar__days .calendar__day-selected:not(.calendar__day-today) .calendar__day-box {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: calc(55% + 8px);\n  height: 90%;\n  z-index: -1;\n  cursor: pointer;\n}\n\n.color-calendar .calendar__picker {\n  position: absolute;\n  z-index: 201;\n  width: 100%;\n  top: 75px;\n  left: 0;\n  bottom: 0;\n  background-color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  visibility: hidden;\n  opacity: 0;\n  transition: all 0.3s ease;\n  font-family: var(--cal-font-family-body);\n}\n.color-calendar .calendar__picker .calendar__picker-month {\n  width: 100%;\n  display: grid;\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n  grid-template-rows: repeat(4, minmax(0, 1fr));\n  grid-gap: 1rem 6%;\n  gap: 1rem 6%;\n  margin: 8%;\n  transition: none;\n}\n.color-calendar .calendar__picker .calendar__picker-month-option {\n  position: relative;\n  text-align: center;\n  padding: 15px 0;\n  font-weight: 700;\n  color: #323232;\n  border-radius: var(--cal-border-radius);\n  align-self: center;\n  cursor: pointer;\n}\n.color-calendar .calendar__picker .calendar__picker-month-option::after {\n  content: \"\";\n  width: 100%;\n  height: 50px;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background-color: var(--cal-color-primary);\n  border-radius: var(--cal-border-radius);\n  opacity: 0.1;\n  z-index: -1;\n}\n.color-calendar .calendar__picker .calendar__picker-month-option:hover:after {\n  opacity: 0.08;\n}\n.color-calendar .calendar__picker .calendar__picker-month-selected {\n  color: white;\n}\n.color-calendar .calendar__picker .calendar__picker-month-selected::after {\n  opacity: 1;\n}\n.color-calendar .calendar__picker .calendar__picker-month-selected:hover:after {\n  opacity: 0.9;\n}\n.color-calendar .calendar__picker .calendar__picker-year {\n  width: 100%;\n  display: grid;\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n  grid-template-rows: repeat(4, minmax(0, 1fr));\n  grid-gap: 1rem 6%;\n  gap: 1rem 6%;\n  margin: 8%;\n  transition: none;\n}\n.color-calendar .calendar__picker .calendar__picker-year-option {\n  position: relative;\n  text-align: center;\n  padding: 15px 0;\n  font-weight: 700;\n  color: #323232;\n  border-radius: var(--cal-border-radius);\n  align-self: center;\n  cursor: pointer;\n}\n.color-calendar .calendar__picker .calendar__picker-year-option::after {\n  content: \"\";\n  width: 100%;\n  height: 50px;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background-color: var(--cal-color-primary);\n  border-radius: var(--cal-border-radius);\n  opacity: 0.1;\n  z-index: -1;\n}\n.color-calendar .calendar__picker .calendar__picker-year-option:hover:after {\n  opacity: 0.08;\n}\n.color-calendar .calendar__picker .calendar__picker-year-selected {\n  color: white;\n}\n.color-calendar .calendar__picker .calendar__picker-year-selected::after {\n  opacity: 1;\n}\n.color-calendar .calendar__picker .calendar__picker-year-selected:hover:after {\n  opacity: 0.9;\n}\n.color-calendar .calendar__picker .calendar__picker-year-arrow {\n  position: absolute;\n  opacity: 0.4;\n  border-radius: var(--cal-border-radius);\n  cursor: pointer;\n  transition: all 0.3s ease;\n}\n.color-calendar .calendar__picker .calendar__picker-year-arrow-left {\n  top: 0;\n  bottom: 0;\n  left: 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding-left: 10px;\n  padding-right: 4px;\n}\n.color-calendar .calendar__picker .calendar__picker-year-arrow-right {\n  top: 0;\n  bottom: 0;\n  right: 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding-left: 4px;\n  padding-right: 10px;\n}\n.color-calendar .calendar__picker .calendar__picker-year-arrow:hover {\n  opacity: 1;\n  background-color: #f8f8f8;\n}\n\n.chevron-thin-left {\n  display: inline-block;\n  border-right: 2px solid var(--cal-color-primary);\n  border-bottom: 2px solid var(--cal-color-primary);\n  width: 10px;\n  height: 10px;\n  transform: rotate(-225deg);\n}\n.chevron-thin-right {\n  display: inline-block;\n  border-right: 2px solid var(--cal-color-primary);\n  border-bottom: 2px solid var(--cal-color-primary);\n  width: 10px;\n  height: 10px;\n  transform: rotate(-45deg);\n}\n\n.color-calendar.month-left-align .calendar__header .calendar__monthyear {\n  grid-column: 1/span 5;\n  margin: 0;\n  justify-content: flex-start;\n  padding-left: 5%;\n}\n\n.color-calendar.glass {\n  --cal-color-primary: #EC407A;\n  --cal-font-family-header: \"Open Sans\", sans-serif;\n  --cal-font-family-weekdays: \"Open Sans\", sans-serif;\n  --cal-font-family-body: \"Open Sans\", sans-serif;\n  --cal-drop-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);\n  --cal-border: none;\n  --cal-border-radius: 0.5rem;\n  --cal-header-color: white;\n  --cal-header-background-color: rgba(0, 0, 0, 0.3);\n  border-radius: var(--cal-border-radius);\n  box-shadow: var(--cal-drop-shadow);\n  color: #323232;\n  background-color: var(--cal-header-background-color);\n  -webkit-backdrop-filter: blur(5px);\n          backdrop-filter: blur(5px);\n  border: var(--cal-border);\n}\n\n.color-calendar.glass .calendar__header {\n  padding: 20px 14px 20px 14px;\n  color: var(--cal-header-color);\n}\n\n.color-calendar.glass .calendar__monthyear {\n  font-weight: 700;\n  color: var(--cal-header-color);\n}\n\n.color-calendar.glass .calendar__arrow-inner {\n  border-radius: 50%;\n}\n.color-calendar.glass .calendar__arrow-inner::before {\n  content: \"\";\n  width: 0.5em;\n  height: 0.5em;\n  position: absolute;\n  border-style: solid;\n  border-width: 0.17em 0.17em 0 0;\n  display: inline-block;\n  transform-origin: center center;\n  transform: rotate(-45deg);\n  border-radius: 2px;\n  color: var(--cal-header-color);\n}\n.color-calendar.glass .calendar__arrow-inner::after {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 35px;\n  height: 35px;\n  border-radius: 50%;\n  background-color: var(--cal-header-color);\n  opacity: 0.12;\n  z-index: -1;\n  transition: opacity 0.3s ease;\n}\n.color-calendar.glass .calendar__arrow-inner:hover::after {\n  transition: opacity 0.3s ease;\n  opacity: 0.25;\n}\n.color-calendar.glass .calendar__arrow-prev {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar.glass .calendar__arrow-prev .calendar__arrow-inner::before {\n  margin-left: 0.25em;\n  transform: rotate(-135deg);\n}\n.color-calendar.glass .calendar__arrow-next {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar.glass .calendar__arrow-next .calendar__arrow-inner::before {\n  margin-right: 0.25em;\n  transform: rotate(45deg);\n}\n\n.color-calendar.glass .calendar__body {\n  padding: 18px 14px;\n  border-radius: var(--cal-border-radius);\n  background-color: white;\n}\n\n.color-calendar.glass .calendar__weekdays {\n  display: grid;\n  grid-template-columns: repeat(7, minmax(20px, 55px));\n  margin-bottom: 5px;\n}\n.color-calendar.glass .calendar__weekdays .calendar__weekday {\n  font-weight: 700;\n  opacity: 0.5;\n}\n\n.color-calendar.glass .calendar__days .calendar__day-other {\n  color: #323232;\n  opacity: 0.2;\n}\n.color-calendar.glass .calendar__days .calendar__day {\n  font-weight: 600;\n}\n.color-calendar.glass .calendar__days .calendar__day-today {\n  font-weight: 700;\n  color: var(--cal-color-primary);\n}\n.color-calendar.glass .calendar__days .calendar__day-today .calendar__day-box {\n  border-radius: 0.5rem;\n  background-color: var(--cal-color-primary);\n  opacity: 0.1;\n}\n.color-calendar.glass .calendar__days .calendar__day-text:hover ~ .calendar__day-box {\n  opacity: 0.1;\n}\n.color-calendar.glass .calendar__days .calendar__day-bullet {\n  background-color: var(--cal-color-primary);\n}\n.color-calendar.glass .calendar__days .calendar__day-bullet:hover ~ .calendar__day-box {\n  opacity: 0.1;\n}\n.color-calendar.glass .calendar__days .calendar__day-box {\n  border-radius: 0.5rem;\n  background-color: var(--cal-color-primary);\n  box-shadow: 0 3px 15px -5px var(--cal-color-primary);\n}\n.color-calendar.glass .calendar__days .calendar__day-box:hover {\n  opacity: 0.1;\n}\n.color-calendar.glass .calendar__days .calendar__day-event {\n  font-weight: 700;\n}\n.color-calendar.glass .calendar__days .calendar__day-selected {\n  color: white;\n  font-weight: 700;\n}\n.color-calendar.glass .calendar__days .calendar__day-selected .calendar__day-box {\n  border-radius: 0.5rem;\n  background-color: var(--cal-color-primary);\n  opacity: 1;\n  box-shadow: 0 3px 15px -5px var(--cal-color-primary);\n}\n.color-calendar.glass .calendar__days .calendar__day-selected .calendar__day-text:hover ~ .calendar__day-box {\n  opacity: 1;\n}\n.color-calendar.glass .calendar__days .calendar__day-selected .calendar__day-bullet {\n  background-color: white;\n}\n.color-calendar.glass .calendar__days .calendar__day-selected .calendar__day-bullet:hover ~ .calendar__day-box {\n  opacity: 1;\n}\n\n.color-calendar.glass .calendar__picker {\n  background-color: white;\n  border-radius: var(--cal-border-radius);\n}\n.color-calendar.glass .calendar__picker-month-today {\n  box-shadow: inset 0px 0px 0px 1px var(--cal-color-primary);\n}\n.color-calendar.glass .calendar__picker-year-today {\n  box-shadow: inset 0px 0px 0px 1px var(--cal-color-primary);\n}\n\n.color-calendar.glass.color-calendar--small {\n  font-size: 0.8rem;\n}\n.color-calendar.glass.color-calendar--small .calendar__header {\n  padding: 10px 10px;\n  grid-template-columns: repeat(7, minmax(25px, 41px));\n}\n.color-calendar.glass.color-calendar--small .calendar__header .calendar__monthyear {\n  font-size: 1.2rem;\n}\n.color-calendar.glass.color-calendar--small .calendar__header .calendar__arrow-inner, .color-calendar.glass.color-calendar--small .calendar__header .calendar__arrow-inner::after {\n  width: 30px;\n  height: 30px;\n}\n.color-calendar.glass.color-calendar--small .calendar__body {\n  padding: 10px 10px;\n}\n.color-calendar.glass.color-calendar--small .calendar__body .calendar__weekdays {\n  grid-template-columns: repeat(7, minmax(25px, 41px));\n  margin-bottom: 0;\n}\n.color-calendar.glass.color-calendar--small .calendar__body .calendar__days {\n  grid-template-columns: repeat(7, minmax(25px, 41px));\n  grid-template-rows: repeat(6, minmax(30px, 35px));\n}\n.color-calendar.glass.color-calendar--small .calendar__body .calendar__picker {\n  top: 55px;\n}\n.color-calendar.glass.color-calendar--small .calendar__body .calendar__picker .calendar__picker-month-option {\n  padding: 10px 0;\n}\n.color-calendar.glass.color-calendar--small .calendar__body .calendar__picker .calendar__picker-month-option::after {\n  height: 40px;\n}\n.color-calendar.glass.color-calendar--small .calendar__body .calendar__picker .calendar__picker-year-option {\n  padding: 10px 0;\n}\n.color-calendar.glass.color-calendar--small .calendar__body .calendar__picker .calendar__picker-year-option::after {\n  height: 40px;\n}", ""]);
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(13);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(11)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../css-loader/index.js!./theme-basic.css", function() {
+			var newContent = require("!!../../../css-loader/index.js!./theme-basic.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(14);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(11)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../css-loader/index.js!./theme-glass.css", function() {
+			var newContent = require("!!../../../css-loader/index.js!./theme-glass.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 /******/ ]);
