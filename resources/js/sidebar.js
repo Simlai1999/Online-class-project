@@ -1,5 +1,4 @@
 import { el, list, setAttr } from "redom";
-import { Navbar } from "./navbar"
 
 class SidebarListItem {
     constructor() {
@@ -79,17 +78,17 @@ export class Sidebar {
             {
                 name: 'Schedules',
                 icon: 'fas fa-calendar',
-                link: '#home'
+                link: '#schedules'
             },
             {
-                name: 'Notes',
-                icon: 'fas fa-pen-square',
-                link: '#lectures'
+                name: 'Classes',
+                icon: 'far fa-window-restore',
+                link: '#classes'
             },
             {
                 name: 'Settings',
                 icon: 'fas fa-cog',
-                link: '#lectures'
+                link: '#settings'
             }
         ];
 
@@ -129,7 +128,6 @@ export class Sidebar {
         this.el.style.width = '';
         this.el.style.transition = '0.5s';
         this.sidebarToggleButon.setAttribute('data-toggle', false);
-        // Navbar = new Navbar()
     }
 
     closeSidebar() {

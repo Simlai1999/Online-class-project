@@ -111,8 +111,7 @@ export class HomePage {
             this.closeModalButton
         );
 
-        this.calendar = el('div#color-calendar')
-
+        this.calendar = el('div#color-calendar');
         this.classItems = list('ul.menu-list', ClassListItem);
         this.noClasses = el('h1', 'No Classes');
 
@@ -127,11 +126,13 @@ export class HomePage {
             }),
             el('div#color-calendar'),
             this.calendar,
-            this.classItems, this.noClasses, this.addClassButton
+            this.classItems, 
+            this.noClasses, 
+            this.addClassButton
         );
 
         this.el = el('div.columns',
-            el('div.column is-9-desktop is-offset-2-desktop is-8-tablet is-offset-3-tablet is-12-mobile',
+            el('div.column',
                 this.classesContainer
             ),
             this.modal

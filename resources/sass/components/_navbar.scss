@@ -3,9 +3,9 @@
     z-index: 10;
 }
 .navbar.is-fixed-top {
-    left: 17rem;
     padding-right: 2rem;
     background-color: var(--is-color-light-lowest);
+    margin-left: 15rem;
 }
 
 .fa-bell {
@@ -22,7 +22,7 @@
     background-color: var(--is-color-primary-low);
     border-radius: 0.5rem;
     span {
-        color: var(--is-color-light-high);
+        // color: var(--is-color-light-high);
         display: flex;
         align-items: center;
         font-size: 1.2rem;
@@ -30,14 +30,17 @@
     }
     a {
         color: var(--is-color-light-high);
-        .navbar-item {
-            :hover {
-                background-color: var(--is-color-primary-low);
-                color: var(--is-color-light-high);
-            }
-        }
+    }
+    a.navbar-item:hover {
+        background-color: var(--is-color-primary-low-emphasis);
+        color: var(--is-color-light-high);
+        border-right: 3px solid var(--is-color-light-high);
     }
 }
+
+
+
+
 
 .navbar-link {
     background-color: var(--is-color-dark-lowest);

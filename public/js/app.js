@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "./";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 17);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -75,12 +75,12 @@
 /* unused harmony export ListPool */
 /* unused harmony export Place */
 /* unused harmony export Router */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return el; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return el; });
 /* unused harmony export h */
 /* unused harmony export html */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return list; });
 /* unused harmony export listPool */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return mount; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return mount; });
 /* unused harmony export place */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return router; });
 /* unused harmony export s */
@@ -837,699 +837,6 @@ function memoizeSVG (query) {
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Navbar; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redom__ = __webpack_require__(0);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-var Navbar = function () {
-    function Navbar() {
-        _classCallCheck(this, Navbar);
-
-        this.dropdownList = [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("span.fas fa-user"), "Personal Details"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("span.fas fa-trophy"), "Achivements"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("span.fas fa-question-circle"), "Help"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('hr.dropdown-divider'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("span.fas fa-sign-out-alt"), "Logout")];
-
-        this.navBrand = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-brand", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, "LOGO"));
-
-        this.navbarDropdown = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-item has-dropdown", { 'data-toggle': true }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.dropdown-trigger', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-link", { href: "#" }, "Teacher"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-dropdown is-right", this.dropdownList)));
-
-        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("nav.navbar is-fixed-top", this.navBrand, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-menu", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.navbar-end", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("span.fas fa-bell")), this.navbarDropdown)));
-    }
-
-    _createClass(Navbar, [{
-        key: "onmount",
-        value: function onmount() {
-            var _this = this;
-
-            this.navbarDropdown.onclick = function (evt) {
-                evt.preventDefault();
-                var dropdownToggled = _this.navbarDropdown.getAttribute('data-toggle');
-                dropdownToggled === 'false' ? _this.closeDropdown() : _this.openDropdown();
-            };
-        }
-    }, {
-        key: "openDropdown",
-        value: function openDropdown() {
-            this.navbarDropdown.className = 'navbar-item has-dropdown is-active';
-            this.navbarDropdown.setAttribute('data-toggle', false);
-        }
-    }, {
-        key: "closeDropdown",
-        value: function closeDropdown() {
-            this.navbarDropdown.className = 'navbar-item has-dropdown';
-            this.navbarDropdown.setAttribute('data-toggle', true);
-        }
-    }]);
-
-    return Navbar;
-}();
-
-/***/ }),
-/* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redom__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__navbar_js__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sidebar_js__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_home_page_js__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_lectures_page_js__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__main__ = __webpack_require__(4);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-
-
-
-
-
-__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* mount */])(document.body, new __WEBPACK_IMPORTED_MODULE_2__sidebar_js__["a" /* Sidebar */]());
-__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* mount */])(document.body, new __WEBPACK_IMPORTED_MODULE_1__navbar_js__["a" /* Navbar */]());
-
-var AuthMiddleware = function () {
-    function AuthMiddleware() {
-        _classCallCheck(this, AuthMiddleware);
-    }
-
-    _createClass(AuthMiddleware, [{
-        key: 'exec',
-        value: function exec(currentView, nextView, params) {
-            console.log('From custom Middleware');
-        }
-    }]);
-
-    return AuthMiddleware;
-}();
-
-var app = new __WEBPACK_IMPORTED_MODULE_5__main__["a" /* App */]().routes({
-    home: __WEBPACK_IMPORTED_MODULE_3__pages_home_page_js__["a" /* HomePage */],
-    default: __WEBPACK_IMPORTED_MODULE_3__pages_home_page_js__["a" /* HomePage */],
-    lectures: __WEBPACK_IMPORTED_MODULE_4__pages_lectures_page_js__["a" /* LecturesPage */]
-}).middlewares([new AuthMiddleware()]).start();
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return App; });
-/* unused harmony export goto */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redom__ = __webpack_require__(0);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-var App = function () {
-    function App() {
-        _classCallCheck(this, App);
-
-        this.middlewareList = [];
-    }
-
-    /**
-     *
-     * @param {type} routes the dictionary of views and names to redirect by
-     * @param {type} defaultRoute the default route, if found. otherwise, the route 'default' is used
-     * @returns {App}
-     */
-
-
-    _createClass(App, [{
-        key: 'routes',
-        value: function routes(_routes, defaultRoute) {
-            this.app = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["e" /* router */])('div.app', _routes);
-            this.defaultRoute = defaultRoute ? defaultRoute : 'default';
-            this.currentView = this.defaultRoute;
-
-            return this;
-        }
-
-        /**
-         *
-         * @param {type} middlewares a list of functions to execute in order before routing.
-         *  If a middleware returns a name of a view differnt than the current target, then the following
-         *  middlewares will not be called and a redirect to the returned view is done.
-         * @returns {App}
-         */
-
-    }, {
-        key: 'middlewares',
-        value: function middlewares(_middlewares) {
-            if (_middlewares) {
-                this.middlewareList = _middlewares;
-            }
-
-            return this;
-        }
-
-        /**
-         * Starts the Application at this base element on the dom. If no base element is provided, then the
-         * <body> is the base element
-         * @param {type} appBase the base element to use
-         * @returns {App}
-         */
-
-    }, {
-        key: 'start',
-        value: function start(appBase) {
-            var _this = this;
-
-            if (appBase) {
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* mount */])(appBase, this.app);
-            } else {
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* mount */])(document.body, this.app);
-            }
-
-            window.onhashchange = function (e) {
-                _this._doRoute();
-            };
-
-            window.onload = function (e) {
-                _this._doRoute();
-            };
-
-            return this;
-        }
-
-        /**
-         * Routes to the new view. If it is the same as the current view, middleware execution is
-         * skipped. Otherwise, middlewares are executed.
-         * @returns {undefined}
-         */
-
-    }, {
-        key: '_doRoute',
-        value: function _doRoute() {
-            var routeUrl = window.location.hash.substr(1).split('/');
-            var view = routeUrl[0];
-            var paramString = window.location.hash.substr(1 + view.length);
-            var params = routeUrl.splice(1, routeUrl.length).filter(function (param) {
-                return param.length > 0;
-            });
-
-            if (this.app.Views[view]) {
-                if (view !== this.currentView) {
-                    var result = this._execMiddleware(this.currentView, view, params);
-                    if (result && result) {
-                        goto(result, params);
-                    } else {
-                        this.currentView = view;
-                        this.app.update(view, params);
-                    }
-                } else {
-                    this.currentView = view;
-                    this.app.update(view, params);
-                }
-            } else {
-                window.location.hash = this.defaultRoute + paramString;
-            }
-        }
-
-        /**
-         * Executes middlewares. if a middleware returns the name of the view other
-         * than the current view, then the following middlewares will not be executed
-         * and a redirect to the returned view is done
-         * @param {type} currentView
-         * @param {type} newView
-         * @param {type} params
-         * @returns {Boolean}
-         */
-
-    }, {
-        key: '_execMiddleware',
-        value: function _execMiddleware(currentView, newView, params) {
-            if (this.middlewareList.length > 0) {
-                var i = 0;
-                for (i in this.middlewareList) {
-                    var result = this.middlewareList[i].exec(currentView, newView, params);
-                    if (result && result != newView) {
-                        return result;
-                    }
-                }
-            }
-        }
-    }]);
-
-    return App;
-}();
-
-
-
-
-var goto = function goto(view, params) {
-    var paramString = '';
-
-    if (params && params.length > 0) {
-        params.map(function (param) {
-            paramString = paramString.concat('/').concat(param);
-        });
-    }
-
-    window.location.hash = view + paramString;
-};
-
-/***/ }),
-/* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redom__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_color_calendar__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_color_calendar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_color_calendar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_color_calendar_dist_css_theme_basic_css__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_color_calendar_dist_css_theme_basic_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_color_calendar_dist_css_theme_basic_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_color_calendar_dist_css_theme_glass_css__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_color_calendar_dist_css_theme_glass_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_color_calendar_dist_css_theme_glass_css__);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-
-
-
-
-var ClassListItem = function () {
-    function ClassListItem() {
-        _classCallCheck(this, ClassListItem);
-
-        console.log('Class Item');
-        this.day = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h6');
-        this.time = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h6');
-        this.subject = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1');
-        this.joinBtn = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('button.button is-primary', 'Join');
-        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.box.class', this.time, this.day, this.subject, this.joinBtn);
-    }
-
-    _createClass(ClassListItem, [{
-        key: 'update',
-        value: function update(data) {
-            console.log('Data: ', data);
-
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.day, {
-                textContent: data.timeData
-            });
-
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.time, {
-                textContent: data.setTime
-            });
-
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.subject, {
-                textContent: data.subjectName
-            });
-        }
-    }]);
-
-    return ClassListItem;
-}();
-
-var HomePage = function () {
-    function HomePage() {
-        var _this = this;
-
-        _classCallCheck(this, HomePage);
-
-        this.addClassButton = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('button.button is-primary', 'Add class');
-        this.closeModalButton = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('button.modal-close is-large');
-        this.createClassButton = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.control', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('button.button is-primary', 'Add', { type: 'submit' }));
-
-        this.subjectName = '';
-        this.setTime = '';
-        this.timeData = function () {
-            var am = document.getElementById('am');
-            var pm = document.getElementById('pm');
-
-            if (am.checked) {
-                localStorage.setItem('TIME_DATA', am);
-            }
-
-            if (pm.checked) {
-                localStorage.setItem('TIME_DATA', pm);
-            }
-        };
-
-        this.form = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('form', { id: 'addClass' }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1.heading', 'Create Class'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.field', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('label.label', 'Subject Name'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.control', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('input.input', {
-            type: 'text',
-            placeholder: 'subject',
-            id: 'subname',
-            oninput: function oninput(e) {
-                return _this.subjectName = e.target.value;
-            }
-        }))), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.field', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('label.label', 'Set Time'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.control', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('input.input time', {
-            type: 'text',
-            placeholder: '00:00',
-            id: 'time',
-            oninput: function oninput(e) {
-                return _this.setTime = e.target.value;
-            }
-        }))), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.control', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('lable.radio', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('input', {
-            type: 'radio',
-            name: 'answer',
-            id: 'am',
-            value: 'AM',
-            oninput: function oninput(e) {
-                return _this.timeData = e.target.value;
-            }
-        }), 'AM'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('lable.radio', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('input', {
-            type: 'radio',
-            name: 'answer',
-            id: 'pm',
-            value: 'PM',
-            oninput: function oninput(e) {
-                return _this.timeData = e.target.value;
-            }
-        }), 'PM')), this.createClassButton);
-
-        this.modal = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.modal', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.modal-background'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.modal-content has-background-white py-5 px-5', this.form), this.closeModalButton);
-
-        this.calendar = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div#color-calendar');
-
-        this.classItems = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["d" /* list */])('ul.menu-list', ClassListItem);
-        this.noClasses = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1', 'No Classes');
-
-        this.renderClasses();
-
-        this.classesContainer = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.box.classes-container', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1', 'Your Classes'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('input#searchbar', {
-            type: 'text',
-            name: 'search',
-            placeholder: 'Search..'
-        }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div#color-calendar'), this.calendar, this.classItems, this.noClasses, this.addClassButton);
-
-        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.columns', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('div.column is-9-desktop is-offset-2-desktop is-8-tablet is-offset-3-tablet is-12-mobile', this.classesContainer), this.modal);
-    }
-
-    _createClass(HomePage, [{
-        key: 'renderClasses',
-        value: function renderClasses() {
-            var allClassData = JSON.parse(localStorage.getItem('ADDED_CLASS')) || [];
-
-            if (allClassData && allClassData.length) {
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.noClasses, {
-                    className: 'is-hidden'
-                });
-            }
-
-            this.classItems.update(allClassData);
-        }
-    }, {
-        key: 'onmount',
-        value: function onmount() {
-            var _this2 = this;
-
-            this.addClassButton.onclick = function (evt) {
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(_this2.modal, {
-                    className: 'modal is-active'
-                });
-            };
-
-            this.closeModalButton.onclick = function (evt) {
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(_this2.modal, {
-                    className: 'modal'
-                });
-            };
-
-            this.createClassButton.onclick = function (evt) {
-                evt.preventDefault();
-
-                var newClassData = {
-                    subjectName: _this2.subjectName,
-                    setTime: _this2.setTime,
-                    timeData: _this2.timeData
-                };
-
-                var existingClasses = JSON.parse(localStorage.getItem('ADDED_CLASS'));
-
-                if (!existingClasses) {
-                    existingClasses = [];
-                }
-
-                existingClasses.push(newClassData);
-                localStorage.setItem('ADDED_CLASS', JSON.stringify(existingClasses));
-
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(_this2.modal, {
-                    className: 'modal'
-                });
-
-                _this2.renderClasses();
-            };
-
-            this.el.addEventListener('classCreated', function (event) {
-                _this2.renderClasses();
-            });
-
-            this.calendar = new __WEBPACK_IMPORTED_MODULE_1_color_calendar___default.a({
-                id: '#color-calendar',
-                primaryColor: 'var(--is-color-primary-high)'
-            });
-        }
-    }, {
-        key: 'update',
-        value: function update(data) {
-            console.log('Update function from home page');
-        }
-    }]);
-
-    return HomePage;
-}();
-
-/***/ }),
-/* 6 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LecturesPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redom__ = __webpack_require__(0);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-var LecturesPage = function () {
-    function LecturesPage() {
-        _classCallCheck(this, LecturesPage);
-
-        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('h1', 'Lectures Page');
-    }
-
-    _createClass(LecturesPage, [{
-        key: 'update',
-        value: function update(data) {
-            console.log('Update function from lectures page');
-        }
-    }]);
-
-    return LecturesPage;
-}();
-
-/***/ }),
-/* 7 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Sidebar; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redom__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__navbar__ = __webpack_require__(1);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-
-var SidebarListItem = function () {
-    function SidebarListItem() {
-        _classCallCheck(this, SidebarListItem);
-
-        this.itemPosition = -1;
-        this.icon = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('span');
-        this.labelText = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('span');
-        this.labelWrapper = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('a', this.icon, this.labelText);
-
-        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('li', this.labelWrapper);
-    }
-
-    _createClass(SidebarListItem, [{
-        key: "onmount",
-        value: function onmount() {
-            var _this = this;
-
-            var itemClicked = new CustomEvent('sidebar:itemClicked', {
-                bubbles: true,
-                detail: {
-                    itemPosition: this.itemPosition
-                }
-            });
-
-            this.labelWrapper.onclick = function (evt) {
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(_this.labelWrapper, {
-                    className: 'is-active'
-                });
-
-                _this.labelWrapper.dispatchEvent(itemClicked);
-            };
-        }
-    }, {
-        key: "update",
-        value: function update(data, index) {
-            this.itemPosition = index;
-
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.icon, {
-                className: data.icon
-            });
-
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.labelText, {
-                textContent: data.name
-            });
-
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.labelWrapper, {
-                href: data.link
-            });
-        }
-    }, {
-        key: "clearClasses",
-        value: function clearClasses() {
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.labelWrapper, {
-                className: ''
-            });
-        }
-    }, {
-        key: "clearNames",
-        value: function clearNames() {
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.labelText, {
-                className: 'is-hidden'
-            });
-        }
-    }, {
-        key: "showNames",
-        value: function showNames() {
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.labelText, {
-                className: 'is-block'
-            });
-        }
-    }]);
-
-    return SidebarListItem;
-}();
-
-var Sidebar = function () {
-    function Sidebar() {
-        _classCallCheck(this, Sidebar);
-
-        var sidebarListData = [{
-            name: 'Home',
-            icon: 'fas fa-clipboard-list',
-            link: '#home'
-        }, {
-            name: 'Lectures',
-            icon: 'fas fa-chalkboard-teacher',
-            link: '#lectures'
-        }, {
-            name: 'Schedules',
-            icon: 'fas fa-calendar',
-            link: '#home'
-        }, {
-            name: 'Notes',
-            icon: 'fas fa-pen-square',
-            link: '#lectures'
-        }, {
-            name: 'Settings',
-            icon: 'fas fa-cog',
-            link: '#lectures'
-        }];
-
-        this.listItems = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["d" /* list */])('ul.menu-list', SidebarListItem);
-
-        this.listItems.update(sidebarListData);
-
-        this.menuWrapper = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.menu-wrapper", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("aside.menu", this.listItems));
-
-        this.sidebarToggleButon = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])('span.fas fa-times', { 'data-toggle': false });
-
-        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* el */])("div.menu-container", this.sidebarToggleButon, this.menuWrapper);
-    }
-
-    _createClass(Sidebar, [{
-        key: "onmount",
-        value: function onmount() {
-            var _this2 = this;
-
-            this.sidebarToggleButon.onclick = function (evt) {
-                var sidebarToggled = _this2.sidebarToggleButon.getAttribute('data-toggle');
-
-                if (sidebarToggled === 'false') {
-                    _this2.closeSidebar();
-                } else {
-                    _this2.openSidebar();
-                }
-            };
-
-            this.el.addEventListener('sidebar:itemClicked', function (event) {
-                _this2.listItems.views.filter(function (view) {
-                    return view.itemPosition != event.detail.itemPosition;
-                }).forEach(function (element) {
-                    return element.clearClasses();
-                });
-            }, false);
-        }
-    }, {
-        key: "openSidebar",
-        value: function openSidebar() {
-            this.sidebarToggleButon.className = 'fas fa-times';
-            this.listItems.views.forEach(function (labelText) {
-                return labelText.showNames();
-            });
-            this.el.style.width = '';
-            this.el.style.transition = '0.5s';
-            this.sidebarToggleButon.setAttribute('data-toggle', false);
-            // Navbar = new Navbar()
-        }
-    }, {
-        key: "closeSidebar",
-        value: function closeSidebar() {
-            this.sidebarToggleButon.className = 'fas fa-bars';
-            this.listItems.views.forEach(function (labelText) {
-                return labelText.clearNames();
-            });
-            this.el.style.width = '5rem';
-            this.el.style.transition = '0.5s';
-            this.sidebarToggleButon.setAttribute('data-toggle', true);
-        }
-    }]);
-
-    return Sidebar;
-}();
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(2);
-module.exports = __webpack_require__(3);
-
-
-/***/ }),
-/* 9 */,
-/* 10 */
 /***/ (function(module, exports) {
 
 /*
@@ -1585,7 +892,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 11 */
+/* 2 */
 /***/ (function(module, exports) {
 
 /*
@@ -1837,6 +1144,767 @@ function updateLink(linkElement, obj) {
 
 
 /***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redom__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__navbar_js__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sidebar_js__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_home_page_js__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_lectures_page_js__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_schedules_page__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_classes_page__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__main__ = __webpack_require__(5);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+
+
+
+
+
+
+
+var Root = function Root() {
+    _classCallCheck(this, Root);
+
+    this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div#root');
+};
+
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* mount */])(document.body, new Root());
+
+var NavContainer = function NavContainer() {
+    _classCallCheck(this, NavContainer);
+
+    this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.is-flex', { id: 'nav-container' });
+};
+
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* mount */])(document.getElementById('root'), new NavContainer());
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* mount */])(document.getElementById('nav-container'), new __WEBPACK_IMPORTED_MODULE_1__navbar_js__["a" /* Navbar */]());
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* mount */])(document.getElementById('nav-container'), new __WEBPACK_IMPORTED_MODULE_2__sidebar_js__["a" /* Sidebar */]());
+
+var AuthMiddleware = function () {
+    function AuthMiddleware() {
+        _classCallCheck(this, AuthMiddleware);
+    }
+
+    _createClass(AuthMiddleware, [{
+        key: 'exec',
+        value: function exec(currentView, nextView, params) {
+            console.log('From custom Middleware');
+        }
+    }]);
+
+    return AuthMiddleware;
+}();
+
+var app = new __WEBPACK_IMPORTED_MODULE_7__main__["a" /* App */]().routes({
+    home: __WEBPACK_IMPORTED_MODULE_3__pages_home_page_js__["a" /* HomePage */],
+    default: __WEBPACK_IMPORTED_MODULE_3__pages_home_page_js__["a" /* HomePage */],
+    lectures: __WEBPACK_IMPORTED_MODULE_4__pages_lectures_page_js__["a" /* LecturesPage */],
+    schedules: __WEBPACK_IMPORTED_MODULE_5__pages_schedules_page__["a" /* SchedulesPage */],
+    classes: __WEBPACK_IMPORTED_MODULE_6__pages_classes_page__["a" /* ClassesPage */]
+}).middlewares([new AuthMiddleware()]).start(document.getElementById('nav-container'));
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return App; });
+/* unused harmony export goto */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redom__ = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+var App = function () {
+    function App() {
+        _classCallCheck(this, App);
+
+        this.middlewareList = [];
+    }
+
+    /**
+     *
+     * @param {type} routes the dictionary of views and names to redirect by
+     * @param {type} defaultRoute the default route, if found. otherwise, the route 'default' is used
+     * @returns {App}
+     */
+
+
+    _createClass(App, [{
+        key: 'routes',
+        value: function routes(_routes, defaultRoute) {
+            this.app = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["e" /* router */])('div.app', _routes);
+            this.defaultRoute = defaultRoute ? defaultRoute : 'default';
+            this.currentView = this.defaultRoute;
+
+            return this;
+        }
+
+        /**
+         *
+         * @param {type} middlewares a list of functions to execute in order before routing.
+         *  If a middleware returns a name of a view differnt than the current target, then the following
+         *  middlewares will not be called and a redirect to the returned view is done.
+         * @returns {App}
+         */
+
+    }, {
+        key: 'middlewares',
+        value: function middlewares(_middlewares) {
+            if (_middlewares) {
+                this.middlewareList = _middlewares;
+            }
+
+            return this;
+        }
+
+        /**
+         * Starts the Application at this base element on the dom. If no base element is provided, then the
+         * <body> is the base element
+         * @param {type} appBase the base element to use
+         * @returns {App}
+         */
+
+    }, {
+        key: 'start',
+        value: function start(appBase) {
+            var _this = this;
+
+            if (appBase) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* mount */])(appBase, this.app);
+            } else {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* mount */])(document.body, this.app);
+            }
+
+            window.onhashchange = function (e) {
+                _this._doRoute();
+            };
+
+            window.onload = function (e) {
+                _this._doRoute();
+            };
+
+            return this;
+        }
+
+        /**
+         * Routes to the new view. If it is the same as the current view, middleware execution is
+         * skipped. Otherwise, middlewares are executed.
+         * @returns {undefined}
+         */
+
+    }, {
+        key: '_doRoute',
+        value: function _doRoute() {
+            var routeUrl = window.location.hash.substr(1).split('/');
+            var view = routeUrl[0];
+            var paramString = window.location.hash.substr(1 + view.length);
+            var params = routeUrl.splice(1, routeUrl.length).filter(function (param) {
+                return param.length > 0;
+            });
+
+            if (this.app.Views[view]) {
+                if (view !== this.currentView) {
+                    var result = this._execMiddleware(this.currentView, view, params);
+                    if (result && result) {
+                        goto(result, params);
+                    } else {
+                        this.currentView = view;
+                        this.app.update(view, params);
+                    }
+                } else {
+                    this.currentView = view;
+                    this.app.update(view, params);
+                }
+            } else {
+                window.location.hash = this.defaultRoute + paramString;
+            }
+        }
+
+        /**
+         * Executes middlewares. if a middleware returns the name of the view other
+         * than the current view, then the following middlewares will not be executed
+         * and a redirect to the returned view is done
+         * @param {type} currentView
+         * @param {type} newView
+         * @param {type} params
+         * @returns {Boolean}
+         */
+
+    }, {
+        key: '_execMiddleware',
+        value: function _execMiddleware(currentView, newView, params) {
+            if (this.middlewareList.length > 0) {
+                var i = 0;
+                for (i in this.middlewareList) {
+                    var result = this.middlewareList[i].exec(currentView, newView, params);
+                    if (result && result != newView) {
+                        return result;
+                    }
+                }
+            }
+        }
+    }]);
+
+    return App;
+}();
+
+
+
+
+var goto = function goto(view, params) {
+    var paramString = '';
+
+    if (params && params.length > 0) {
+        params.map(function (param) {
+            paramString = paramString.concat('/').concat(param);
+        });
+    }
+
+    window.location.hash = view + paramString;
+};
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Navbar; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redom__ = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+var Navbar = function () {
+    function Navbar() {
+        _classCallCheck(this, Navbar);
+
+        this.dropdownList = [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("span.fas fa-user"), "Personal Details"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("span.fas fa-trophy"), "Achivements"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("span.fas fa-question-circle"), "Help"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('hr.dropdown-divider'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("span.fas fa-sign-out-alt"), "Logout")];
+
+        this.navBrand = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("div.navbar-brand", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("a.navbar-item", { href: "#" }, "LOGO"));
+
+        this.navbarDropdown = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("div.navbar-item has-dropdown", { 'data-toggle': true }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.dropdown-trigger', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("a.navbar-link", { href: "#" }, "Teacher"), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("div.navbar-dropdown is-right", this.dropdownList)));
+
+        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("nav.navbar is-fixed-top", this.navBrand, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("div.navbar-menu", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("div.navbar-end", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("a.navbar-item", { href: "#" }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("span.fas fa-bell")), this.navbarDropdown)));
+    }
+
+    _createClass(Navbar, [{
+        key: "onmount",
+        value: function onmount() {
+            var _this = this;
+
+            this.navbarDropdown.onclick = function (evt) {
+                evt.preventDefault();
+                var dropdownToggled = _this.navbarDropdown.getAttribute('data-toggle');
+                dropdownToggled === 'false' ? _this.closeDropdown() : _this.openDropdown();
+            };
+        }
+    }, {
+        key: "openDropdown",
+        value: function openDropdown() {
+            this.navbarDropdown.className = 'navbar-item has-dropdown is-active';
+            this.navbarDropdown.setAttribute('data-toggle', false);
+        }
+    }, {
+        key: "closeDropdown",
+        value: function closeDropdown() {
+            this.navbarDropdown.className = 'navbar-item has-dropdown';
+            this.navbarDropdown.setAttribute('data-toggle', true);
+        }
+    }]);
+
+    return Navbar;
+}();
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClassesPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redom__ = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+var ClassesPage = function () {
+    function ClassesPage() {
+        _classCallCheck(this, ClassesPage);
+
+        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1', 'Classes Page');
+    }
+
+    _createClass(ClassesPage, [{
+        key: 'update',
+        value: function update(data) {
+            console.log('Update function from Classes page');
+        }
+    }]);
+
+    return ClassesPage;
+}();
+
+/***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redom__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_color_calendar__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_color_calendar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_color_calendar__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_color_calendar_dist_css_theme_basic_css__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_color_calendar_dist_css_theme_basic_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_color_calendar_dist_css_theme_basic_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_color_calendar_dist_css_theme_glass_css__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_color_calendar_dist_css_theme_glass_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_color_calendar_dist_css_theme_glass_css__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+
+
+
+
+var ClassListItem = function () {
+    function ClassListItem() {
+        _classCallCheck(this, ClassListItem);
+
+        console.log('Class Item');
+        this.day = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h6');
+        this.time = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h6');
+        this.subject = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1');
+        this.joinBtn = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('button.button is-primary', 'Join');
+        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.box.class', this.time, this.day, this.subject, this.joinBtn);
+    }
+
+    _createClass(ClassListItem, [{
+        key: 'update',
+        value: function update(data) {
+            console.log('Data: ', data);
+
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.day, {
+                textContent: data.timeData
+            });
+
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.time, {
+                textContent: data.setTime
+            });
+
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.subject, {
+                textContent: data.subjectName
+            });
+        }
+    }]);
+
+    return ClassListItem;
+}();
+
+var HomePage = function () {
+    function HomePage() {
+        var _this = this;
+
+        _classCallCheck(this, HomePage);
+
+        this.addClassButton = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('button.button is-primary', 'Add class');
+        this.closeModalButton = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('button.modal-close is-large');
+        this.createClassButton = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.control', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('button.button is-primary', 'Add', { type: 'submit' }));
+
+        this.subjectName = '';
+        this.setTime = '';
+        this.timeData = function () {
+            var am = document.getElementById('am');
+            var pm = document.getElementById('pm');
+
+            if (am.checked) {
+                localStorage.setItem('TIME_DATA', am);
+            }
+
+            if (pm.checked) {
+                localStorage.setItem('TIME_DATA', pm);
+            }
+        };
+
+        this.form = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('form', { id: 'addClass' }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1.heading', 'Create Class'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.field', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('label.label', 'Subject Name'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.control', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('input.input', {
+            type: 'text',
+            placeholder: 'subject',
+            id: 'subname',
+            oninput: function oninput(e) {
+                return _this.subjectName = e.target.value;
+            }
+        }))), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.field', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('label.label', 'Set Time'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.control', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('input.input time', {
+            type: 'text',
+            placeholder: '00:00',
+            id: 'time',
+            oninput: function oninput(e) {
+                return _this.setTime = e.target.value;
+            }
+        }))), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.control', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('lable.radio', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('input', {
+            type: 'radio',
+            name: 'answer',
+            id: 'am',
+            value: 'AM',
+            oninput: function oninput(e) {
+                return _this.timeData = e.target.value;
+            }
+        }), 'AM'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('lable.radio', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('input', {
+            type: 'radio',
+            name: 'answer',
+            id: 'pm',
+            value: 'PM',
+            oninput: function oninput(e) {
+                return _this.timeData = e.target.value;
+            }
+        }), 'PM')), this.createClassButton);
+
+        this.modal = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.modal', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.modal-background'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.modal-content has-background-white py-5 px-5', this.form), this.closeModalButton);
+
+        this.calendar = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div#color-calendar');
+        this.classItems = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["d" /* list */])('ul.menu-list', ClassListItem);
+        this.noClasses = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1', 'No Classes');
+
+        this.renderClasses();
+
+        this.classesContainer = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.box.classes-container', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1', 'Your Classes'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('input#searchbar', {
+            type: 'text',
+            name: 'search',
+            placeholder: 'Search..'
+        }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div#color-calendar'), this.calendar, this.classItems, this.noClasses, this.addClassButton);
+
+        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.columns', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.column', this.classesContainer), this.modal);
+    }
+
+    _createClass(HomePage, [{
+        key: 'renderClasses',
+        value: function renderClasses() {
+            var allClassData = JSON.parse(localStorage.getItem('ADDED_CLASS')) || [];
+
+            if (allClassData && allClassData.length) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.noClasses, {
+                    className: 'is-hidden'
+                });
+            }
+
+            this.classItems.update(allClassData);
+        }
+    }, {
+        key: 'onmount',
+        value: function onmount() {
+            var _this2 = this;
+
+            this.addClassButton.onclick = function (evt) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(_this2.modal, {
+                    className: 'modal is-active'
+                });
+            };
+
+            this.closeModalButton.onclick = function (evt) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(_this2.modal, {
+                    className: 'modal'
+                });
+            };
+
+            this.createClassButton.onclick = function (evt) {
+                evt.preventDefault();
+
+                var newClassData = {
+                    subjectName: _this2.subjectName,
+                    setTime: _this2.setTime,
+                    timeData: _this2.timeData
+                };
+
+                var existingClasses = JSON.parse(localStorage.getItem('ADDED_CLASS'));
+
+                if (!existingClasses) {
+                    existingClasses = [];
+                }
+
+                existingClasses.push(newClassData);
+                localStorage.setItem('ADDED_CLASS', JSON.stringify(existingClasses));
+
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(_this2.modal, {
+                    className: 'modal'
+                });
+
+                _this2.renderClasses();
+            };
+
+            this.el.addEventListener('classCreated', function (event) {
+                _this2.renderClasses();
+            });
+
+            this.calendar = new __WEBPACK_IMPORTED_MODULE_1_color_calendar___default.a({
+                id: '#color-calendar',
+                primaryColor: 'var(--is-color-primary-high)'
+            });
+        }
+    }, {
+        key: 'update',
+        value: function update(data) {
+            console.log('Update function from home page');
+        }
+    }]);
+
+    return HomePage;
+}();
+
+/***/ }),
+/* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LecturesPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redom__ = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+var LecturesPage = function () {
+    function LecturesPage() {
+        _classCallCheck(this, LecturesPage);
+
+        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1', 'Lectures Page');
+    }
+
+    _createClass(LecturesPage, [{
+        key: 'update',
+        value: function update(data) {
+            console.log('Update function from lectures page');
+        }
+    }]);
+
+    return LecturesPage;
+}();
+
+/***/ }),
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SchedulesPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redom__ = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+var SchedulesPage = function () {
+    function SchedulesPage() {
+        _classCallCheck(this, SchedulesPage);
+
+        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1', 'schedules-page');
+    }
+
+    _createClass(SchedulesPage, [{
+        key: 'update',
+        value: function update(data) {
+            console.log('Update function from Schedules Page');
+        }
+    }]);
+
+    return SchedulesPage;
+}();
+
+/***/ }),
+/* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Sidebar; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redom__ = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+var SidebarListItem = function () {
+    function SidebarListItem() {
+        _classCallCheck(this, SidebarListItem);
+
+        this.itemPosition = -1;
+        this.icon = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span');
+        this.labelText = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span');
+        this.labelWrapper = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('a', this.icon, this.labelText);
+
+        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('li', this.labelWrapper);
+    }
+
+    _createClass(SidebarListItem, [{
+        key: 'onmount',
+        value: function onmount() {
+            var _this = this;
+
+            var itemClicked = new CustomEvent('sidebar:itemClicked', {
+                bubbles: true,
+                detail: {
+                    itemPosition: this.itemPosition
+                }
+            });
+
+            this.labelWrapper.onclick = function (evt) {
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(_this.labelWrapper, {
+                    className: 'is-active'
+                });
+
+                _this.labelWrapper.dispatchEvent(itemClicked);
+            };
+        }
+    }, {
+        key: 'update',
+        value: function update(data, index) {
+            this.itemPosition = index;
+
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.icon, {
+                className: data.icon
+            });
+
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.labelText, {
+                textContent: data.name
+            });
+
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.labelWrapper, {
+                href: data.link
+            });
+        }
+    }, {
+        key: 'clearClasses',
+        value: function clearClasses() {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.labelWrapper, {
+                className: ''
+            });
+        }
+    }, {
+        key: 'clearNames',
+        value: function clearNames() {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.labelText, {
+                className: 'is-hidden'
+            });
+        }
+    }, {
+        key: 'showNames',
+        value: function showNames() {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.labelText, {
+                className: 'is-block'
+            });
+        }
+    }]);
+
+    return SidebarListItem;
+}();
+
+var Sidebar = function () {
+    function Sidebar() {
+        _classCallCheck(this, Sidebar);
+
+        var sidebarListData = [{
+            name: 'Home',
+            icon: 'fas fa-clipboard-list',
+            link: '#home'
+        }, {
+            name: 'Lectures',
+            icon: 'fas fa-chalkboard-teacher',
+            link: '#lectures'
+        }, {
+            name: 'Schedules',
+            icon: 'fas fa-calendar',
+            link: '#schedules'
+        }, {
+            name: 'Classes',
+            icon: 'far fa-window-restore',
+            link: '#classes'
+        }, {
+            name: 'Settings',
+            icon: 'fas fa-cog',
+            link: '#settings'
+        }];
+
+        this.listItems = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["d" /* list */])('ul.menu-list', SidebarListItem);
+
+        this.listItems.update(sidebarListData);
+
+        this.menuWrapper = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("div.menu-wrapper", __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("aside.menu", this.listItems));
+
+        this.sidebarToggleButon = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-times', { 'data-toggle': false });
+
+        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])("div.menu-container", this.sidebarToggleButon, this.menuWrapper);
+    }
+
+    _createClass(Sidebar, [{
+        key: 'onmount',
+        value: function onmount() {
+            var _this2 = this;
+
+            this.sidebarToggleButon.onclick = function (evt) {
+                var sidebarToggled = _this2.sidebarToggleButon.getAttribute('data-toggle');
+
+                if (sidebarToggled === 'false') {
+                    _this2.closeSidebar();
+                } else {
+                    _this2.openSidebar();
+                }
+            };
+
+            this.el.addEventListener('sidebar:itemClicked', function (event) {
+                _this2.listItems.views.filter(function (view) {
+                    return view.itemPosition != event.detail.itemPosition;
+                }).forEach(function (element) {
+                    return element.clearClasses();
+                });
+            }, false);
+        }
+    }, {
+        key: 'openSidebar',
+        value: function openSidebar() {
+            this.sidebarToggleButon.className = 'fas fa-times';
+            this.listItems.views.forEach(function (labelText) {
+                return labelText.showNames();
+            });
+            this.el.style.width = '';
+            this.el.style.transition = '0.5s';
+            this.sidebarToggleButon.setAttribute('data-toggle', false);
+        }
+    }, {
+        key: 'closeSidebar',
+        value: function closeSidebar() {
+            this.sidebarToggleButon.className = 'fas fa-bars';
+            this.listItems.views.forEach(function (labelText) {
+                return labelText.clearNames();
+            });
+            this.el.style.width = '5rem';
+            this.el.style.transition = '0.5s';
+            this.sidebarToggleButon.setAttribute('data-toggle', true);
+        }
+    }]);
+
+    return Sidebar;
+}();
+
+/***/ }),
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1853,14 +1921,14 @@ function updateLink(linkElement, obj) {
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(10)();
+exports = module.exports = __webpack_require__(1)();
 exports.push([module.i, ".color-calendar {\n  position: relative;\n  display: inline-flex;\n  flex-direction: column;\n  width: auto;\n  height: auto;\n  box-sizing: border-box;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  overflow: hidden;\n  font-family: var(--cal-font-family-body);\n  font-size: 1rem;\n}\n\n.color-calendar .calendar__header {\n  position: relative;\n  display: grid;\n  grid-template-columns: repeat(7, minmax(20px, 55px));\n  font-family: var(--cal-font-family-header);\n}\n\n.color-calendar .calendar__monthyear {\n  font-size: 1.5rem;\n  margin: 0 auto;\n  text-align: center;\n  grid-column: 2/span 5;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__monthyear .calendar__month {\n  cursor: pointer;\n}\n.color-calendar .calendar__monthyear .calendar__year {\n  cursor: pointer;\n}\n\n.color-calendar .calendar__arrow {\n  height: 35px;\n  width: 100%;\n  position: relative;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  -webkit-tap-highlight-color: transparent;\n  z-index: 101;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__arrow-inner {\n  width: 35px;\n  height: 35px;\n  position: relative;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__arrow-prev {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__arrow-prev .calendar__arrow-inner::before {\n  margin-left: 0.3em;\n  transform: rotate(-135deg);\n}\n.color-calendar .calendar__arrow-next {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__arrow-next .calendar__arrow-inner::before {\n  margin-right: 0.3em;\n  transform: rotate(45deg);\n}\n\n.color-calendar .calendar__body {\n  height: auto;\n  overflow: hidden;\n}\n\n.color-calendar .calendar__weekdays {\n  display: grid;\n  grid-template-columns: repeat(7, minmax(20px, 55px));\n  margin-bottom: 5px;\n  font-family: var(--cal-font-family-weekdays);\n}\n.color-calendar .calendar__weekdays .calendar__weekday {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 40px;\n}\n\n.color-calendar .calendar__days {\n  display: grid;\n  grid-template-columns: repeat(7, minmax(20px, 55px));\n  grid-template-rows: repeat(6, minmax(30px, 40px));\n  font-family: var(--cal-font-family-body);\n}\n.color-calendar .calendar__days .calendar__day {\n  position: relative;\n  z-index: 101;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__days .calendar__day-text {\n  cursor: pointer;\n}\n.color-calendar .calendar__days .calendar__day-box {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: calc(55% + 8px);\n  height: 90%;\n  opacity: 0;\n  z-index: -1;\n  cursor: pointer;\n  transition: opacity 0.3s ease-out;\n  will-change: opacity;\n}\n.color-calendar .calendar__days .calendar__day-event {\n  /* Event Bullet */\n}\n.color-calendar .calendar__days .calendar__day-event .calendar__day-bullet {\n  position: absolute;\n  top: 80%;\n  border-radius: 50%;\n  width: 4px;\n  height: 4px;\n  left: 50%;\n  transform: translateX(-50%);\n  overflow: hidden;\n  cursor: pointer;\n}\n.color-calendar .calendar__days .calendar__day-selected:not(.calendar__day-today) .calendar__day-box {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: calc(55% + 8px);\n  height: 90%;\n  z-index: -1;\n  cursor: pointer;\n}\n\n.color-calendar .calendar__picker {\n  position: absolute;\n  z-index: 201;\n  width: 100%;\n  top: 75px;\n  left: 0;\n  bottom: 0;\n  background-color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  visibility: hidden;\n  opacity: 0;\n  transition: all 0.3s ease;\n  font-family: var(--cal-font-family-body);\n}\n.color-calendar .calendar__picker .calendar__picker-month {\n  width: 100%;\n  display: grid;\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n  grid-template-rows: repeat(4, minmax(0, 1fr));\n  grid-gap: 1rem 6%;\n  gap: 1rem 6%;\n  margin: 8%;\n  transition: none;\n}\n.color-calendar .calendar__picker .calendar__picker-month-option {\n  position: relative;\n  text-align: center;\n  padding: 15px 0;\n  font-weight: 700;\n  color: #323232;\n  border-radius: var(--cal-border-radius);\n  align-self: center;\n  cursor: pointer;\n}\n.color-calendar .calendar__picker .calendar__picker-month-option::after {\n  content: \"\";\n  width: 100%;\n  height: 50px;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background-color: var(--cal-color-primary);\n  border-radius: var(--cal-border-radius);\n  opacity: 0.1;\n  z-index: -1;\n}\n.color-calendar .calendar__picker .calendar__picker-month-option:hover:after {\n  opacity: 0.08;\n}\n.color-calendar .calendar__picker .calendar__picker-month-selected {\n  color: white;\n}\n.color-calendar .calendar__picker .calendar__picker-month-selected::after {\n  opacity: 1;\n}\n.color-calendar .calendar__picker .calendar__picker-month-selected:hover:after {\n  opacity: 0.9;\n}\n.color-calendar .calendar__picker .calendar__picker-year {\n  width: 100%;\n  display: grid;\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n  grid-template-rows: repeat(4, minmax(0, 1fr));\n  grid-gap: 1rem 6%;\n  gap: 1rem 6%;\n  margin: 8%;\n  transition: none;\n}\n.color-calendar .calendar__picker .calendar__picker-year-option {\n  position: relative;\n  text-align: center;\n  padding: 15px 0;\n  font-weight: 700;\n  color: #323232;\n  border-radius: var(--cal-border-radius);\n  align-self: center;\n  cursor: pointer;\n}\n.color-calendar .calendar__picker .calendar__picker-year-option::after {\n  content: \"\";\n  width: 100%;\n  height: 50px;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background-color: var(--cal-color-primary);\n  border-radius: var(--cal-border-radius);\n  opacity: 0.1;\n  z-index: -1;\n}\n.color-calendar .calendar__picker .calendar__picker-year-option:hover:after {\n  opacity: 0.08;\n}\n.color-calendar .calendar__picker .calendar__picker-year-selected {\n  color: white;\n}\n.color-calendar .calendar__picker .calendar__picker-year-selected::after {\n  opacity: 1;\n}\n.color-calendar .calendar__picker .calendar__picker-year-selected:hover:after {\n  opacity: 0.9;\n}\n.color-calendar .calendar__picker .calendar__picker-year-arrow {\n  position: absolute;\n  opacity: 0.4;\n  border-radius: var(--cal-border-radius);\n  cursor: pointer;\n  transition: all 0.3s ease;\n}\n.color-calendar .calendar__picker .calendar__picker-year-arrow-left {\n  top: 0;\n  bottom: 0;\n  left: 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding-left: 10px;\n  padding-right: 4px;\n}\n.color-calendar .calendar__picker .calendar__picker-year-arrow-right {\n  top: 0;\n  bottom: 0;\n  right: 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding-left: 4px;\n  padding-right: 10px;\n}\n.color-calendar .calendar__picker .calendar__picker-year-arrow:hover {\n  opacity: 1;\n  background-color: #f8f8f8;\n}\n\n.chevron-thin-left {\n  display: inline-block;\n  border-right: 2px solid var(--cal-color-primary);\n  border-bottom: 2px solid var(--cal-color-primary);\n  width: 10px;\n  height: 10px;\n  transform: rotate(-225deg);\n}\n.chevron-thin-right {\n  display: inline-block;\n  border-right: 2px solid var(--cal-color-primary);\n  border-bottom: 2px solid var(--cal-color-primary);\n  width: 10px;\n  height: 10px;\n  transform: rotate(-45deg);\n}\n\n.color-calendar.month-left-align .calendar__header .calendar__monthyear {\n  grid-column: 1/span 5;\n  margin: 0;\n  justify-content: flex-start;\n  padding-left: 5%;\n}\n\n.color-calendar.basic {\n  --cal-color-primary: #000000;\n  --cal-font-family-header: \"Work Sans\", sans-serif;\n  --cal-font-family-weekdays: \"Work Sans\", sans-serif;\n  --cal-font-family-body: \"Work Sans\", sans-serif;\n  --cal-drop-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);\n  --cal-border: none;\n  --cal-border-radius: 0.5rem;\n  --cal-header-color: black;\n  --cal-weekdays-color: black;\n  border-radius: var(--cal-border-radius);\n  box-shadow: var(--cal-drop-shadow);\n  color: var(--cal-color-primary);\n  background-color: white;\n  border: var(--cal-border);\n}\n\n.color-calendar.basic .calendar__header {\n  padding: 20px 14px 0px 14px;\n  color: var(--cal-header-color);\n}\n\n.color-calendar.basic .calendar__monthyear {\n  font-weight: 600;\n  color: var(--cal-header-color);\n}\n\n.color-calendar.basic .calendar__arrow-inner {\n  border-radius: 50%;\n}\n.color-calendar.basic .calendar__arrow-inner::before {\n  content: \"\";\n  width: 0.6em;\n  height: 0.6em;\n  position: absolute;\n  border-style: solid;\n  border-width: 0.15em 0.15em 0 0;\n  display: inline-block;\n  transform-origin: center center;\n  transform: rotate(-45deg);\n  border-radius: 1px;\n  color: var(--cal-header-color);\n}\n.color-calendar.basic .calendar__arrow-inner::after {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 35px;\n  height: 35px;\n  border-radius: 50%;\n  background-color: var(--cal-header-color);\n  opacity: 0;\n  z-index: -1;\n  transition: opacity 0.3s ease;\n  will-change: opacity;\n}\n.color-calendar.basic .calendar__arrow-inner:hover::after {\n  transition: opacity 0.3s ease;\n  opacity: 0.05;\n}\n.color-calendar.basic .calendar__arrow-prev {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar.basic .calendar__arrow-prev .calendar__arrow-inner::before {\n  margin-left: 0.3em;\n  transform: rotate(-135deg);\n}\n.color-calendar.basic .calendar__arrow-next {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar.basic .calendar__arrow-next .calendar__arrow-inner::before {\n  margin-right: 0.3em;\n  transform: rotate(45deg);\n}\n\n.color-calendar.basic .calendar__body {\n  padding: 14px;\n}\n\n.color-calendar.basic .calendar__weekdays {\n  display: grid;\n  grid-template-columns: repeat(7, minmax(20px, 55px));\n  margin-bottom: 5px;\n}\n.color-calendar.basic .calendar__weekdays .calendar__weekday {\n  font-weight: 500;\n  opacity: 0.6;\n  color: var(--cal-weekdays-color);\n}\n\n.color-calendar.basic .calendar__days .calendar__day-other {\n  color: var(--cal-color-primary);\n  opacity: 0.2;\n}\n.color-calendar.basic .calendar__days .calendar__day {\n  font-weight: 600;\n}\n.color-calendar.basic .calendar__days .calendar__day-today {\n  font-weight: 700;\n  color: var(--cal-color-primary);\n}\n.color-calendar.basic .calendar__days .calendar__day-today .calendar__day-box {\n  border-radius: 0.5rem;\n  background-color: var(--cal-color-primary);\n  opacity: 0.1;\n}\n.color-calendar.basic .calendar__days .calendar__day-text:hover ~ .calendar__day-box {\n  opacity: 0.1;\n}\n.color-calendar.basic .calendar__days .calendar__day-bullet {\n  background-color: var(--cal-color-primary);\n}\n.color-calendar.basic .calendar__days .calendar__day-bullet:hover ~ .calendar__day-box {\n  opacity: 0.1;\n}\n.color-calendar.basic .calendar__days .calendar__day-box {\n  border-radius: 0.5rem;\n  background-color: var(--cal-color-primary);\n  box-shadow: 0 3px 15px -5px var(--cal-color-primary);\n}\n.color-calendar.basic .calendar__days .calendar__day-box:hover {\n  opacity: 0.1;\n}\n.color-calendar.basic .calendar__days .calendar__day-event {\n  font-weight: 700;\n}\n.color-calendar.basic .calendar__days .calendar__day-selected {\n  color: white;\n  font-weight: 700;\n}\n.color-calendar.basic .calendar__days .calendar__day-selected .calendar__day-box {\n  border-radius: 0.5rem;\n  background-color: var(--cal-color-primary);\n  opacity: 1;\n  box-shadow: 0 3px 15px -5px var(--cal-color-primary);\n}\n.color-calendar.basic .calendar__days .calendar__day-selected .calendar__day-text:hover ~ .calendar__day-box {\n  opacity: 1;\n}\n.color-calendar.basic .calendar__days .calendar__day-selected .calendar__day-bullet {\n  background-color: white;\n}\n.color-calendar.basic .calendar__days .calendar__day-selected .calendar__day-bullet:hover ~ .calendar__day-box {\n  opacity: 1;\n}\n\n.color-calendar.basic .calendar__picker {\n  background-color: white;\n  border-radius: var(--cal-border-radius);\n}\n.color-calendar.basic .calendar__picker-month-today {\n  box-shadow: inset 0px 0px 0px 1px var(--cal-color-primary);\n}\n.color-calendar.basic .calendar__picker-year-today {\n  box-shadow: inset 0px 0px 0px 1px var(--cal-color-primary);\n}\n\n.color-calendar.basic.color-calendar--small {\n  font-size: 0.8rem;\n}\n.color-calendar.basic.color-calendar--small .calendar__header {\n  padding: 10px 10px 0 10px;\n  grid-template-columns: repeat(7, minmax(25px, 41px));\n}\n.color-calendar.basic.color-calendar--small .calendar__header .calendar__monthyear {\n  font-size: 1.2rem;\n}\n.color-calendar.basic.color-calendar--small .calendar__header .calendar__arrow-inner, .color-calendar.basic.color-calendar--small .calendar__header .calendar__arrow-inner::after {\n  width: 30px;\n  height: 30px;\n}\n.color-calendar.basic.color-calendar--small .calendar__body {\n  padding: 0 10px 10px 10px;\n}\n.color-calendar.basic.color-calendar--small .calendar__body .calendar__weekdays {\n  grid-template-columns: repeat(7, minmax(25px, 41px));\n  margin-bottom: 0;\n}\n.color-calendar.basic.color-calendar--small .calendar__body .calendar__days {\n  grid-template-columns: repeat(7, minmax(25px, 41px));\n  grid-template-rows: repeat(6, minmax(30px, 35px));\n}\n.color-calendar.basic.color-calendar--small .calendar__body .calendar__picker {\n  top: 55px;\n}\n.color-calendar.basic.color-calendar--small .calendar__body .calendar__picker .calendar__picker-month-option {\n  padding: 10px 0;\n}\n.color-calendar.basic.color-calendar--small .calendar__body .calendar__picker .calendar__picker-month-option::after {\n  height: 40px;\n}\n.color-calendar.basic.color-calendar--small .calendar__body .calendar__picker .calendar__picker-year-option {\n  padding: 10px 0;\n}\n.color-calendar.basic.color-calendar--small .calendar__body .calendar__picker .calendar__picker-year-option::after {\n  height: 40px;\n}", ""]);
 
 /***/ }),
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(10)();
+exports = module.exports = __webpack_require__(1)();
 exports.push([module.i, ".color-calendar {\n  position: relative;\n  display: inline-flex;\n  flex-direction: column;\n  width: auto;\n  height: auto;\n  box-sizing: border-box;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  overflow: hidden;\n  font-family: var(--cal-font-family-body);\n  font-size: 1rem;\n}\n\n.color-calendar .calendar__header {\n  position: relative;\n  display: grid;\n  grid-template-columns: repeat(7, minmax(20px, 55px));\n  font-family: var(--cal-font-family-header);\n}\n\n.color-calendar .calendar__monthyear {\n  font-size: 1.5rem;\n  margin: 0 auto;\n  text-align: center;\n  grid-column: 2/span 5;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__monthyear .calendar__month {\n  cursor: pointer;\n}\n.color-calendar .calendar__monthyear .calendar__year {\n  cursor: pointer;\n}\n\n.color-calendar .calendar__arrow {\n  height: 35px;\n  width: 100%;\n  position: relative;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  -webkit-tap-highlight-color: transparent;\n  z-index: 101;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__arrow-inner {\n  width: 35px;\n  height: 35px;\n  position: relative;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__arrow-prev {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__arrow-prev .calendar__arrow-inner::before {\n  margin-left: 0.3em;\n  transform: rotate(-135deg);\n}\n.color-calendar .calendar__arrow-next {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__arrow-next .calendar__arrow-inner::before {\n  margin-right: 0.3em;\n  transform: rotate(45deg);\n}\n\n.color-calendar .calendar__body {\n  height: auto;\n  overflow: hidden;\n}\n\n.color-calendar .calendar__weekdays {\n  display: grid;\n  grid-template-columns: repeat(7, minmax(20px, 55px));\n  margin-bottom: 5px;\n  font-family: var(--cal-font-family-weekdays);\n}\n.color-calendar .calendar__weekdays .calendar__weekday {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 40px;\n}\n\n.color-calendar .calendar__days {\n  display: grid;\n  grid-template-columns: repeat(7, minmax(20px, 55px));\n  grid-template-rows: repeat(6, minmax(30px, 40px));\n  font-family: var(--cal-font-family-body);\n}\n.color-calendar .calendar__days .calendar__day {\n  position: relative;\n  z-index: 101;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar .calendar__days .calendar__day-text {\n  cursor: pointer;\n}\n.color-calendar .calendar__days .calendar__day-box {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: calc(55% + 8px);\n  height: 90%;\n  opacity: 0;\n  z-index: -1;\n  cursor: pointer;\n  transition: opacity 0.3s ease-out;\n  will-change: opacity;\n}\n.color-calendar .calendar__days .calendar__day-event {\n  /* Event Bullet */\n}\n.color-calendar .calendar__days .calendar__day-event .calendar__day-bullet {\n  position: absolute;\n  top: 80%;\n  border-radius: 50%;\n  width: 4px;\n  height: 4px;\n  left: 50%;\n  transform: translateX(-50%);\n  overflow: hidden;\n  cursor: pointer;\n}\n.color-calendar .calendar__days .calendar__day-selected:not(.calendar__day-today) .calendar__day-box {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: calc(55% + 8px);\n  height: 90%;\n  z-index: -1;\n  cursor: pointer;\n}\n\n.color-calendar .calendar__picker {\n  position: absolute;\n  z-index: 201;\n  width: 100%;\n  top: 75px;\n  left: 0;\n  bottom: 0;\n  background-color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  visibility: hidden;\n  opacity: 0;\n  transition: all 0.3s ease;\n  font-family: var(--cal-font-family-body);\n}\n.color-calendar .calendar__picker .calendar__picker-month {\n  width: 100%;\n  display: grid;\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n  grid-template-rows: repeat(4, minmax(0, 1fr));\n  grid-gap: 1rem 6%;\n  gap: 1rem 6%;\n  margin: 8%;\n  transition: none;\n}\n.color-calendar .calendar__picker .calendar__picker-month-option {\n  position: relative;\n  text-align: center;\n  padding: 15px 0;\n  font-weight: 700;\n  color: #323232;\n  border-radius: var(--cal-border-radius);\n  align-self: center;\n  cursor: pointer;\n}\n.color-calendar .calendar__picker .calendar__picker-month-option::after {\n  content: \"\";\n  width: 100%;\n  height: 50px;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background-color: var(--cal-color-primary);\n  border-radius: var(--cal-border-radius);\n  opacity: 0.1;\n  z-index: -1;\n}\n.color-calendar .calendar__picker .calendar__picker-month-option:hover:after {\n  opacity: 0.08;\n}\n.color-calendar .calendar__picker .calendar__picker-month-selected {\n  color: white;\n}\n.color-calendar .calendar__picker .calendar__picker-month-selected::after {\n  opacity: 1;\n}\n.color-calendar .calendar__picker .calendar__picker-month-selected:hover:after {\n  opacity: 0.9;\n}\n.color-calendar .calendar__picker .calendar__picker-year {\n  width: 100%;\n  display: grid;\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n  grid-template-rows: repeat(4, minmax(0, 1fr));\n  grid-gap: 1rem 6%;\n  gap: 1rem 6%;\n  margin: 8%;\n  transition: none;\n}\n.color-calendar .calendar__picker .calendar__picker-year-option {\n  position: relative;\n  text-align: center;\n  padding: 15px 0;\n  font-weight: 700;\n  color: #323232;\n  border-radius: var(--cal-border-radius);\n  align-self: center;\n  cursor: pointer;\n}\n.color-calendar .calendar__picker .calendar__picker-year-option::after {\n  content: \"\";\n  width: 100%;\n  height: 50px;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background-color: var(--cal-color-primary);\n  border-radius: var(--cal-border-radius);\n  opacity: 0.1;\n  z-index: -1;\n}\n.color-calendar .calendar__picker .calendar__picker-year-option:hover:after {\n  opacity: 0.08;\n}\n.color-calendar .calendar__picker .calendar__picker-year-selected {\n  color: white;\n}\n.color-calendar .calendar__picker .calendar__picker-year-selected::after {\n  opacity: 1;\n}\n.color-calendar .calendar__picker .calendar__picker-year-selected:hover:after {\n  opacity: 0.9;\n}\n.color-calendar .calendar__picker .calendar__picker-year-arrow {\n  position: absolute;\n  opacity: 0.4;\n  border-radius: var(--cal-border-radius);\n  cursor: pointer;\n  transition: all 0.3s ease;\n}\n.color-calendar .calendar__picker .calendar__picker-year-arrow-left {\n  top: 0;\n  bottom: 0;\n  left: 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding-left: 10px;\n  padding-right: 4px;\n}\n.color-calendar .calendar__picker .calendar__picker-year-arrow-right {\n  top: 0;\n  bottom: 0;\n  right: 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding-left: 4px;\n  padding-right: 10px;\n}\n.color-calendar .calendar__picker .calendar__picker-year-arrow:hover {\n  opacity: 1;\n  background-color: #f8f8f8;\n}\n\n.chevron-thin-left {\n  display: inline-block;\n  border-right: 2px solid var(--cal-color-primary);\n  border-bottom: 2px solid var(--cal-color-primary);\n  width: 10px;\n  height: 10px;\n  transform: rotate(-225deg);\n}\n.chevron-thin-right {\n  display: inline-block;\n  border-right: 2px solid var(--cal-color-primary);\n  border-bottom: 2px solid var(--cal-color-primary);\n  width: 10px;\n  height: 10px;\n  transform: rotate(-45deg);\n}\n\n.color-calendar.month-left-align .calendar__header .calendar__monthyear {\n  grid-column: 1/span 5;\n  margin: 0;\n  justify-content: flex-start;\n  padding-left: 5%;\n}\n\n.color-calendar.glass {\n  --cal-color-primary: #EC407A;\n  --cal-font-family-header: \"Open Sans\", sans-serif;\n  --cal-font-family-weekdays: \"Open Sans\", sans-serif;\n  --cal-font-family-body: \"Open Sans\", sans-serif;\n  --cal-drop-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);\n  --cal-border: none;\n  --cal-border-radius: 0.5rem;\n  --cal-header-color: white;\n  --cal-header-background-color: rgba(0, 0, 0, 0.3);\n  border-radius: var(--cal-border-radius);\n  box-shadow: var(--cal-drop-shadow);\n  color: #323232;\n  background-color: var(--cal-header-background-color);\n  -webkit-backdrop-filter: blur(5px);\n          backdrop-filter: blur(5px);\n  border: var(--cal-border);\n}\n\n.color-calendar.glass .calendar__header {\n  padding: 20px 14px 20px 14px;\n  color: var(--cal-header-color);\n}\n\n.color-calendar.glass .calendar__monthyear {\n  font-weight: 700;\n  color: var(--cal-header-color);\n}\n\n.color-calendar.glass .calendar__arrow-inner {\n  border-radius: 50%;\n}\n.color-calendar.glass .calendar__arrow-inner::before {\n  content: \"\";\n  width: 0.5em;\n  height: 0.5em;\n  position: absolute;\n  border-style: solid;\n  border-width: 0.17em 0.17em 0 0;\n  display: inline-block;\n  transform-origin: center center;\n  transform: rotate(-45deg);\n  border-radius: 2px;\n  color: var(--cal-header-color);\n}\n.color-calendar.glass .calendar__arrow-inner::after {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 35px;\n  height: 35px;\n  border-radius: 50%;\n  background-color: var(--cal-header-color);\n  opacity: 0.12;\n  z-index: -1;\n  transition: opacity 0.3s ease;\n}\n.color-calendar.glass .calendar__arrow-inner:hover::after {\n  transition: opacity 0.3s ease;\n  opacity: 0.25;\n}\n.color-calendar.glass .calendar__arrow-prev {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar.glass .calendar__arrow-prev .calendar__arrow-inner::before {\n  margin-left: 0.25em;\n  transform: rotate(-135deg);\n}\n.color-calendar.glass .calendar__arrow-next {\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.color-calendar.glass .calendar__arrow-next .calendar__arrow-inner::before {\n  margin-right: 0.25em;\n  transform: rotate(45deg);\n}\n\n.color-calendar.glass .calendar__body {\n  padding: 18px 14px;\n  border-radius: var(--cal-border-radius);\n  background-color: white;\n}\n\n.color-calendar.glass .calendar__weekdays {\n  display: grid;\n  grid-template-columns: repeat(7, minmax(20px, 55px));\n  margin-bottom: 5px;\n}\n.color-calendar.glass .calendar__weekdays .calendar__weekday {\n  font-weight: 700;\n  opacity: 0.5;\n}\n\n.color-calendar.glass .calendar__days .calendar__day-other {\n  color: #323232;\n  opacity: 0.2;\n}\n.color-calendar.glass .calendar__days .calendar__day {\n  font-weight: 600;\n}\n.color-calendar.glass .calendar__days .calendar__day-today {\n  font-weight: 700;\n  color: var(--cal-color-primary);\n}\n.color-calendar.glass .calendar__days .calendar__day-today .calendar__day-box {\n  border-radius: 0.5rem;\n  background-color: var(--cal-color-primary);\n  opacity: 0.1;\n}\n.color-calendar.glass .calendar__days .calendar__day-text:hover ~ .calendar__day-box {\n  opacity: 0.1;\n}\n.color-calendar.glass .calendar__days .calendar__day-bullet {\n  background-color: var(--cal-color-primary);\n}\n.color-calendar.glass .calendar__days .calendar__day-bullet:hover ~ .calendar__day-box {\n  opacity: 0.1;\n}\n.color-calendar.glass .calendar__days .calendar__day-box {\n  border-radius: 0.5rem;\n  background-color: var(--cal-color-primary);\n  box-shadow: 0 3px 15px -5px var(--cal-color-primary);\n}\n.color-calendar.glass .calendar__days .calendar__day-box:hover {\n  opacity: 0.1;\n}\n.color-calendar.glass .calendar__days .calendar__day-event {\n  font-weight: 700;\n}\n.color-calendar.glass .calendar__days .calendar__day-selected {\n  color: white;\n  font-weight: 700;\n}\n.color-calendar.glass .calendar__days .calendar__day-selected .calendar__day-box {\n  border-radius: 0.5rem;\n  background-color: var(--cal-color-primary);\n  opacity: 1;\n  box-shadow: 0 3px 15px -5px var(--cal-color-primary);\n}\n.color-calendar.glass .calendar__days .calendar__day-selected .calendar__day-text:hover ~ .calendar__day-box {\n  opacity: 1;\n}\n.color-calendar.glass .calendar__days .calendar__day-selected .calendar__day-bullet {\n  background-color: white;\n}\n.color-calendar.glass .calendar__days .calendar__day-selected .calendar__day-bullet:hover ~ .calendar__day-box {\n  opacity: 1;\n}\n\n.color-calendar.glass .calendar__picker {\n  background-color: white;\n  border-radius: var(--cal-border-radius);\n}\n.color-calendar.glass .calendar__picker-month-today {\n  box-shadow: inset 0px 0px 0px 1px var(--cal-color-primary);\n}\n.color-calendar.glass .calendar__picker-year-today {\n  box-shadow: inset 0px 0px 0px 1px var(--cal-color-primary);\n}\n\n.color-calendar.glass.color-calendar--small {\n  font-size: 0.8rem;\n}\n.color-calendar.glass.color-calendar--small .calendar__header {\n  padding: 10px 10px;\n  grid-template-columns: repeat(7, minmax(25px, 41px));\n}\n.color-calendar.glass.color-calendar--small .calendar__header .calendar__monthyear {\n  font-size: 1.2rem;\n}\n.color-calendar.glass.color-calendar--small .calendar__header .calendar__arrow-inner, .color-calendar.glass.color-calendar--small .calendar__header .calendar__arrow-inner::after {\n  width: 30px;\n  height: 30px;\n}\n.color-calendar.glass.color-calendar--small .calendar__body {\n  padding: 10px 10px;\n}\n.color-calendar.glass.color-calendar--small .calendar__body .calendar__weekdays {\n  grid-template-columns: repeat(7, minmax(25px, 41px));\n  margin-bottom: 0;\n}\n.color-calendar.glass.color-calendar--small .calendar__body .calendar__days {\n  grid-template-columns: repeat(7, minmax(25px, 41px));\n  grid-template-rows: repeat(6, minmax(30px, 35px));\n}\n.color-calendar.glass.color-calendar--small .calendar__body .calendar__picker {\n  top: 55px;\n}\n.color-calendar.glass.color-calendar--small .calendar__body .calendar__picker .calendar__picker-month-option {\n  padding: 10px 0;\n}\n.color-calendar.glass.color-calendar--small .calendar__body .calendar__picker .calendar__picker-month-option::after {\n  height: 40px;\n}\n.color-calendar.glass.color-calendar--small .calendar__body .calendar__picker .calendar__picker-year-option {\n  padding: 10px 0;\n}\n.color-calendar.glass.color-calendar--small .calendar__body .calendar__picker .calendar__picker-year-option::after {\n  height: 40px;\n}", ""]);
 
 /***/ }),
@@ -1873,7 +1941,7 @@ exports.push([module.i, ".color-calendar {\n  position: relative;\n  display: in
 var content = __webpack_require__(13);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(11)(content, {});
+var update = __webpack_require__(2)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -1899,7 +1967,7 @@ if(false) {
 var content = __webpack_require__(14);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(11)(content, {});
+var update = __webpack_require__(2)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -1914,6 +1982,14 @@ if(false) {
 	// When the module is disposed, remove the <style> tags
 	module.hot.dispose(function() { update(); });
 }
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(3);
+module.exports = __webpack_require__(4);
+
 
 /***/ })
 /******/ ]);
