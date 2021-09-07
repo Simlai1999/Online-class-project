@@ -28,6 +28,16 @@ class ClassListItem {
         setAttr(this.subject, {
             textContent: data.subjectName
         });
+
+        setAttr(this.joinBtn, {
+            href: data.link,
+        });
+    }
+
+    onmount() {
+        this.joinBtn.onclick = evt => {
+            console.log("joined");
+        };
     }
 }
 
@@ -126,8 +136,8 @@ export class HomePage {
             }),
             el('div#color-calendar'),
             this.calendar,
-            this.classItems, 
-            this.noClasses, 
+            this.classItems,
+            this.noClasses,
             this.addClassButton
         );
 

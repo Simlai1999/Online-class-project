@@ -1515,6 +1515,17 @@ var ClassListItem = function () {
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.subject, {
                 textContent: data.subjectName
             });
+
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.joinBtn, {
+                href: data.link
+            });
+        }
+    }, {
+        key: 'onmount',
+        value: function onmount() {
+            this.joinBtn.onclick = function (evt) {
+                console.log("joined");
+            };
         }
     }]);
 
@@ -1686,7 +1697,15 @@ var LecturesPage = function () {
     function LecturesPage() {
         _classCallCheck(this, LecturesPage);
 
-        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1', 'Lectures Page');
+        this.videoContainer1 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.video-container', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-play'));
+        this.videoContainer2 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.video-container', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-play'));
+        this.videoContainer3 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.video-container', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-play'));
+
+        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.box.lectures-container', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1', 'Your Recorded Lectures'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('input#searchbar', {
+            type: 'text',
+            name: 'search',
+            placeholder: 'Search..'
+        }), this.videoContainer1, this.videoContainer2, this.videoContainer3);
     }
 
     _createClass(LecturesPage, [{

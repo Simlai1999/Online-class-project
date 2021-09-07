@@ -1,0 +1,38 @@
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+html {
+    background-color: var(--is-color-light-lowest);
+    width: 100%;
+}
+
+.lectures-container {
+    margin-top: 8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    #searchbar {
+        background-color: var(--is-color-light-lowest);
+        border: 0.125rem solid var(--is-color-dark-lowest);
+        border-radius: 0.5rem;
+        height: 2rem;
+    }
+
+    .video-container {
+        background-color: var(--is-color-dark-low);
+        padding: 7rem;
+        width: 20rem;
+        border-radius: 1rem;
+        margin: 1rem;
+        .fa-play {
+            font-size: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--is-color-light-high);
+            cursor: pointer;
+        }
+    }
+}
