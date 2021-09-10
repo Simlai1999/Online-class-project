@@ -7,17 +7,19 @@ import 'color-calendar/dist/css/theme-glass.css';
 class ClassListItem {
     constructor() {
         console.log(`Class Item`);
-        this.day = el('h6');
-        this.time = el('h6');
-        this.subject = el('h1');
-        this.joinBtn = el('button.button is-primary', 'Join');
-        this.el = el('div.box.class', this.time, this.day, this.subject, this.joinBtn);
+        this.timeData = el('h6.timeData');
+        this.time = el('h6.time');
+        this.subject = el('h1.subject');
+        this.joinBtn = el('button.button is-primary',
+            el('span.fas fa-sign-in-alt')
+        );
+        this.el = el('div.box.class', this.time, this.timeData, this.subject, this.joinBtn);
     }
 
     update(data) {
         console.log(`Data: `, data);
 
-        setAttr(this.day, {
+        setAttr(this.timeData, {
             textContent: data.timeData
         });
 
@@ -43,7 +45,9 @@ class ClassListItem {
 
 export class HomePage {
     constructor() {
-        this.addClassButton = el('button.button is-primary', 'Add class');
+        this.addClassButton = el('div.addBtn',
+            el('button.button is-primary add', 'Add class')
+        );
         this.closeModalButton = el('button.modal-close is-large');
         this.createClassButton = el('div.control',
             el('button.button is-primary', 'Add', { type: 'submit' })
@@ -122,23 +126,35 @@ export class HomePage {
         );
 
         this.calendar = el('div#color-calendar');
-        this.classItems = list('ul.menu-list', ClassListItem);
+        this.classItems = list('ul.menu-list classItems', ClassListItem);
         this.noClasses = el('h1', 'No Classes');
+        this.header = el('div.header',
+            el('h1', 'Your Classes'),
+            el('div.field',
+                el('p.control has-icons-left',
+                    el('i.fas fa-search'),
+                    el('input#searchbar', {
+                        type: 'text',
+                        name: 'search',
+                        placeholder: 'Search..'
+                    }),
+
+                )
+            )
+        );
+
+        this.mainContent = el('div.mainContent',
+            this.calendar,
+            this.classItems,
+            this.noClasses,
+        );
 
         this.renderClasses();
 
         this.classesContainer = el('div.box.classes-container',
-            el('h1', 'Your Classes'),
-            el('input#searchbar', {
-                type: 'text',
-                name: 'search',
-                placeholder: 'Search..'
-            }),
-            el('div#color-calendar'),
-            this.calendar,
-            this.classItems,
-            this.noClasses,
-            this.addClassButton
+            this.header,
+            this.addClassButton,
+            this.mainContent,
         );
 
         this.el = el('div.columns',
@@ -206,6 +222,7 @@ export class HomePage {
         this.calendar = new Calendar({
             id: '#color-calendar',
             primaryColor: 'var(--is-color-primary-high)',
+            borderRadius: '5%'
         });
     }
 

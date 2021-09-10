@@ -9,23 +9,44 @@ html {
 
 .lectures-container {
     margin-top: 8rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        margin-right: 1rem;
+    }
 
     #searchbar {
         background-color: var(--is-color-light-lowest);
         border: 0.125rem solid var(--is-color-dark-lowest);
         border-radius: 0.5rem;
         height: 2rem;
+        width: 5rem;
+        transition: width 0.4s ease-in-out;
+        &:focus {
+            width: 15rem;
+        }
+    }
+
+    .fa-search {
+        color: var(--is-color-dark-lowest);
+        margin-right: 0.5rem;
+        font-size: 1.2rem;
+    }
+
+    .mainContent {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(6, 1fr);
+        grid-column-gap: 1rem;
     }
 
     .video-container {
         background-color: var(--is-color-dark-low);
-        padding: 7rem;
-        width: 20rem;
+        padding: 5rem;
+        width: 15rem;
         border-radius: 1rem;
-        margin: 1rem;
+        margin-top: 1rem;
         .fa-play {
             font-size: 60px;
             display: flex;
@@ -33,6 +54,9 @@ html {
             align-items: center;
             color: var(--is-color-light-high);
             cursor: pointer;
+        }
+        .subject {
+            color: var(--is-color-dark-high);
         }
     }
 }

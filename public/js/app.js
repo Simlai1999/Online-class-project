@@ -1178,16 +1178,6 @@ var Root = function Root() {
 
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* mount */])(document.body, new Root());
 
-var NavContainer = function NavContainer() {
-    _classCallCheck(this, NavContainer);
-
-    this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.is-flex', { id: 'nav-container' });
-};
-
-__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* mount */])(document.getElementById('root'), new NavContainer());
-__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* mount */])(document.getElementById('nav-container'), new __WEBPACK_IMPORTED_MODULE_1__navbar_js__["a" /* Navbar */]());
-__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* mount */])(document.getElementById('nav-container'), new __WEBPACK_IMPORTED_MODULE_2__sidebar_js__["a" /* Sidebar */]());
-
 var AuthMiddleware = function () {
     function AuthMiddleware() {
         _classCallCheck(this, AuthMiddleware);
@@ -1202,6 +1192,16 @@ var AuthMiddleware = function () {
 
     return AuthMiddleware;
 }();
+
+var NavContainer = function NavContainer() {
+    _classCallCheck(this, NavContainer);
+
+    this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.is-flex', { id: 'nav-container' });
+};
+
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* mount */])(document.getElementById('root'), new NavContainer());
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* mount */])(document.getElementById('nav-container'), new __WEBPACK_IMPORTED_MODULE_1__navbar_js__["a" /* Navbar */]());
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["b" /* mount */])(document.getElementById('nav-container'), new __WEBPACK_IMPORTED_MODULE_2__sidebar_js__["a" /* Sidebar */]());
 
 var app = new __WEBPACK_IMPORTED_MODULE_7__main__["a" /* App */]().routes({
     home: __WEBPACK_IMPORTED_MODULE_3__pages_home_page_js__["a" /* HomePage */],
@@ -1492,11 +1492,11 @@ var ClassListItem = function () {
         _classCallCheck(this, ClassListItem);
 
         console.log('Class Item');
-        this.day = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h6');
-        this.time = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h6');
-        this.subject = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1');
-        this.joinBtn = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('button.button is-primary', 'Join');
-        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.box.class', this.time, this.day, this.subject, this.joinBtn);
+        this.timeData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h6.timeData');
+        this.time = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h6.time');
+        this.subject = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1.subject');
+        this.joinBtn = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('button.button is-primary', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-sign-in-alt'));
+        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.box.class', this.time, this.timeData, this.subject, this.joinBtn);
     }
 
     _createClass(ClassListItem, [{
@@ -1504,7 +1504,7 @@ var ClassListItem = function () {
         value: function update(data) {
             console.log('Data: ', data);
 
-            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.day, {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.timeData, {
                 textContent: data.timeData
             });
 
@@ -1538,7 +1538,7 @@ var HomePage = function () {
 
         _classCallCheck(this, HomePage);
 
-        this.addClassButton = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('button.button is-primary', 'Add class');
+        this.addClassButton = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.addBtn', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('button.button is-primary add', 'Add class'));
         this.closeModalButton = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('button.modal-close is-large');
         this.createClassButton = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.control', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('button.button is-primary', 'Add', { type: 'submit' }));
 
@@ -1592,16 +1592,19 @@ var HomePage = function () {
         this.modal = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.modal', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.modal-background'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.modal-content has-background-white py-5 px-5', this.form), this.closeModalButton);
 
         this.calendar = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div#color-calendar');
-        this.classItems = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["d" /* list */])('ul.menu-list', ClassListItem);
+        this.classItems = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["d" /* list */])('ul.menu-list classItems', ClassListItem);
         this.noClasses = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1', 'No Classes');
-
-        this.renderClasses();
-
-        this.classesContainer = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.box.classes-container', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1', 'Your Classes'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('input#searchbar', {
+        this.header = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.header', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1', 'Your Classes'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.field', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('p.control has-icons-left', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('i.fas fa-search'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('input#searchbar', {
             type: 'text',
             name: 'search',
             placeholder: 'Search..'
-        }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div#color-calendar'), this.calendar, this.classItems, this.noClasses, this.addClassButton);
+        }))));
+
+        this.mainContent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.mainContent', this.calendar, this.classItems, this.noClasses);
+
+        this.renderClasses();
+
+        this.classesContainer = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.box.classes-container', this.header, this.addClassButton, this.mainContent);
 
         this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.columns', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.column', this.classesContainer), this.modal);
     }
@@ -1667,7 +1670,8 @@ var HomePage = function () {
 
             this.calendar = new __WEBPACK_IMPORTED_MODULE_1_color_calendar___default.a({
                 id: '#color-calendar',
-                primaryColor: 'var(--is-color-primary-high)'
+                primaryColor: 'var(--is-color-primary-high)',
+                borderRadius: '5%'
             });
         }
     }, {
@@ -1701,11 +1705,18 @@ var LecturesPage = function () {
         this.videoContainer2 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.video-container', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-play'));
         this.videoContainer3 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.video-container', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-play'));
 
-        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.box.lectures-container', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1', 'Your Recorded Lectures'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('input#searchbar', {
+        this.videoContainer4 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.video-container', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-play'));
+        this.videoContainer5 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.video-container', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-play'));
+        this.videoContainer6 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.video-container', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-play'));
+
+        this.header = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.header', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1', 'Your Recorded Lectures'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.field', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('p.control has-icons-left', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('i.fas fa-search'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('input#searchbar', {
             type: 'text',
             name: 'search',
             placeholder: 'Search..'
-        }), this.videoContainer1, this.videoContainer2, this.videoContainer3);
+        }))));
+        this.mainContent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.mainContent', this.videoContainer1, this.videoContainer2, this.videoContainer3, this.videoContainer4, this.videoContainer5, this.videoContainer6);
+
+        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.box.lectures-container', this.header, this.mainContent);
     }
 
     _createClass(LecturesPage, [{

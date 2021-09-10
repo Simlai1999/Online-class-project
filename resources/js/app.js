@@ -14,6 +14,14 @@ class Root {
 }
 mount(document.body, new Root());
 
+class AuthMiddleware {
+        constructor() { }
+    
+    exec(currentView, nextView, params) {
+        console.log(`From custom Middleware`);
+    }
+}
+
 class NavContainer {
     constructor() {
         this.el = el('div.is-flex', { id: 'nav-container' });
@@ -22,14 +30,6 @@ class NavContainer {
 mount(document.getElementById('root'), new NavContainer());
 mount(document.getElementById('nav-container'), new Navbar());
 mount(document.getElementById('nav-container'), new Sidebar());
-
-class AuthMiddleware {
-        constructor() { }
-    
-    exec(currentView, nextView, params) {
-        console.log(`From custom Middleware`);
-    }
-}
 
 const app = new App().routes({
     home: HomePage,

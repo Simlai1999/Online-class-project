@@ -1,4 +1,4 @@
-*{
+* {
     font-family: "Poppins", sans-serif;
 }
 
@@ -11,32 +11,137 @@ html {
     background-color: var(--is-color-primary-high);
 }
 
-.classes-container {
-    margin-top: 8rem;
+.addBtn {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+.is-primary {
+    &.add {
+        margin: 1rem;
+        background-color: var(--is-color-primary-low);
+        &:hover {
+            background-color: var(--is-color-primary-medium);
+        }
+    }
+}
+
+.classes-container {
+    margin-top: 5rem;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        margin-right: 1rem;
+    }
 
     #searchbar {
         background-color: var(--is-color-light-lowest);
         border: 0.125rem solid var(--is-color-dark-lowest);
         border-radius: 0.5rem;
         height: 2rem;
+        width: 5rem;
+        transition: width 0.4s ease-in-out;
+        &:focus {
+            width: 15rem;
+        }
+    }
+
+    .fa-search {
+        color: var(--is-color-dark-lowest);
+        margin-right: 0.5rem;
+        font-size: 1.2rem;
+    }
+
+    .mainContent {
+        display: flex;
+        justify-content: space-around;
+        padding-top: 1rem;
     }
 
     .class {
         display: grid;
-        grid-auto-flow: column;
-        width: 25rem;
-        height: 5rem;
+        grid-template-rows: repeat(1, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        width: 18rem;
+        height: 7rem;
         .is-primary {
             background-color: var(--is-color-primary-high);
+            grid-column-end: 4;
+            height: 2.5rem;
+            border-radius: 0.7rem;
+            &:hover {
+                background-color: var(--is-color-primary-medium);
+            }
+        }
+        .subject {
+            grid-column-start: 1;
+            grid-row-start: 1;
+            font-size: 1.4rem;
+        }
+        .time {
+            grid-column-start: 1;
+            grid-row-start: 2;
+        }
+        .timeData {
+            grid-column-start: 1;
+            grid-row-start: 2;
+            margin-left: 0.2rem;
+            display: flex;
+            justify-content: center;
         }
     }
-}
 
-.assignment-container {
-    margin-top: 8rem;
+    #color-calendar {
+        margin-top: 2rem;
+        .calendar__header {
+            padding: 0;
+        }
+
+        .calendar__arrow {
+            &.calendar__arrow-prev {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                background-color: var(--is-color-primary-low);
+            }
+        }
+
+        .calendar__arrow-inner {
+            &:hover {
+                background-color: var(--is-color-primary-low-emphasis);
+            }
+            &::before {
+                color: var(--is-color-light-high);
+                font-size: 1.4rem;
+            }
+        }
+
+        .calendar__monthyear {
+            background-color: var(--is-color-dark-lowest);
+            width: 18.7rem;
+            margin-left: 0rem;
+            .calendar__month {
+                color: var(--is-color-dark-high);
+            }
+            .calendar__year {
+                color: var(--is-color-dark-high);
+            }
+        }
+
+        .calendar__arrow {
+            &.calendar__arrow-next {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--is-color-primary-low);
+                width: 5.3rem;
+                margin-left: 1.5rem;
+            }
+        }
+    }
 }
 
 .modal-content {
@@ -50,6 +155,9 @@ html {
     }
 }
 
-.time {
-    width: 8rem;
+.classItems {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 1rem;
 }
