@@ -40,10 +40,10 @@ html {
         border: 0.125rem solid var(--is-color-dark-lowest);
         border-radius: 0.5rem;
         height: 2rem;
-        width: 5rem;
+        width: 15rem;
         transition: width 0.4s ease-in-out;
         &:focus {
-            width: 15rem;
+            width: 20rem;
         }
     }
 
@@ -68,7 +68,7 @@ html {
         .is-primary {
             background-color: var(--is-color-primary-high);
             grid-column-end: 4;
-            height: 2.5rem;
+            height: 3rem;
             border-radius: 0.7rem;
             &:hover {
                 background-color: var(--is-color-primary-medium);
@@ -82,6 +82,13 @@ html {
         .time {
             grid-column-start: 1;
             grid-row-start: 2;
+            display: flex;
+            align-items: center;
+            background-color: var(--is-color-primary-low-emphasis);
+            color: var(--is-color-dark-high);
+            border: none;
+            border-radius: 0.5rem;
+            padding-left: 0.5rem;
         }
         .timeData {
             grid-column-start: 1;
@@ -89,6 +96,25 @@ html {
             margin-left: 0.2rem;
             display: flex;
             justify-content: center;
+            align-items: center;
+            padding-left: 1rem;
+            color: var(--is-color-dark-high);
+        }
+        .edit {
+            background-color: var(--is-color-dark-lowest);
+            width: 2rem;
+            height: 2rem;
+            color: var(--is-color-dark-high);
+            grid-column-start: 2;
+            grid-row-start: 2;
+            display: flex;
+            border-radius: 0.4rem;
+            font-size: 0.8rem;
+            margin-left: 0.3rem;
+            &:hover {
+                background-color: var(--is-color-dark-low);
+                color: var(--is-color-light-high);
+            }
         }
     }
 
@@ -104,7 +130,8 @@ html {
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
-                background-color: var(--is-color-primary-low);
+                background-color: var(--is-color-primary-high);
+                border-radius: 0rem 0rem 1rem 0rem;
             }
         }
 
@@ -119,14 +146,16 @@ html {
         }
 
         .calendar__monthyear {
-            background-color: var(--is-color-dark-lowest);
-            width: 18.7rem;
+            // background-color: var(--is-color-dark-lowest);
+            width: 19rem;
             margin-left: 0rem;
             .calendar__month {
                 color: var(--is-color-dark-high);
+                font-size: 1.3rem;
             }
             .calendar__year {
                 color: var(--is-color-dark-high);
+                font-size: 1.3rem;
             }
         }
 
@@ -136,9 +165,10 @@ html {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background-color: var(--is-color-primary-low);
+                background-color: var(--is-color-primary-high);
                 width: 5.3rem;
-                margin-left: 1.5rem;
+                margin-left: 1.7rem;
+                border-radius: 0rem 0rem 0rem 1rem;
             }
         }
     }
@@ -152,7 +182,15 @@ html {
         position: relative;
         margin-left: 10rem;
         width: 16rem;
+        &:hover {
+            background-color: var(--is-color-primary-low);
+        }
     }
+}
+
+.modal-close {
+    top: 20%;
+    right: 30%;
 }
 
 .classItems {

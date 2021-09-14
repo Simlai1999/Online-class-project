@@ -13,7 +13,16 @@ class ClassListItem {
         this.joinBtn = el('button.button is-primary',
             el('span.fas fa-sign-in-alt')
         );
-        this.el = el('div.box.class', this.time, this.timeData, this.subject, this.joinBtn);
+        this.editClassBtn = el('button.button is-primary edit', 
+            el('span.fas fa-edit')
+        );
+        this.el = el('div.box.class', 
+            this.time, 
+            this.timeData, 
+            this.subject, 
+            this.joinBtn,
+            this.editClassBtn, 
+        );
     }
 
     update(data) {
@@ -40,14 +49,16 @@ class ClassListItem {
         this.joinBtn.onclick = evt => {
             console.log("joined");
         };
+
+        this.editClassBtn.onclick = evt => {
+            console.log('edited');
+        }
     }
 }
 
 export class HomePage {
     constructor() {
-        this.addClassButton = el('div.addBtn',
-            el('button.button is-primary add', 'Add class')
-        );
+        this.addClassButton = el('button.button is-primary add', 'Add class');
         this.closeModalButton = el('button.modal-close is-large');
         this.createClassButton = el('div.control',
             el('button.button is-primary', 'Add', { type: 'submit' })
@@ -222,7 +233,7 @@ export class HomePage {
         this.calendar = new Calendar({
             id: '#color-calendar',
             primaryColor: 'var(--is-color-primary-high)',
-            borderRadius: '5%'
+            borderRadius: '5%',
         });
     }
 

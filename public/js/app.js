@@ -1496,7 +1496,8 @@ var ClassListItem = function () {
         this.time = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h6.time');
         this.subject = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1.subject');
         this.joinBtn = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('button.button is-primary', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-sign-in-alt'));
-        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.box.class', this.time, this.timeData, this.subject, this.joinBtn);
+        this.editClassBtn = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('button.button is-primary edit', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-edit'));
+        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.box.class', this.time, this.timeData, this.subject, this.joinBtn, this.editClassBtn);
     }
 
     _createClass(ClassListItem, [{
@@ -1526,6 +1527,10 @@ var ClassListItem = function () {
             this.joinBtn.onclick = function (evt) {
                 console.log("joined");
             };
+
+            this.editClassBtn.onclick = function (evt) {
+                console.log('edited');
+            };
         }
     }]);
 
@@ -1538,7 +1543,7 @@ var HomePage = function () {
 
         _classCallCheck(this, HomePage);
 
-        this.addClassButton = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.addBtn', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('button.button is-primary add', 'Add class'));
+        this.addClassButton = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('button.button is-primary add', 'Add class');
         this.closeModalButton = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('button.modal-close is-large');
         this.createClassButton = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.control', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('button.button is-primary', 'Add', { type: 'submit' }));
 
