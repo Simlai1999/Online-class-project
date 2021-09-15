@@ -2,23 +2,28 @@ import { el } from "redom";
 
 export class LecturesPage {
     constructor() {
-        this.videoContainer1 = el('div.video-container',
+        this.videoDescription = el('div.description', 
+            el('h6.subject', 'English'),
+            el('h6.time', '10:30 AM')
+        )
+        this.videoContainer1 = el('div.video-container video-container1',
             el('span.fas fa-play')
         );
-        this.videoContainer2 = el('div.video-container',
+        
+        this.videoContainer2 = el('div.video-container video-container2',
             el('span.fas fa-play')
         );
-        this.videoContainer3 = el('div.video-container',
+        this.videoContainer3 = el('div.video-container video-container3',
             el('span.fas fa-play')
         );
 
-        this.videoContainer4 = el('div.video-container',
+        this.videoContainer4 = el('div.video-container video-container4',
             el('span.fas fa-play')
         );
-        this.videoContainer5 = el('div.video-container',
+        this.videoContainer5 = el('div.video-container video-container5',
             el('span.fas fa-play')
         );
-        this.videoContainer6 = el('div.video-container',
+        this.videoContainer6 = el('div.video-container video-container6',
             el('span.fas fa-play')
         );
 
@@ -37,7 +42,7 @@ export class LecturesPage {
             )
         );
         this.mainContent = el('div.mainContent',
-            this.videoContainer1, this.videoContainer2, 
+            this.videoContainer1, this.videoDescription, this.videoContainer2, 
             this.videoContainer3, this.videoContainer4,
             this.videoContainer5, this.videoContainer6
         );

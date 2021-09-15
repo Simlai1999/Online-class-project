@@ -21,10 +21,10 @@ html {
         border: 0.125rem solid var(--is-color-dark-lowest);
         border-radius: 0.5rem;
         height: 2rem;
-        width: 5rem;
+        width: 15rem;
         transition: width 0.4s ease-in-out;
         &:focus {
-            width: 15rem;
+            width: 20rem;
         }
     }
 
@@ -58,5 +58,33 @@ html {
         .subject {
             color: var(--is-color-dark-high);
         }
+    }
+    .video-container2 {
+        grid-column-start: 2;
+        grid-row-start: 1;
+    }
+    .video-container3 {
+        grid-column-start: 3;
+        grid-row-start: 1;
+    }
+    .video-container4 {
+        grid-column-start: 4;
+        grid-row-start: 1;
+    }
+    .video-container5 {
+        grid-column-start: 5;
+        grid-row-start: 1;
+    }
+    .video-container6 {
+        grid-column-start: 6;
+        grid-row-start: 1;
+    }
+
+    .description {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        display: flex;
+        justify-content: space-around;
+        height: fit-content;
     }
 }

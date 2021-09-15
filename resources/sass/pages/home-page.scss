@@ -64,7 +64,7 @@ html {
         grid-template-rows: repeat(1, 1fr);
         grid-template-columns: repeat(2, 1fr);
         width: 18rem;
-        height: 7rem;
+        height: fit-content;
         .is-primary {
             background-color: var(--is-color-primary-high);
             grid-column-end: 4;
@@ -115,6 +115,16 @@ html {
                 background-color: var(--is-color-dark-low);
                 color: var(--is-color-light-high);
             }
+        }
+        .divider {
+            background-color: var(--is-color-dark-lowest);
+            grid-column-start: 1;
+            grid-column-end: 4;
+            margin-bottom: 0.5rem;
+        }
+        .classDescription {
+            grid-column-start: 1;
+            grid-column-end: 4;
         }
     }
 

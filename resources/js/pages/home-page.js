@@ -10,6 +10,7 @@ class ClassListItem {
         this.timeData = el('h6.timeData');
         this.time = el('h6.time');
         this.subject = el('h1.subject');
+        this.classDescription = el('h1.classDescription');
         this.joinBtn = el('button.button is-primary',
             el('span.fas fa-sign-in-alt')
         );
@@ -21,7 +22,9 @@ class ClassListItem {
             this.timeData, 
             this.subject, 
             this.joinBtn,
-            this.editClassBtn, 
+            this.editClassBtn,
+            el('hr.divider'),
+            this.classDescription,
         );
     }
 
@@ -42,6 +45,10 @@ class ClassListItem {
 
         setAttr(this.joinBtn, {
             href: data.link,
+        });
+
+        setAttr(this.classDescription, {
+            textContent: data.classDescription
         });
     }
 
@@ -78,6 +85,7 @@ export class HomePage {
                 localStorage.setItem('TIME_DATA', pm);
             }
         };
+        this.classDescription = '';
 
         this.form = el('form', { id: 'addClass' },
             el('h1.heading', 'Create Class'),
@@ -123,6 +131,17 @@ export class HomePage {
                         oninput: (e) => this.timeData = e.target.value
                     }),
                     'PM'
+                )
+            ),
+            el('div.field',
+                el('label.label', 'Class Description'),
+                el('div.control',
+                    el('input.input', {
+                        type: 'text',
+                        placeholder: 'Description',
+                        id: 'classDescription',
+                        oninput: (e) => this.classDescription = e.target.value
+                    })
                 )
             ),
             this.createClassButton
@@ -208,6 +227,7 @@ export class HomePage {
                 subjectName: this.subjectName,
                 setTime: this.setTime,
                 timeData: this.timeData,
+                classDescription: this.classDescription,
             };
 
             let existingClasses = JSON.parse(localStorage.getItem('ADDED_CLASS'));

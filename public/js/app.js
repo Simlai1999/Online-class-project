@@ -1495,9 +1495,10 @@ var ClassListItem = function () {
         this.timeData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h6.timeData');
         this.time = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h6.time');
         this.subject = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1.subject');
+        this.classDescription = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1.classDescription');
         this.joinBtn = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('button.button is-primary', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-sign-in-alt'));
         this.editClassBtn = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('button.button is-primary edit', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-edit'));
-        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.box.class', this.time, this.timeData, this.subject, this.joinBtn, this.editClassBtn);
+        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.box.class', this.time, this.timeData, this.subject, this.joinBtn, this.editClassBtn, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('hr.divider'), this.classDescription);
     }
 
     _createClass(ClassListItem, [{
@@ -1519,6 +1520,10 @@ var ClassListItem = function () {
 
             __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.joinBtn, {
                 href: data.link
+            });
+
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["c" /* setAttr */])(this.classDescription, {
+                textContent: data.classDescription
             });
         }
     }, {
@@ -1561,6 +1566,7 @@ var HomePage = function () {
                 localStorage.setItem('TIME_DATA', pm);
             }
         };
+        this.classDescription = '';
 
         this.form = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('form', { id: 'addClass' }, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1.heading', 'Create Class'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.field', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('label.label', 'Subject Name'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.control', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('input.input', {
             type: 'text',
@@ -1592,7 +1598,14 @@ var HomePage = function () {
             oninput: function oninput(e) {
                 return _this.timeData = e.target.value;
             }
-        }), 'PM')), this.createClassButton);
+        }), 'PM')), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.field', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('label.label', 'Class Description'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.control', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('input.input', {
+            type: 'text',
+            placeholder: 'Description',
+            id: 'classDescription',
+            oninput: function oninput(e) {
+                return _this.classDescription = e.target.value;
+            }
+        }))), this.createClassButton);
 
         this.modal = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.modal', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.modal-background'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.modal-content has-background-white py-5 px-5', this.form), this.closeModalButton);
 
@@ -1650,7 +1663,8 @@ var HomePage = function () {
                 var newClassData = {
                     subjectName: _this2.subjectName,
                     setTime: _this2.setTime,
-                    timeData: _this2.timeData
+                    timeData: _this2.timeData,
+                    classDescription: _this2.classDescription
                 };
 
                 var existingClasses = JSON.parse(localStorage.getItem('ADDED_CLASS'));
@@ -1706,20 +1720,22 @@ var LecturesPage = function () {
     function LecturesPage() {
         _classCallCheck(this, LecturesPage);
 
-        this.videoContainer1 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.video-container', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-play'));
-        this.videoContainer2 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.video-container', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-play'));
-        this.videoContainer3 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.video-container', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-play'));
+        this.videoDescription = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.description', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h6.subject', 'English'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h6.time', '10:30 AM'));
+        this.videoContainer1 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.video-container video-container1', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-play'));
 
-        this.videoContainer4 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.video-container', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-play'));
-        this.videoContainer5 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.video-container', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-play'));
-        this.videoContainer6 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.video-container', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-play'));
+        this.videoContainer2 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.video-container video-container2', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-play'));
+        this.videoContainer3 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.video-container video-container3', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-play'));
+
+        this.videoContainer4 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.video-container video-container4', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-play'));
+        this.videoContainer5 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.video-container video-container5', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-play'));
+        this.videoContainer6 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.video-container video-container6', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-play'));
 
         this.header = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.header', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1', 'Your Recorded Lectures'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.field', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('p.control has-icons-left', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('i.fas fa-search'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('input#searchbar', {
             type: 'text',
             name: 'search',
             placeholder: 'Search..'
         }))));
-        this.mainContent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.mainContent', this.videoContainer1, this.videoContainer2, this.videoContainer3, this.videoContainer4, this.videoContainer5, this.videoContainer6);
+        this.mainContent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.mainContent', this.videoContainer1, this.videoDescription, this.videoContainer2, this.videoContainer3, this.videoContainer4, this.videoContainer5, this.videoContainer6);
 
         this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.box.lectures-container', this.header, this.mainContent);
     }
@@ -1751,7 +1767,23 @@ var SchedulesPage = function () {
     function SchedulesPage() {
         _classCallCheck(this, SchedulesPage);
 
-        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1', 'schedules-page');
+        this.timeData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h6.timeData', 'AM');
+        this.time = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h6.time', '10:30');
+        this.subject = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1.subject', 'English');
+        this.classDescription = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1.classDescription', 'Class taken by teacher A');
+        this.joinBtn = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('button.button is-primary join', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-sign-in-alt'));
+
+        this.header = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.header', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1', 'Your Classes'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.field', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('p.control has-icons-left', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('i.fas fa-search'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('input#searchbar', {
+            type: 'text',
+            name: 'search',
+            placeholder: 'Search..'
+        }))));
+
+        this.mainContent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.box.mainContent.class', this.timeData, this.time, this.subject, this.joinBtn, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('hr.divider'), this.classDescription);
+
+        this.classesContainer = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.box.classes-container', this.header, this.mainContent);
+
+        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.columns', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.column', this.classesContainer));
     }
 
     _createClass(SchedulesPage, [{
