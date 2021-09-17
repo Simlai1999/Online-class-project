@@ -17,6 +17,7 @@
     "date-fns": "^2.23.0",
     "laravel-mix": "^0.8.8",
     "lockr": "^0.9.0-beta.0",
+    "mobiscroll": "^3.0.0-beta6",
     "node-sass": "^4.5.0",
     "redom": "^3.27.1"
   }

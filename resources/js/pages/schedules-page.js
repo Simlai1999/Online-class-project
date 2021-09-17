@@ -11,7 +11,7 @@ export class SchedulesPage {
         );
 
         this.header = el('div.header',
-            el('h1', 'Your Classes'),
+            el('h1', 'Classes'),
             el('div.field',
                 el('p.control has-icons-left',
                     el('i.fas fa-search'),

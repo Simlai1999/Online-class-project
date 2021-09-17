@@ -5,6 +5,7 @@ import { HomePage } from './pages/home-page.js';
 import { LecturesPage } from './pages/lectures-page.js';
 import { SchedulesPage } from './pages/schedules-page';
 import { ClassesPage } from './pages/classes-page';
+import { SettingsPage } from './pages/settings-page';
 import { App, goto } from './main';
 
 class Root {
@@ -37,4 +38,5 @@ const app = new App().routes({
     lectures: LecturesPage,
     schedules: SchedulesPage,
     classes: ClassesPage,
+    settings: SettingsPage,
 }).middlewares([new AuthMiddleware()]).start(document.getElementById('nav-container'));
