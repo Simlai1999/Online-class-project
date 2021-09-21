@@ -1768,25 +1768,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var SchedulesPage = function () {
     function SchedulesPage() {
+        var _this = this;
+
         _classCallCheck(this, SchedulesPage);
 
-        this.timeData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h6.timeData', 'AM');
-        this.time = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h6.time', '10:30');
-        this.subject = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1.subject', 'English');
-        this.classDescription = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1.classDescription', 'Class taken by teacher A');
-        this.joinBtn = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('button.button is-primary join', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('span.fas fa-sign-in-alt'));
+        var weeks = [[1, 2, 3, 4, 5, 6, 7], [8, 9, 10, 11, 12, 13, 14], [15, 16, 17, 18, 19, 20, 21], [22, 23, 24, 25, 26, 27, 28, 29, 30]];
 
-        this.header = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.header', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('h1', 'Classes'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.field', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('p.control has-icons-left', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('i.fas fa-search'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('input#searchbar', {
-            type: 'text',
-            name: 'search',
-            placeholder: 'Search..'
-        }))));
+        var date = new Date();
 
-        this.mainContent = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.box.mainContent.class', this.timeData, this.time, this.subject, this.joinBtn, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('hr.divider'), this.classDescription);
+        var today = date.getDate();
 
-        this.classesContainer = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.box.classes-container', this.header, this.mainContent);
+        weeks.forEach(function (week) {
+            week.forEach(function (day) {
+                if (day == today) {
+                    _this.date = week;
+                }
+            });
+        });
 
-        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.columns', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.column', this.classesContainer));
+        this.dayNames = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.names', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.weekdays', 'Sunday'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.weekdays', 'Monday'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.weekdays', 'Tuesday'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.weekdays', 'Wednesday'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.weekdays', 'Thursday'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.weekdays', 'Friday'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.weekdays', 'Saturday'));
+        this.dates = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.dates', this.date);
+
+        this.calender = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.calender', this.dayNames, this.dates, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('hr.divider'));
+
+        this.el = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.box', this.calender);
     }
 
     _createClass(SchedulesPage, [{
