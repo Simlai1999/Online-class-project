@@ -11,7 +11,13 @@ html {
     margin-top: 5rem;
 }
 
-.names {
+.dayNames {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+}
+
+.dates {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
 }

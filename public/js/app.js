@@ -7998,37 +7998,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var SchedulesPage = function () {
     function SchedulesPage() {
+        var _this = this;
+
         _classCallCheck(this, SchedulesPage);
 
         var date = new Date();
         var daysInCurrentWeek = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_date_fns__["a" /* eachDayOfInterval */])({ start: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_date_fns__["b" /* startOfWeek */])(date), end: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_date_fns__["c" /* endOfWeek */])(date) });
-        // console.log(daysInCurrentWeek);
 
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
+        this.dates = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.dates');
+        this.dayNames = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.dayNames');
 
-        try {
-            for (var _iterator = daysInCurrentWeek[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                var day = _step.value;
-            }
-        } catch (err) {
-            _didIteratorError = true;
-            _iteratorError = err;
-        } finally {
-            try {
-                if (!_iteratorNormalCompletion && _iterator.return) {
-                    _iterator.return();
-                }
-            } finally {
-                if (_didIteratorError) {
-                    throw _iteratorError;
-                }
-            }
-        }
+        daysInCurrentWeek.forEach(function (day) {
+            day = new Date(day).getDate();
+            _this.dates.append(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.date', day));
+        });
 
-        this.dayNames = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.names', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.weekdays', 'Sunday'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.weekdays', 'Monday'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.weekdays', 'Tuesday'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.weekdays', 'Wednesday'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.weekdays', 'Thursday'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.weekdays', 'Friday'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.weekdays', 'Saturday'));
-        // this.dates = el('div.dates', this.date);
+        var options = { weekday: 'long' };
+        daysInCurrentWeek.forEach(function (day) {
+            var dayName = new Intl.DateTimeFormat('en-US', options).format(day);
+            _this.dayNames.append(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.weekDays', dayName));
+        });
 
         this.calender = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('div.calender', this.dayNames, this.dates, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redom__["a" /* el */])('hr.divider'));
 

@@ -1,27 +1,25 @@
 import { el } from "redom";
-import { getWeekOfMonth, eachDayOfInterval, startOfWeek, endOfWeek } from "date-fns";
+import { eachDayOfInterval, startOfWeek, endOfWeek } from "date-fns";
 
 export class SchedulesPage {
     constructor() {
 
         const date = new Date();
         const daysInCurrentWeek = eachDayOfInterval({ start: startOfWeek(date), end: endOfWeek(date) });
-        // console.log(daysInCurrentWeek);
 
-        for(const day of daysInCurrentWeek){
-            
-        }
+        this.dates = el('div.dates');
+        this.dayNames = el('div.dayNames');
 
-        this.dayNames = el('div.names',
-            el('div.weekdays', 'Sunday'),
-            el('div.weekdays', 'Monday'),
-            el('div.weekdays', 'Tuesday'),
-            el('div.weekdays', 'Wednesday'),
-            el('div.weekdays', 'Thursday'),
-            el('div.weekdays', 'Friday'),
-            el('div.weekdays', 'Saturday')
-        );
-        // this.dates = el('div.dates', this.date);
+        daysInCurrentWeek.forEach(day => {
+            day = new Date(day).getDate();
+            this.dates.append(el('div.date',day));
+        });
+
+        const options = { weekday: 'long'};
+        daysInCurrentWeek.forEach(day => {
+            let dayName = new Intl.DateTimeFormat('en-US', options).format(day)
+            this.dayNames.append(el('div.weekDays',dayName))
+        });
 
         this.calender = el('div.calender',
             this.dayNames, this.dates,
